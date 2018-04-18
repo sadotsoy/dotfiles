@@ -1,0 +1,259 @@
+#vim:filetype=i3
+
+# This is Sadot Cortes i3-gaps configuration file.
+# Github: https://github.com/SadotCorts
+
+# Be sure that you have your $BROWSER environmental variable set to your favorite browser.
+# E.g., put `export BROWSER="firefox"` into your bash_profile
+
+# #---Basic Definitions---# #
+#Needed for i3-gaps
+for_window [class="^.*"] border pixel 0
+gaps inner 15
+gaps outer 15
+
+#font pango:System San Francisco Display 20
+font pango:Ubuntu Mono derivative Powerline Bold 100
+set $mod Mod4
+# set $term --no-startup-id st -f "Source Code Pro for Powerline:size=10:antialias=true:autohint=true"
+set $term --no-startup-id gnome-terminal
+set $browser --no-startup-id firefox
+set $spotify --no-startup-id spotify
+set $slack --no-startup-id slack
+set $qutebrowser --no-startup-id /home/sadotsoy/.qutebrowser/.venv/bin/python3 -m qutebrowser
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h           resize shrink width 10 px or 10 ppt
+        bindsym j           resize grow height 10 px or 10 ppt
+        bindsym k           resize shrink height 10 px or 10 ppt
+        bindsym l  resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left        resize shrink width 10 px or 10 ppt
+        bindsym Down        resize grow height 10 px or 10 ppt
+        bindsym Up          resize shrink height 10 px or 10 ppt
+        bindsym Right       resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# #---Starting External Scripts---# #
+#Mount other drives:
+exec --no-startup-id sudo mount -a
+
+#Composite manager:
+exec --no-startup-id compton --xrender-sync-fence
+
+#Try to load VGA screen if available:
+exec --no-startup-id ~/.config/Scripts/screen.sh v
+
+#Launch Polybar where appropriate:
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+#Add wallpaper:
+exec_always --no-startup-id feh --bg-scale ~/.config/wall.jpg
+
+#Unclutter makes the mouse invisible after a brief period
+exec --no-startup-id unclutter
+
+#Network Manager applet
+exec --no-startup-id nm-applet
+
+#SYSTEMD
+set $shutdown shutdown -h now
+set $reboot reboot
+set $netrefresh --no-startup-id sudo systemctl restart NetworkManager
+
+# For PULSEAUDIO/PAMIXER
+set $inc --no-startup-id amixer -D pulse sset Master 5%+
+set $biginc --no-startup-id amixer -D pulse sset Master 15%+
+set $dec --no-startup-id amixer -D pulse sset Master 5%-
+set $bigdec --no-startup-id amixer -D pulse sset Master 15%-
+set $mute --no-startup-id amixer -D pulse set Master 1+ toggle
+set $micmute --no-startup-id pamixer --allow-boost -t
+set $truemute --no-startup-id pamixer -m
+set $screencast  --no-startup-id bash ~/.config/Scripts/screencast_pulse.sh
+set $audio --no-startup-id bash ~/.config/Scripts/audio_pulse.sh
+
+# AUDIO CONTROL
+set $play-pause --no-startup-id exec playerctl play-pause
+set $next --no-startup-id exec playerctl next
+set $prev --no-startup-id exec playerctl previous
+
+# #---Basic Bindings---# #
+bindsym $mod+Return 		exec $term
+
+bindsym $mod+Shift+space 	floating toggle
+bindsym $mod+space		exec rofi -show run
+
+bindsym $mod+Escape		workspace prev
+bindsym $mod+Shift+Escape 	exec i3-msg exit
+
+# bindsym $mod+BackSpace
+bindsym $mod+Shift+BackSpace	exec $reboot
+
+#STOP/HIDE EVERYTHING:
+bindsym $mod+Shift+Delete	exec $truemute ; exec $truepause ; workspace lmao ; exec $term -e htop ; exec $term -e ranger
+
+# #---Letter Key Bindings---# #
+bindsym $mod+q			kill
+bindsym $mod+Shift+q		kill
+
+bindsym $mod+w			exec $term -e sudo wifi-menu
+bindsym $mod+Shift+w		exec $qutebrowser
+
+# bindsym $mod+e			exec $term -e neomutt
+
+bindsym $mod+r 			exec $term -e ranger
+bindsym $mod+Shift+r		restart
+
+bindsym $mod+t			split toggle
+bindsym $mod+Shift+t		gaps inner current set 15; gaps outer current set 0
+
+bindsym $mod+Shift+y		exec $term -e calcurse
+
+bindsym $mod+i 			exec $term -e htop
+
+bindsym $mod+o			sticky toggle
+bindsym $mod+Shift+o exec $spotify
+
+bindsym $mod+m     exec $term -e tmux
+
+bindsym $mod+s			gaps inner current plus 5
+bindsym $mod+Shift+s		gaps inner current minus 5
+
+bindsym $mod+d			focus mode_toggle
+bindsym $mod+Shift+d		gaps inner current set 0; gaps outer current set 0
+
+bindsym $mod+f			fullscreen toggle
+bindsym $mod+Shift+f $browser
+
+# bindsym $mod+g			workspace prev
+bindsym $mod+g          mode "resize"
+
+bindsym $mod+h			focus left
+bindsym $mod+Shift+h		move left 30
+
+bindsym $mod+j			focus down
+bindsym $mod+Shift+j		move down 30
+
+bindsym $mod+k			focus up
+bindsym $mod+Shift+k		move up 30
+
+bindsym $mod+l			focus right
+bindsym $mod+Shift+l		move right 30
+
+bindsym $mod+z			gaps outer current plus 5
+bindsym $mod+Shift+z		gaps outer current minus 5
+
+bindsym $mod+x			exec --no-startup-id ~/.config/i3/lock.sh
+# bindsym $mod+x			exec --no-startup-id ~/.config/i3/neofetchlock.sh
+bindsym $mod+Shift+x		exec $shutdown
+
+# #---Workspace Bindings---# #
+bindsym $mod+semicolon		workspace next
+bindsym $mod+apostrophe		split horizontal ;; exec $term
+bindsym $mod+slash		split vertical ;; exec $term
+bindsym $mod+Shift+slash	kill
+bindsym $mod+backslash		workspace back_and_forth
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1		workspace $ws1
+bindsym $mod+2		workspace $ws2
+bindsym $mod+3		workspace $ws3
+bindsym $mod+4		workspace $ws4
+bindsym $mod+5		workspace $ws5
+bindsym $mod+6		workspace $ws6
+bindsym $mod+7		workspace $ws7
+bindsym $mod+8		workspace $ws8
+bindsym $mod+9		workspace $ws9
+bindsym $mod+0		workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1	move container to workspace $ws1
+bindsym $mod+Shift+2	move container to workspace $ws2
+bindsym $mod+Shift+3	move container to workspace $ws3
+bindsym $mod+Shift+4	move container to workspace $ws4
+bindsym $mod+Shift+5	move container to workspace $ws5
+bindsym $mod+Shift+6	move container to workspace $ws6
+bindsym $mod+Shift+7	move container to workspace $ws7
+bindsym $mod+Shift+8	move container to workspace $ws8
+bindsym $mod+Shift+9	move container to workspace $ws9
+bindsym $mod+Shift+0	move container to workspace $ws10
+
+
+# #---Function Buttons---# #
+##bindsym F1		nop
+##bindsym F2
+##bindsym F3
+##bindsym F4
+##bindsym F5
+##bindsym F6
+##bindsym F7
+##bindsym F8
+##bindsym F9
+##bindsym F10
+bindsym F11		fullscreen toggle
+##bindsym F12
+
+bindsym $mod+F1		exec --no-startup-id mupdf ~/.config/i3/i3_guide.pdf
+#bindsym $mod+F2
+bindsym $mod+F3		exec --no-startup-id arandr
+bindsym $mod+F4		exec --no-startup-id sudo zzz
+bindsym $mod+F5		exec --no-startup-id $netrefresh
+#bindsym $mod+F6
+##bindsym $mod+F7
+##bindsym $mod+F8
+bindsym $mod+F9		exec --no-startup-id sudo mount -a
+bindsym $mod+F10	exec --no-startup-id ~/.config/Scripts/screen.sh l ;; exec --no-startup-id ~/.config/polybar/launch.sh
+bindsym $mod+F11	exec --no-startup-id ~/.config/Scripts/screen.sh v ;; exec --no-startup-id ~/.config/polybar/launch.sh
+bindsym $mod+F12	exec --no-startup-id ~/.config/Scripts/screen.sh d ;; exec --no-startup-id ~/.config/polybar/launch.sh
+
+
+# #---Arrow Keys---# #
+bindsym $mod+Left		focus left
+bindsym $mod+Down		focus down
+bindsym $mod+Up			focus up
+bindsym $mod+Right 		focus right
+bindsym $mod+Shift+Left		move left
+bindsym $mod+Shift+Down		move down
+bindsym $mod+Shift+Up		move up
+bindsym $mod+Shift+Right 	move right
+
+# #---Extra XF86 Keys---# #
+# These are the extra media keys that some keyboards have.
+bindsym XF86AudioMute		exec $mute
+bindsym XF86AudioLowerVolume	exec $dec
+bindsym XF86AudioRaiseVolume	exec $inc
+bindsym XF86PowerOff		exec $shutdown
+bindsym XF86Eject		exec sudo umount -R /mnt
+bindsym XF86AudioNext		exec $next
+bindsym XF86AudioPlay		exec $play-pause
+bindsym XF86AudioPrev		exec $prev
+bindsym XF86AudioRecord		exec $audio
+bindsym XF86AudioRewind		exec $lilbak
+bindsym XF86AudioForward	exec $lilfor
+bindsym XF86MonBrightnessDown	exec --no-startup-id light -U 15
+bindsym XF86MonBrightnessUp	exec --no-startup-id light -A 15
+bindsym XF86KbdBrightnessDown	exec --no-startup-id light -U 15
+bindsym XF86KbdBrightnessUp	exec --no-startup-id light -A 15

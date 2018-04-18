@@ -1,0 +1,25 @@
+#
+#  ██████╗  ██████╗ ███████╗██╗
+#  ██╔══██╗██╔═══██╗██╔════╝██║
+#  ██████╔╝██║   ██║█████╗  ██║
+#  ██╔══██╗██║   ██║██╔══╝  ██║
+#  ██║  ██║╚██████╔╝██║     ██║
+#  ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝
+#
+
+rofi.color-enabled: true
+rofi.color-window: #282a36, #BD93F9, #BD93F9
+rofi.color-normal: #282a36, #BD93F9, #282a36, #BD93F9, #282a36
+rofi.color-active: #282a36, #BD93F9, #282a36, #BD93F9, #282a36
+rofi.color-urgent: #282a36, #BD93F9, #282a36, #BD93F9, #282a36
+rofi.terminal: Xfce4-Terminal
+rofi.location: 0
+rofi.yoffset: 0
+rofi.xoffset: 0
+rofi.font: TamzenForPowerline Regular 11
+rofi.bw: 2
+rofi.padding: 30
+rofi.lines: 20
+rofi.width: 25
+rofi.separator-style: solid
+rofi.hide-scrollbar: true
