@@ -6,16 +6,18 @@ set -x GOOGLE_APPLICATION_CREDENTIALS /home/sadotsoy/Documents/Mariachi/radicalC
 # So we can run go commands and go programs we have compiled ourselves
 set -x PATH $PATH $GOROOT/bin $GOPATH/bin
 
-set -g -x BROWSER firefox
 if status --is-interactive
   set -g fish_user_abbreviations
   # abbr --add gcm 'git commit -m'
   # etcetera
 end
 
+function fish_mode_prompt; end
 # ALIAS
 # FOLDERS
 alias dwn="cd ~/Downloads"
+alias doc="cd ~/Documents"
+alias devf="cd ~/Documents/Devf"
 # GIT
 alias master="git checkout master"
 alias development="git checkout development"
@@ -46,12 +48,15 @@ alias yag="sudo yarn add global"
 # DOCKER
 alias dbu="docker-compose build"
 alias dup="docker-compose up"
+alias dimg="docker images"
 alias dpru="docker system prune"
 alias ddel="docker rmi"
+alias dps="docker ps"
 # VIM
 alias vrc="vim ~/.vimrc"
 alias vm="vim ."
 alias vi3="vim ~/.config/i3/config"
+alias vkhd="vim ~/.khdrc"
 # LS
 alias ls="exa"
 alias lsl="exa -l"
@@ -68,11 +73,10 @@ alias telegram="~/Applications/Telegram/Telegram"
 # CONFIG
 alias config="cd ~/.config"
 # APT GET
-alias install="sudo apt install"
-alias update="sudo apt update"
-alias remove="sudo apt remove"
-alias upgrade="sudo apt upgrade -y"
-alias search="apt search"
+alias install="brew install"
+alias update="brew update"
+alias remove="brew remove"
+alias search="brew search"
 # N
 alias n="sudo n"
 # PYTON/PIP
@@ -81,11 +85,7 @@ alias pip="pip3"
 alias env="virtualenv env"
 # MARIACHI
 alias mch="cd ~/Documents/Mariachi"
-alias radical="cd ~/Documents/Mariachi/radicalTwitter"
 alias rct="cd ~/Documents/Mariachi/courses/react"
 alias tok="cd ~/Documents/Mariachi/TokTok"
 # OTHERS
 alias int="ifconfig"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/sadotsoy/Downloads/google-cloud-sdk/path.fish.inc' ]; if type source > /dev/null; source '/home/sadotsoy/Downloads/google-cloud-sdk/path.fish.inc'; else; . '/home/sadotsoy/Downloads/google-cloud-sdk/path.fish.inc'; end; end

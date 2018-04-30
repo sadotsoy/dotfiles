@@ -54,7 +54,7 @@ Plugin 'jistr/vim-nerdtree-tabs' " NeerdTree feel like real panel
 Plugin 'xuyuanp/nerdtree-git-plugin' " Show git in nerdTree
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight' " NerdTree shgh
 Plugin 'tpope/vim-fugitive' " the ultimate git helper
-Plugin 'ryanoasis/vim-devicons' " NERDTREE icons
+" Plugin 'ryanoasis/vim-devicons' " NERDTREE icons
 Plugin 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual mode
 Plugin 'tpope/vim-surround' "all about 'surroundings'
 Plugin 'ervandew/supertab' " Perform all your vim insert mode completions with TAB
@@ -90,6 +90,7 @@ Plugin 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 Plugin 'jelera/vim-javascript-syntax'
 " Plugin 'othree/es.next.syntax.vim' " Es.next JS syntax
 " Plugin 'othree/yajs.vim', { 'for': 'javascript' } " Yet another Js Syntax
+Plugin 'jparise/vim-graphql' " Graphql syntax form vim.
 
 Plugin 'jason0x43/vim-js-indent'
 " Plugin 'bigfish/vim-js-context-coloring'
@@ -105,6 +106,8 @@ Plugin 'ekalinin/dockerfile.vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'scwood/vim-hybrid'
 Plugin 'nanotech/jellybeans.vim'
+Plugin 'Zabanaa/neuromancer.vim'
+Plugin 'dracula/vim'
 """""""""""""""""
 "   ==END==     "
 """""""""""""""""
@@ -120,8 +123,10 @@ set termguicolors
 let base16colorspace=256
 set t_Co=256
 set background=dark
-colorscheme hybrid
+colorscheme neuromancer
+" colorscheme dracula
 " colorscheme jellybeans
+" colorscheme hybrid
 " indent-guides
 set ts=2 sw=2 et
 let g:indent_guides_start_level =2
@@ -131,6 +136,12 @@ set magic " set magic on, for regex
 set showmatch " show matching braces
 set mat=2 " how many tenths of a second to blink
 
+" Searching
+set ignorecase " case insensitive searching
+set smartcase " case-sensitive if expression contains a Capital letter
+set hlsearch
+set incsearch " set incremental search, like modern browsers
+set nolazyredraw " don't redraw while executing macros
 " Hybrid colorscheme config
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
@@ -152,6 +163,11 @@ map <leader>gs :Gstatus<cr>
 map <leader>gc :Gcommit<cr>
 map <leader>ga :Git add --all<cr>:Gcommit<cr>
 map <leader>gb :Gblame<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+"       ===========  GENERAL  =============	   	 "
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:user_emmet_mode='a'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " ===========  JsLibraries =============	 	 "
