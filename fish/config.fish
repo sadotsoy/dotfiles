@@ -39,6 +39,8 @@ alias gig="gitignore osx vim windows linux"
 alias gin="git init"
 alias gp="git push origin"
 # NPM | YARN
+alias gls="npm ls -g --depth=0"
+alias nls="npm ls"
 alias npi="npm init"
 alias yai="yarn init"
 alias npis="npm install -s"
