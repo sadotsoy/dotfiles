@@ -1,7 +1,5 @@
 set -x GOPATH $HOME/Development/go
 set -x GOROOT /usr/local/go
-set -x CHANGELOG_GITHUB_TOKEN "e253e46fa6655436cecf377b729d8c2ecc2d4c4e"
-set -x GOOGLE_APPLICATION_CREDENTIALS /home/sadotsoy/Documents/Mariachi/radicalConfigs/gcp.json
 
 # So we can run go commands and go programs we have compiled ourselves
 set -x PATH $PATH $GOROOT/bin $GOPATH/bin
@@ -21,6 +19,7 @@ alias devf="cd ~/Documents/Devf"
 # GIT
 alias master="git checkout master"
 alias development="git checkout development"
+alias checkout="git checkout"
 alias branch="git branch"
 alias reset="git reset HEAD"
 alias diff="git diff"
@@ -42,11 +41,13 @@ alias gp="git push origin"
 alias gls="npm ls -g --depth=0"
 alias nls="npm ls"
 alias npi="npm init"
-alias yai="yarn init"
+alias yain="yarn init"
+alias yai="yarn install"
+alias yaga="yarn global add"
+alias yaa="yarn add"
 alias npis="npm install -s"
 alias nps="npm install --save"
 alias npg="sudo npm install --global"
-alias yag="sudo yarn add global"
 # DOCKER
 alias dbu="docker-compose build"
 alias dup="docker-compose up"
@@ -85,9 +86,7 @@ alias n="sudo n"
 alias python="python3.5"
 alias pip="pip3"
 alias env="virtualenv env"
-# MARIACHI
-alias mch="cd ~/Documents/Mariachi"
-alias rct="cd ~/Documents/Mariachi/courses/react"
-alias tok="cd ~/Documents/Mariachi/TokTok"
+# gradle
+alias run="gradle bootRun"
 # OTHERS
 alias int="ifconfig"
