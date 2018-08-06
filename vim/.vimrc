@@ -67,6 +67,7 @@ Plugin 'raimondi/delimitmate' " auto-completion for quotes, etc.
 Plugin 'terryma/vim-multiple-cursors' " multiple cursor
 Plugin 'danro/rename.vim' " rename regular file
 Plugin 'vim-gitgutter' " shows a git diff
+Plugin 't9md/vim-choosewin' " choose windows to move
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " ========== vundle Syntax Plugins ========== 	 "
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -108,6 +109,9 @@ Plugin 'scwood/vim-hybrid'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'Zabanaa/neuromancer.vim'
 Plugin 'dracula/vim'
+Plugin 'Siphalor/vim-atomified'
+Plugin 'gosukiwi/vim-atom-dark'
+Plugin 'neutaaaaan/iosvkem'
 """""""""""""""""
 "   ==END==     "
 """""""""""""""""
@@ -123,11 +127,15 @@ set termguicolors
 let base16colorspace=256
 set t_Co=256
 set background=dark
-colorscheme neuromancer
+" colorscheme neuromancer
 " colorscheme dracula
 " colorscheme jellybeans
 " colorscheme hybrid
+colorscheme Iosvkem
+" colorscheme atomified
+" colorscheme atom-dark
 " indent-guides
+nmap  -  <Plug>(choosewin)
 set ts=2 sw=2 et
 let g:indent_guides_start_level =2
 
@@ -260,3 +268,4 @@ let g:NERDTreePatternMatchHighlightColor = {} " this line is needed to avoid err
 let g:NERDTreePatternMatchHighlightColor['.*_spec\.rb$'] = s:rspec_red " sets the color for files ending with _spec.rb
 let g:NERDTreePatternMatchHighlightColor['.*swp$'] = s:rspec_red " sets the color for files ending with _spec.rb
 
+iabbrev ddate <C-R>=strftime("%Y-%m-%d")<CR>
