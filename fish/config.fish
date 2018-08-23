@@ -1,8 +1,6 @@
-set -x GOPATH $HOME/Development/go
+set -x GOPATH $HOME/go
 set -x GOROOT /usr/local/go
-
-# So we can run go commands and go programs we have compiled ourselves
-set -x PATH $PATH $GOROOT/bin $GOPATH/bin
+set -x EDITOR vim
 
 if status --is-interactive
   set -g fish_user_abbreviations
@@ -71,6 +69,8 @@ alias mk="mkdir"
 alias fua="touch"
 # FISH
 alias fsh="vim ~/.config/fish/config.fish"
+# Tmux
+alias tmx="vim ~/.tmux.conf"
 # TELEGRAM
 alias telegram="~/Applications/Telegram/Telegram"
 # CONFIG
@@ -86,6 +86,10 @@ alias n="sudo n"
 alias python="python3.5"
 alias pip="pip3"
 alias env="virtualenv env"
+# MARIACHI
+alias mch="cd ~/Documents/Mariachi"
+alias rct="cd ~/Documents/Mariachi/courses/react"
+alias tok="cd ~/Documents/Mariachi/TokTok"
 # gradle
 alias run="gradle bootRun"
 # OTHERS
