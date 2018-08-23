@@ -68,6 +68,7 @@ Plugin 'terryma/vim-multiple-cursors' " multiple cursor
 Plugin 'danro/rename.vim' " rename regular file
 Plugin 'vim-gitgutter' " shows a git diff
 Plugin 't9md/vim-choosewin' " choose windows to move
+" Plugin 'christoomey/vim-tmux-navigator' " tmux-vim navigation
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " ========== vundle Syntax Plugins ========== 	 "
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -131,9 +132,10 @@ set background=dark
 " colorscheme dracula
 " colorscheme jellybeans
 " colorscheme hybrid
-colorscheme Iosvkem
+" colorscheme Iosvkem
 " colorscheme atomified
-" colorscheme atom-dark
+colorscheme atom-dark
+" atom-dark with base-16-eigthes-256 iterm2 scheme look very great!
 " indent-guides
 nmap  -  <Plug>(choosewin)
 set ts=2 sw=2 et
