@@ -34,6 +34,8 @@ map <leader>y "*y
 map <leader>p "*p
 map <leader>P "*P
 
+" vv to generate new vertical split
+nnoremap <silent> vv <C-w>v
 """"""""""""""""""""""""""""""""""""""""""""""""""
 "  ================ Vundle ===============       "
 """"""""""""""""""""""""""""""""""""""""""""""""""
