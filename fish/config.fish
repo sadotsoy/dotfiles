@@ -35,6 +35,8 @@ alias gco="git checkout"
 alias gig="gitignore osx vim windows linux"
 alias gin="git init"
 alias gp="git push origin"
+# ranger
+alias ran="ranger"
 # NPM | YARN
 alias gls="npm ls -g --depth=0"
 alias nls="npm ls"
@@ -71,6 +73,7 @@ alias fua="touch"
 alias fsh="vim ~/.config/fish/config.fish"
 # Tmux
 alias tmx="vim ~/.tmux.conf"
+alias xmain="tmux new -s main"
 # TELEGRAM
 alias telegram="~/Applications/Telegram/Telegram"
 # CONFIG
@@ -78,6 +81,7 @@ alias config="cd ~/.config"
 # APT GET
 alias install="brew install"
 alias update="brew update"
+alias upgrade="brew upgrade"
 alias remove="brew remove"
 alias search="brew search"
 # N
@@ -90,6 +94,7 @@ alias env="virtualenv env"
 alias mch="cd ~/Documents/Mariachi"
 alias rct="cd ~/Documents/Mariachi/courses/react"
 alias tok="cd ~/Documents/Mariachi/TokTok"
+alias albo="cd /Users/sadotsoy/Documents/Mariachi/Albo/albo-dashboard-frontend"
 # gradle
 alias run="gradle bootRun"
 # OTHERS
