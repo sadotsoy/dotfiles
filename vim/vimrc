@@ -4,7 +4,7 @@
 "╚██╗ ██╔╝██║██║╚██╔╝██║
 " ╚████╔╝ ██║██║ ╚═╝ ██║
 "  ╚═══╝  ╚═╝╚═╝     ╚═╝
-" Vim config files by @SadotCorts APR 11 2018
+" Vim config files by @SadotCorts DEC 18 2018
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " ================ General ===============       "
@@ -68,8 +68,9 @@ Plugin 'majutsushi/tagbar' " displays TagBar in a window
 Plugin 'raimondi/delimitmate' " auto-completion for quotes, etc.
 Plugin 'terryma/vim-multiple-cursors' " multiple cursor
 Plugin 'danro/rename.vim' " rename regular file
-Plugin 'vim-gitgutter' " shows a git diff
+" Plugin 'vim-gitgutter' " shows a git diff
 Plugin 't9md/vim-choosewin' " choose windows to move
+Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
 " Plugin 'christoomey/vim-tmux-navigator' " tmux-vim navigation
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " ========== vundle Syntax Plugins ========== 	 "
