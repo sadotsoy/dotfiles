@@ -10,10 +10,14 @@ end
 
 function fish_mode_prompt; end
 # ALIAS
+# IPHONE
+alias iphone="sudo killall -STOP -c usbd"
 # FOLDERS
 alias dwn="cd ~/Downloads"
 alias doc="cd ~/Documents"
 alias devf="cd ~/Documents/Devf"
+# Transmission needed to instaled with brew
+alias tmr="transmission-remote"
 # GIT
 alias master="git checkout master"
 alias development="git checkout development"
@@ -62,18 +66,23 @@ alias vi3="vim ~/.config/i3/config"
 alias vkhd="vim ~/.khdrc"
 # LS
 alias ls="exa"
-alias lsl="exa -l"
-alias lsa="exa -la"
-alias tree="exa -T"
+alias lsl="exa -lh"
+alias lsa="exa -lah"
+alias tree="exa -Th"
+# SSH
+alias removessh="ssh-add -D"
+alias mariachissh="ssh-add ~/.ssh/id_mariachi"
+alias personalssh="ssh-add ~/.ssh/id_rsa"
 # MK
 alias mk="mkdir"
 # TOUCH
-alias fua="touch"
+alias tch="touch"
 # FISH
 alias fsh="vim ~/.config/fish/config.fish"
 # Tmux
 alias tmx="vim ~/.tmux.conf"
 alias xmain="tmux new -s main"
+alias xcontrol="tmux new -s control"
 # TELEGRAM
 alias telegram="~/Applications/Telegram/Telegram"
 # CONFIG
@@ -87,15 +96,8 @@ alias search="brew search"
 # N
 alias n="sudo n"
 # PYTON/PIP
-alias python="python3.5"
+alias python="python3"
 alias pip="pip3"
 alias env="virtualenv env"
-# MARIACHI
-alias mch="cd ~/Documents/Mariachi"
-alias rct="cd ~/Documents/Mariachi/courses/react"
-alias tok="cd ~/Documents/Mariachi/TokTok"
-alias albo="cd /Users/sadotsoy/Documents/Mariachi/Albo/albo-dashboard-frontend"
-# gradle
-alias run="gradle bootRun"
 # OTHERS
 alias int="ifconfig"
