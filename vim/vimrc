@@ -117,6 +117,7 @@ Plugin 'dracula/vim'
 Plugin 'Siphalor/vim-atomified'
 Plugin 'gosukiwi/vim-atom-dark'
 Plugin 'neutaaaaan/iosvkem'
+Bundle 'sonph/onehalf', {'rtp': 'vim/'}
 """""""""""""""""
 "   ==END==     "
 """""""""""""""""
@@ -132,8 +133,11 @@ set termguicolors
 let base16colorspace=256
 set t_Co=256
 set background=dark
+
+colorscheme onehalfdark
+let g:airline_theme='onehalfdark'
 " colorscheme neuromancer
-colorscheme dracula
+" colorscheme dracula
 " colorscheme jellybeans
 " colorscheme hybrid
 " colorscheme Iosvkem
@@ -275,3 +279,4 @@ let g:NERDTreePatternMatchHighlightColor['.*_spec\.rb$'] = s:rspec_red " sets th
 let g:NERDTreePatternMatchHighlightColor['.*swp$'] = s:rspec_red " sets the color for files ending with _spec.rb
 
 iabbrev ddate <C-R>=strftime("%Y-%m-%d")<CR>
+
