@@ -5,24 +5,8 @@
 #       'stdout' and 'stderr' are valid values.
 #
 
-# ====== Variables =============================
-
 gaps_top="4"
-gaps_bottom="24"
-gaps_left="4"
-gaps_right="4"
-gaps_inner="4"
-
-focused_border_color="808080"
-preselect_border_color="2d74da"
-
-
-#!/usr/bin/env bash
-
-# ====== Variables =============================
-
-gaps_top="4"
-gaps_bottom="24"
+gaps_bottom="4"
 gaps_left="4"
 gaps_right="4"
 gaps_inner="4"
@@ -64,21 +48,21 @@ chunkc set window_region_locked          1
 
 chunkc set mouse_modifier                \"fn\"
 
-chunkc set preselect_border_color        "0xE0${preselect_border_color}"
-chunkc set preselect_border_width        5
-chunkc set preselect_border_radius       0
+# chunkc set preselect_border_color        "0xE0${preselect_border_color}"
+# chunkc set preselect_border_width        5
+# chunkc set preselect_border_radius       0
 
 # ====== Border settings =======================
 
-chunkc set focused_border_color          "0xE0${focused_border_color}"
-chunkc set focused_border_width          6
-chunkc set focused_border_radius         0
-chunkc set focused_border_skip_floating  1
-chunkc set focused_border_skip_monocle   1
+# chunkc set focused_border_color          "0xE0${focused_border_color}"
+# chunkc set focused_border_width          6
+# chunkc set focused_border_radius         0
+# chunkc set focused_border_skip_floating  1
+# chunkc set focused_border_skip_monocle   1
 
 # ====== Load Plugins =========================
 
-chunkc core::load border.so
+# chunkc core::load border.so
 chunkc core::load tiling.so
 
 # ====== List of rules =========================
