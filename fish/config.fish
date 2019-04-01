@@ -1,9 +1,16 @@
+# Base16 Shell
+
 set -x GOPATH $HOME/go
 set -x GOROOT /usr/local/go
 set -x EDITOR vim
+set -x NODE_OPTIONS --max_old_space_size=4096
+set -gx PATH $PATH:$GOPATH/bin
+set -gx PATH $PATH:$GOROOT/bin
 
 if status --is-interactive
   set -g fish_user_abbreviations
+  set BASE16_SHELL "$HOME/.config/base16-shell/"
+  source "$BASE16_SHELL/profile_helper.fish"
   # abbr --add gcm 'git commit -m'
   # etcetera
 end
@@ -62,6 +69,7 @@ alias dps="docker ps"
 # VIM
 alias vrc="vim ~/.vimrc"
 alias vm="vim ."
+
 alias vi3="vim ~/.config/i3/config"
 alias vkhd="vim ~/.khdrc"
 # LS
@@ -72,7 +80,8 @@ alias tree="exa -Th"
 # SSH
 alias removessh="ssh-add -D"
 alias mariachissh="ssh-add ~/.ssh/id_mariachi"
-alias personalssh="ssh-add ~/.ssh/id_rsa"
+alias siscreaissh="ssh-add ~/.ssh/siscrea_rsa"
+alias personalssh="ssh-add ~/.ssh/id_personal"
 # MK
 alias mk="mkdir"
 # TOUCH
