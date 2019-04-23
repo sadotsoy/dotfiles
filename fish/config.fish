@@ -1,10 +1,11 @@
 # Base16 Shell
 
 set -x GOPATH $HOME/go
+set -x GOBIN $HOME/go/bin
 set -x GOROOT /usr/local/go
 set -x EDITOR vim
 set -x NODE_OPTIONS --max_old_space_size=4096
-set -gx PATH $PATH:$GOPATH/bin
+set -gx PATH $PATH:$GOBIN
 set -gx PATH $PATH:$GOROOT/bin
 
 if status --is-interactive
