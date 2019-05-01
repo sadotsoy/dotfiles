@@ -127,19 +127,23 @@ filetype plugin indent on	" required
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " ============== User Interface ============ 	   "
 """"""""""""""""""""""""""""""""""""""""""""""""""
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
 syntax on
 set encoding=utf-8
 set termguicolors
-let base16colorspace=256
 set t_Co=256
 set background=dark
 
-colorscheme onehalfdark
-let g:airline_theme='onehalfdark'
+" colorscheme onehalfdark
+" let g:airline_theme='onehalfdark'
 " colorscheme neuromancer
 " colorscheme dracula
 " colorscheme jellybeans
-" colorscheme hybrid
+colorscheme hybrid
 " colorscheme Iosvkem
 " colorscheme atomified
 " colorscheme atom-dark
