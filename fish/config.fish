@@ -80,8 +80,6 @@ alias lsa="exa -lah"
 alias tree="exa -Th"
 # SSH
 alias removessh="ssh-add -D"
-alias mariachissh="ssh-add ~/.ssh/id_mariachi"
-alias siscreaissh="ssh-add ~/.ssh/siscrea_rsa"
 alias personalssh="ssh-add ~/.ssh/id_personal"
 # MK
 alias mk="mkdir"
