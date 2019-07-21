@@ -4,7 +4,7 @@
 "╚██╗ ██╔╝██║██║╚██╔╝██║
 " ╚████╔╝ ██║██║ ╚═╝ ██║
 "  ╚═══╝  ╚═╝╚═╝     ╚═╝
-" Vim config files by @SadotCorts APR 11 2018
+" Vim config files by @SadotCorts JUL 21 2019
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " ================ General ===============       "
@@ -94,8 +94,8 @@ Plugin 'Quramy/vim-js-pretty-template' " Syntax highlight for contents
 Plugin 'isruslan/vim-es6'
 Plugin 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 Plugin 'jelera/vim-javascript-syntax'
-" Plugin 'othree/es.next.syntax.vim' " Es.next JS syntax
-" Plugin 'othree/yajs.vim', { 'for': 'javascript' } " Yet another Js Syntax
+Plugin 'othree/es.next.syntax.vim' " Es.next JS syntax
+Plugin 'othree/yajs.vim', { 'for': 'javascript' } " Yet another Js Syntax
 Plugin 'jparise/vim-graphql' " Graphql syntax form vim.
 
 Plugin 'jason0x43/vim-js-indent'
@@ -107,10 +107,14 @@ Plugin 'maxmellon/vim-jsx-pretty' "JSyntax pretty highlighting for vim
 " Docker
 Plugin 'ekalinin/dockerfile.vim'
 
+
+set rtp+=/usr/local/opt/fzf
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " =========== vundle colorschemes ============ 	 "
 """"""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'scwood/vim-hybrid'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'trevordmiller/nova-vim'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'Zabanaa/neuromancer.vim'
 Plugin 'dracula/vim'
@@ -127,17 +131,27 @@ filetype plugin indent on	" required
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " ============== User Interface ============ 	   "
 """"""""""""""""""""""""""""""""""""""""""""""""""
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
 syntax on
 set encoding=utf-8
-set termguicolors
-let base16colorspace=256
+" Enable true color 启用终端24位色
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 set t_Co=256
 set background=dark
 
-colorscheme onehalfdark
-let g:airline_theme='onehalfdark'
+" colorscheme nova
+" colorscheme onehalfdark
+" let g:airline_theme='onehalfdark'
 " colorscheme neuromancer
-" colorscheme dracula
+colorscheme dracula
 " colorscheme jellybeans
 " colorscheme hybrid
 " colorscheme Iosvkem

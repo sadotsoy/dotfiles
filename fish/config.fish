@@ -1,9 +1,17 @@
+# Base16 Shell
+
 set -x GOPATH $HOME/go
+set -x GOBIN $HOME/go/bin
 set -x GOROOT /usr/local/go
 set -x EDITOR vim
+set -x NODE_OPTIONS --max_old_space_size=4096
+set -gx PATH $PATH:$GOBIN
+set -gx PATH $PATH:$GOROOT/bin
 
 if status --is-interactive
   set -g fish_user_abbreviations
+  set BASE16_SHELL "$HOME/.config/base16-shell/"
+  source "$BASE16_SHELL/profile_helper.fish"
   # abbr --add gcm 'git commit -m'
   # etcetera
 end
@@ -21,6 +29,7 @@ alias tmr="transmission-remote"
 # GIT
 alias master="git checkout master"
 alias development="git checkout development"
+alias develop="git checkout develop"
 alias checkout="git checkout"
 alias branch="git branch"
 alias reset="git reset HEAD"
@@ -39,6 +48,7 @@ alias gco="git checkout"
 alias gig="gitignore osx vim windows linux"
 alias gin="git init"
 alias gp="git push origin"
+alias glog="git log --oneline --graph"
 # ranger
 alias ran="ranger"
 # NPM | YARN
@@ -62,6 +72,7 @@ alias dps="docker ps"
 # VIM
 alias vrc="vim ~/.vimrc"
 alias vm="vim ."
+
 alias vi3="vim ~/.config/i3/config"
 alias vkhd="vim ~/.khdrc"
 # LS
@@ -71,8 +82,7 @@ alias lsa="exa -lah"
 alias tree="exa -Th"
 # SSH
 alias removessh="ssh-add -D"
-alias mariachissh="ssh-add ~/.ssh/id_mariachi"
-alias personalssh="ssh-add ~/.ssh/id_rsa"
+alias personalssh="ssh-add ~/.ssh/id_personal"
 # MK
 alias mk="mkdir"
 # TOUCH
