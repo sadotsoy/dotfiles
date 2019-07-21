@@ -1,5 +1,5 @@
 # Open iTerm 2
-alt - return : "${HOME}"/.config/chunkwm/scripts/open_iterm2.sh
+#alt - return : "${HOME}"/.config/chunkwm/scripts/open_iterm2.sh
 
 # Navigation
 alt - h : chunkc tiling::window --focus west

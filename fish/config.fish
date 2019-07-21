@@ -29,6 +29,7 @@ alias tmr="transmission-remote"
 # GIT
 alias master="git checkout master"
 alias development="git checkout development"
+alias develop="git checkout develop"
 alias checkout="git checkout"
 alias branch="git branch"
 alias reset="git reset HEAD"
@@ -47,6 +48,7 @@ alias gco="git checkout"
 alias gig="gitignore osx vim windows linux"
 alias gin="git init"
 alias gp="git push origin"
+alias glog="git log --oneline --graph"
 # ranger
 alias ran="ranger"
 # NPM | YARN
