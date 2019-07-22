@@ -2,7 +2,7 @@
 
 # Set my own config.fish
 echo "Moving config.fish"
-mv -f config.fish /Users/sadotsoy/.config/fish
+ln config.fish /Users/sadotsoy/.config/fish
 
 # Install fish plugins and themes
 echo "Installing plugins and theme"
