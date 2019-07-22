@@ -35,6 +35,7 @@ set tabstop=4 " the visible width of tabs
 set softtabstop=4 " edit as if the tabs are 4 characters wide
 set shiftwidth=4 " number of spaces to use for indent and unindent
 set shiftround " round indent to a multiple of 'shiftwidth'
+filetype plugin indent on
 
 " Set backups
 if has('persistent_undo')
@@ -65,7 +66,9 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " NerdTree shgh
 Plug 'airblade/vim-gitgutter' " shows a git diff
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'luochen1990/rainbow' " rainbow_parentheses
-Plug 'junegunn/vim-emoji' " emoji
+Plug 'tpope/vim-surround' " surround
+Plug 'terryma/vim-multiple-cursors' " multiple cursors with <C-n>
+Plug 'fatih/vim-go', { 'tag': '*' }
 " Javascript plugins
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -78,6 +81,7 @@ Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'sheerun/vim-polyglot'
 Plug 'trevordmiller/nova-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'ajh17/Spacegray.vim'
 " Files tree
 Plug 'scrooloose/nerdtree'
 " search with ctrl-p
@@ -86,8 +90,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
-" Configuration Variables
-set completefunc=emoji#complete
 " JAVASCRIPT
 let g:jsx_ext_requires = 0
 let g:javascript_plugin_flow = 1
@@ -108,8 +110,9 @@ let g:ale_fix_on_save = 1
 " Color options
 " colorscheme onehalfdark
 " colorscheme nova
-syntax on
+" colorscheme spacegray
 colorscheme dracula
+syntax on
 
 set encoding=utf-8
 " Enable true color 启用终端24位色
@@ -397,4 +400,3 @@ let g:NERDTreePatternMatchHighlightColor['.*_spec\.rb$'] = s:rspec_red " sets th
 let g:NERDTreePatternMatchHighlightColor['.*swp$'] = s:rspec_red " sets the color for files ending with _spec.rb
 
 iabbrev ddate <C-R>=strftime("%Y-%m-%d")<CR>
-
