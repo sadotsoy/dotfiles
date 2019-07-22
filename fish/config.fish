@@ -19,6 +19,9 @@ end
 
 function fish_mode_prompt; end
 
+# WORKSPACE
+alias guru="cd ~/workspace/guru"
+alias personal="cd ~/workspace/personal"
 alias vim="nvim"
 # ALIAS
 # IPHONE
@@ -52,6 +55,7 @@ alias gig="gitignore osx vim windows linux"
 alias gin="git init"
 alias gp="git push origin"
 alias glog="git log --oneline --graph"
+alias clone="git clone"
 # ranger
 alias ran="ranger"
 # NPM | YARN
