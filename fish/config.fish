@@ -3,20 +3,23 @@
 set -x GOPATH $HOME/go
 set -x GOBIN $HOME/go/bin
 set -x GOROOT /usr/local/go
-set -x EDITOR vim
+set -x EDITOR nvim
+set -x LC_ALL en_US.UTF-8
 set -x NODE_OPTIONS --max_old_space_size=4096
 set -gx PATH $PATH:$GOBIN
 set -gx PATH $PATH:$GOROOT/bin
 
 if status --is-interactive
   set -g fish_user_abbreviations
-  set BASE16_SHELL "$HOME/.config/base16-shell/"
-  source "$BASE16_SHELL/profile_helper.fish"
+  # set BASE16_SHELL "$HOME/.config/base16-shell/"
+  # source "$BASE16_SHELL/profile_helper.fish"
   # abbr --add gcm 'git commit -m'
   # etcetera
 end
 
 function fish_mode_prompt; end
+
+alias vim="nvim"
 # ALIAS
 # IPHONE
 alias iphone="sudo killall -STOP -c usbd"
@@ -70,11 +73,11 @@ alias dpru="docker system prune"
 alias ddel="docker rmi"
 alias dps="docker ps"
 # VIM
-alias vrc="vim ~/.vimrc"
-alias vm="vim ."
+alias nvrc="nvim ~/.config/nvim/init.vim"
+alias nvm="nvim ."
 
-alias vi3="vim ~/.config/i3/config"
-alias vkhd="vim ~/.khdrc"
+alias vi3="nvim ~/.config/i3/config"
+alias vkhd="nvim ~/.khdrc"
 # LS
 alias ls="exa"
 alias lsl="exa -lh"
@@ -88,9 +91,9 @@ alias mk="mkdir"
 # TOUCH
 alias tch="touch"
 # FISH
-alias fsh="vim ~/.config/fish/config.fish"
+alias fsh="nvim ~/.config/fish/config.fish"
 # Tmux
-alias tmx="vim ~/.tmux.conf"
+alias tmx="nvim ~/.tmux.conf"
 alias xmain="tmux new -s main"
 alias xcontrol="tmux new -s control"
 # TELEGRAM
