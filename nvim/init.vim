@@ -20,6 +20,7 @@ set backspace=indent,eol,start 	" make backspace behave in a sane manner
 setlocal textwidth=280		" have long lines wrap inside comments.
 set guifont=Ubuntu\ Mono\ derivative\ Powerline:h15
 let g:rainbow_active = 1
+syntax on
 
 " Yank and paste with the system clipboard
 set clipboard=unnamed
@@ -69,16 +70,17 @@ Plug 'luochen1990/rainbow' " rainbow_parentheses
 Plug 'tpope/vim-surround' " surround
 Plug 'terryma/vim-multiple-cursors' " multiple cursors with <C-n>
 Plug 'fatih/vim-go', { 'tag': '*' }
-" Javascript plugins
+" Syntax plugins
 Plug 'pangloss/vim-javascript'
+" Plug 'sheerun/vim-polyglot'
 Plug 'mxw/vim-jsx'
 Plug 'mattn/emmet-vim'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'alampros/vim-styled-jsx'
 " Linter
 Plug 'w0rp/ale'
 " Theme
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
-Plug 'sheerun/vim-polyglot'
 Plug 'trevordmiller/nova-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ajh17/Spacegray.vim'
@@ -92,6 +94,7 @@ call plug#end()
 
 " JAVASCRIPT
 let g:jsx_ext_requires = 0
+let g:vim_jsx_pretty_colorful_config = 1
 let g:javascript_plugin_flow = 1
 let g:used_javascripts_libs = 'underscore'
 
@@ -112,7 +115,6 @@ let g:ale_fix_on_save = 1
 " colorscheme nova
 " colorscheme spacegray
 colorscheme dracula
-syntax on
 
 set encoding=utf-8
 " Enable true color 启用终端24位色
