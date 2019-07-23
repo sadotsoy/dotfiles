@@ -74,7 +74,8 @@ Plug 'tpope/vim-surround' " surround
 Plug 'terryma/vim-multiple-cursors' " multiple cursors with <C-n>
 Plug 'fatih/vim-go', { 'tag': '*' }
 Plug 'chrisbra/NrrwRgn' " :NR, NW, NRP, NRM
-" ====== Syntax plugins"
+Plug 'mbbill/undotree' " undo history visualizer
+" ===== Syntax plugins"
 """"""""""""""""""""""""
 Plug 'pangloss/vim-javascript'
 " Plug 'sheerun/vim-polyglot'
@@ -142,10 +143,14 @@ map <leader>tm :tabmove<cr>
 
 "Copy to clipboard on selection+Y
 noremap Y "*y
+noremap p "*p
+noremap P "*P
 
 " vv to generate new vertical split
 nnoremap <silent> vv <C-w>v
-" NERDTree mappin
+
+" ====== NERDTree mappin"
+"""""""""""""""""""""""""
 map <leader>ne :NERDTreeToggle<cr>
 " moving up and down work as you would expect
 nnoremap <silent> j gj
@@ -281,8 +286,12 @@ let g:vim_jsx_pretty_colorful_config = 1
 let g:javascript_plugin_flow = 1
 let g:used_javascripts_libs = 'underscore'
 
+" ====== NerdTree"
+""""""""""""""""""
+let NERDTreeQuitOnOpen=1
 
-" Linter Options
+" ====== Linter Options"
+""""""""""""""""""""""""
 let g:ale_linters = {
 \   'javascript': ['standard'],
 \}
