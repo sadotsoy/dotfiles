@@ -4,13 +4,12 @@
 "╚██╗ ██╔╝██║██║╚██╔╝██║
 " ╚████╔╝ ██║██║ ╚═╝ ██║
 "  ╚═══╝  ╚═╝╚═╝     ╚═╝
-" Vim config files by @SadotCorts JUL 21 2019
+" Vim config files by @SadotCorts JUL 22 2019
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " ================ General ===============       "
 """"""""""""""""""""""""""""""""""""""""""""""""""
 set shell=/bin/bash		" set the vim shell
-let mapleader = ','		" set the <leader>
 set number			" to show the number lines
 set autoindent			" automatically set indent of new line
 set smartindent
@@ -20,15 +19,9 @@ set backspace=indent,eol,start 	" make backspace behave in a sane manner
 setlocal textwidth=280		" have long lines wrap inside comments.
 " set guifont=Ubuntu\ Mono\ derivative\ Powerline:h15
 let g:rainbow_active = 1
+let mapleader = ','		" set the <leader>
 
-" Yank and paste with the system clipboard
-set clipboard=unnamed
-
-"Copy to clipboard on selection+Y
-noremap Y "*y
-
-" vv to generate new vertical split
-nnoremap <silent> vv <C-w>v
+set clipboard=unnamed " Yank and paste with the system clipboard
 
 set smarttab " tab respects 'tabstot', 'shiftwidth', and 'softtabstop'
 set tabstop=4 " the visible width of tabs
@@ -37,7 +30,15 @@ set shiftwidth=4 " number of spaces to use for indent and unindent
 set shiftround " round indent to a multiple of 'shiftwidth'
 filetype plugin indent on
 
-" Set backups
+" ===== Others"
+"""""""""""""""
+set magic " set magic on, for regex
+set showmatch " show matching braces
+set mat=2 " how many tenths of a second to blink
+let NERDTreeShowHidden=1 " Sidebar nerdtree options
+
+" ====== Set backups"
+"""""""""""""""""""""
 if has('persistent_undo')
   set undofile
   set undolevels=3000
@@ -47,15 +48,18 @@ set backupdir=~/.local/share/nvim/backup " Don't put backups in current dir
 set backup
 set noswapfile
 
-" Reload icons after init source
+" ====== Reload icons after init source"
+""""""""""""""""""""""""""""""""""""""""
 if exists('g:loaded_webdevicons')
   call webdevicons#refresh()
 endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 "  ================ Plugins ===============      "
 """"""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin()
-" Utilities
+" ====== Utilities"
+"""""""""""""""""""
 Plug 'tpope/vim-commentary' " comment with powers
 Plug 'tpope/vim-fugitive' " the ultimate git helper
 Plug 'bling/vim-bufferline' " show the buffers
@@ -70,16 +74,19 @@ Plug 'tpope/vim-surround' " surround
 Plug 'terryma/vim-multiple-cursors' " multiple cursors with <C-n>
 Plug 'fatih/vim-go', { 'tag': '*' }
 Plug 'chrisbra/NrrwRgn' " :NR, NW, NRP, NRM
-" Syntax plugins
+" ====== Syntax plugins"
+""""""""""""""""""""""""
 Plug 'pangloss/vim-javascript'
 " Plug 'sheerun/vim-polyglot'
 Plug 'mxw/vim-jsx'
 Plug 'mattn/emmet-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'alampros/vim-styled-jsx'
-" Linter
+" ====== Linter"
+""""""""""""""""
 Plug 'w0rp/ale'
-" Theme
+" ====== Theme"
+"""""""""""""""
 Plug 'flazz/vim-colorschemes'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'trevordmiller/nova-vim'
@@ -88,156 +95,108 @@ Plug 'ajh17/Spacegray.vim'
 Plug 'jacoborus/tender.vim'
 Plug 'haishanh/night-owl.vim'
 Plug 'connorholyday/vim-snazzy'
-" Files tree
+" ====== Files tree"
+""""""""""""""""""""
 Plug 'scrooloose/nerdtree'
-" search with ctrl-p
+" ====== search"
+""""""""""""""""
 Plug 'ctrlpvim/ctrlp.vim'
-" Searching with
+" ====== Auto Complete"
+"""""""""""""""""""""""
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 call plug#end()
 
-" JAVASCRIPT
-let g:jsx_ext_requires = 0
-let g:vim_jsx_pretty_colorful_config = 1
-let g:javascript_plugin_flow = 1
-let g:used_javascripts_libs = 'underscore'
 
-
-" Linter Options
-let g:ale_linters = {
-\   'javascript': ['standard'],
-\}
-let g:ale_fixers = {'javascript': ['standard']}
-let g:ale_sign_error = '✘'
-let g:ale_sign_warning = '⚠'
-
-let g:ale_lint_on_save = 1
-let g:ale_fix_on_save = 1
-
-set encoding=utf-8
-" Enable true color 启用终端24位色
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
-" Color options
-" colorscheme onehalfdark
-" colorscheme nova
-" colorscheme spacegray
-" colorscheme tender
-" colorscheme dracula
-" colorscheme snazzy
+" ====== Color options"
+"""""""""""""""""""""""
+" onehalfdark nova
+" spacegray tender
+" dracula snazzy
 colorscheme night-owl
 syntax enable
 set t_Co=256
 set background=dark
-
 set ts=2 sw=2 et
-" Others
-set magic " set magic on, for regex
-set showmatch " show matching braces
-set mat=2 " how many tenths of a second to blink
-" Sidebar nerdtree options
-let NERDTreeShowHidden=1
-map <silent> <C-n> :NERDTreeFind<CR>
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" ============== Fugitive Tpope ============ 	   "
+" ===============  Mappings ================	 	 "
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" ====== Tab Mapping"
+"""""""""""""""""""""
+map <leader>tt :tabnew<cr>
+map <leader>te :tabedit
+map <leader>tc :tabclose<cr>
+map <leader>to :tabonly<cr>
+map <leader>tn :tabnext<cr>
+map <leader>tp :tabprevious<cr>
+map <leader>tf :tabfirst<cr>
+map <leader>tl :tablast<cr>
+map <leader>tm :tabmove<cr>
+
+"navigate panes with ctrl jklh
+" nnoremap <C-J> <C-W><C-J>
+" nnoremap <C-K> <C-W><C-K>
+" nnoremap <C-L> <C-W><C-L>
+" nnoremap <C-H> <C-W><C-H>
+
+"Copy to clipboard on selection+Y
+noremap Y "*y
+
+" vv to generate new vertical split
+nnoremap <silent> vv <C-w>v
+" NERDTree mappin
+map <leader>ne :NERDTreeToggle<cr>
+" moving up and down work as you would expect
+nnoremap <silent> j gj
+nnoremap <silent> k gk
+
+" ====== Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" ====== Fugitive Tpope
 " check :help Gstatus for more keys
 map <leader>gs :Gstatus<cr>
 map <leader>gc :Gcommit<cr>
 map <leader>ga :Git add --all<cr>:Gcommit<cr>
 map <leader>gb :Gblame<cr>
 
-" Find files ctrlp
-" exclude folders in gitIgnore
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:ctrlp_show_hidden = 1
-
-" Turn off highlight match on press enter
-nnoremap <CR> :noh<CR><CR>
-
-" Search case sensitive only when use Capitals letters to find
-:set ignorecase
-:set smartcase
-
-
-"navigate panes with ctrl jklh
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-"show line number and relative line number
-" set number relativenumber
-" set nu rnu
-set nu number
-" augroup numbertoggle
-"   autocmd!
-"   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-"   autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
-" augroup END
-
-" Indent using spaces instead of tabs
-set expandtab
-
-" Dont wrap lines
-set nowrap
-
-" The number of spaces to use for each indent
-set shiftwidth=2
-
-" Number of spaces to use for a <Tab> during editing operations
-set softtabstop=2
-
-" Add this option to avoid issues with webpack
-:set backupcopy=yes
-
-""""""""""""""""""""""""""""""
-" ==== coc configuations ===="
-""""""""""""""""""""""""""""""
-" coc.nvim color changes
-hi! link CocErrorSign WarningMsg
-hi! link CocWarningSign Number
-hi! link CocInfoSign Type
-
-" if hidden is not set, TextEdit might fail.
-set hidden
-
-" Some servers have issues with backup files, see #649
-set nobackup
-set nowritebackup
-
-" Better display for messages
-" set cmdheight=2
-
-" You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=300
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-
-" always show signcolumns
-" set signcolumn=yes
-
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+" ====== Call Windows
+map <C-h> :call WinMove('h')<cr>
+map <C-j> :call WinMove('j')<cr>
+map <C-k> :call WinMove('k')<cr>
+map <C-l> :call WinMove('l')<cr>
+" Window movement shortcuts
+" move to the window in the direction shown, or create a new window
+function! WinMove(key)
+    let t:curwin = winnr()
+    exec "wincmd ".a:key
+    if (t:curwin == winnr())
+        if (match(a:key,'[jk]'))
+            wincmd v
+        else
+            wincmd s
+        endif
+        exec "wincmd ".a:key
+    endif
 endfunction
 
+" ====== COC mapping
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
@@ -310,65 +269,118 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-" Using CocList
-" Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" NERDTree
+map <silent> <C-n> :NERDTreeFind<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" ===========  Mappings =============	 	 "
+" ============= CONFIGURATIONS =================="
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" Tab Mapping
-map <leader>tt :tabnew<cr>
-map <leader>te :tabedit
-map <leader>tc :tabclose<cr>
-map <leader>to :tabonly<cr>
-map <leader>tn :tabnext<cr>
-map <leader>tp :tabprevious<cr>
-map <leader>tf :tabfirst<cr>
-map <leader>tl :tablast<cr>
-map <leader>tm :tabmove<cr>
+" ====== JAVASCRIPT CONFIGURATIONS (PLUGINS)
+let g:jsx_ext_requires = 0
+let g:vim_jsx_pretty_colorful_config = 1
+let g:javascript_plugin_flow = 1
+let g:used_javascripts_libs = 'underscore'
 
-" NERDTree mappin
-map <leader>ne :NERDTreeToggle<cr>
-" moving up and down work as you would expect
-nnoremap <silent> j gj
-nnoremap <silent> k gk
 
-" Call Windows
-map <C-h> :call WinMove('h')<cr>
-map <C-j> :call WinMove('j')<cr>
-map <C-k> :call WinMove('k')<cr>
-map <C-l> :call WinMove('l')<cr>
-" Window movement shortcuts
-" move to the window in the direction shown, or create a new window
-function! WinMove(key)
-    let t:curwin = winnr()
-    exec "wincmd ".a:key
-    if (t:curwin == winnr())
-        if (match(a:key,'[jk]'))
-            wincmd v
-        else
-            wincmd s
-        endif
-        exec "wincmd ".a:key
-    endif
+" Linter Options
+let g:ale_linters = {
+\   'javascript': ['standard'],
+\}
+let g:ale_fixers = {'javascript': ['standard']}
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
+
+set encoding=utf-8
+" Enable true color 启用终端24位色
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+" Find files ctrlp"
+"""""""""""""""""""
+" exclude folders in gitIgnore
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_show_hidden = 1
+
+" Turn off highlight match on press enter
+nnoremap <CR> :noh<CR><CR>
+
+" Search case sensitive only when use Capitals letters to find
+:set ignorecase
+:set smartcase
+
+"show line number and relative line number
+" set number relativenumber
+" set nu rnu
+set nu number
+" augroup numbertoggle
+"   autocmd!
+"   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+"   autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+" augroup END
+
+" Indent using spaces instead of tabs
+set expandtab
+
+" Dont wrap lines
+set nowrap
+
+" The number of spaces to use for each indent
+set shiftwidth=2
+
+" Number of spaces to use for a <Tab> during editing operations
+set softtabstop=2
+
+" Add this option to avoid issues with webpack
+:set backupcopy=yes
+
+" ==== coc configuations ===="
+""""""""""""""""""""""""""""""
+" coc.nvim color changes
+hi! link CocErrorSign WarningMsg
+hi! link CocWarningSign Number
+hi! link CocInfoSign Type
+
+" if hidden is not set, TextEdit might fail.
+set hidden
+
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
+
+" Better display for messages
+" set cmdheight=2
+
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+" set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" NERDTress File highlighting
+" NERDTree CONFIGURATIONS"
+""""""""""""""""""""""""""
 let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
 let g:NERDTreePatternMatchHighlightFullName = 1
