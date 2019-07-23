@@ -18,9 +18,8 @@ set laststatus=2		" show the status line all the time
 set autoread			" detect when a file is changed
 set backspace=indent,eol,start 	" make backspace behave in a sane manner
 setlocal textwidth=280		" have long lines wrap inside comments.
-set guifont=Ubuntu\ Mono\ derivative\ Powerline:h15
+" set guifont=Ubuntu\ Mono\ derivative\ Powerline:h15
 let g:rainbow_active = 1
-syntax on
 
 " Yank and paste with the system clipboard
 set clipboard=unnamed
@@ -57,7 +56,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin()
 " Utilities
-Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary' " comment with powers
 Plug 'tpope/vim-fugitive' " the ultimate git helper
 Plug 'bling/vim-bufferline' " show the buffers
 Plug 'bronson/vim-trailing-whitespace' " just call :FixWhitespace
@@ -70,6 +69,7 @@ Plug 'luochen1990/rainbow' " rainbow_parentheses
 Plug 'tpope/vim-surround' " surround
 Plug 'terryma/vim-multiple-cursors' " multiple cursors with <C-n>
 Plug 'fatih/vim-go', { 'tag': '*' }
+Plug 'chrisbra/NrrwRgn' " :NR, NW, NRP, NRM
 " Syntax plugins
 Plug 'pangloss/vim-javascript'
 " Plug 'sheerun/vim-polyglot'
@@ -80,10 +80,14 @@ Plug 'alampros/vim-styled-jsx'
 " Linter
 Plug 'w0rp/ale'
 " Theme
+Plug 'flazz/vim-colorschemes'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'trevordmiller/nova-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ajh17/Spacegray.vim'
+Plug 'jacoborus/tender.vim'
+Plug 'haishanh/night-owl.vim'
+Plug 'connorholyday/vim-snazzy'
 " Files tree
 Plug 'scrooloose/nerdtree'
 " search with ctrl-p
@@ -110,12 +114,6 @@ let g:ale_sign_warning = '⚠'
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
 
-" Color options
-" colorscheme onehalfdark
-" colorscheme nova
-" colorscheme spacegray
-colorscheme dracula
-
 set encoding=utf-8
 " Enable true color 启用终端24位色
 if exists('+termguicolors')
@@ -123,6 +121,17 @@ if exists('+termguicolors')
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+" Color options
+" colorscheme onehalfdark
+" colorscheme nova
+" colorscheme spacegray
+" colorscheme tender
+" colorscheme dracula
+" colorscheme snazzy
+colorscheme night-owl
+syntax enable
 set t_Co=256
 set background=dark
 
