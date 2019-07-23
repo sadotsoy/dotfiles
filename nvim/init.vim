@@ -75,6 +75,7 @@ Plug 'terryma/vim-multiple-cursors' " multiple cursors with <C-n>
 Plug 'fatih/vim-go', { 'tag': '*' }
 Plug 'chrisbra/NrrwRgn' " :NR, NW, NRP, NRM
 Plug 'mbbill/undotree' " undo history visualizer
+Plug 'majutsushi/tagbar' " displays TagBar in a window
 " ===== Syntax plugins"
 """"""""""""""""""""""""
 Plug 'pangloss/vim-javascript'
@@ -123,6 +124,9 @@ set ts=2 sw=2 et
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " ===============  Mappings ================	 	 "
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" ====== Tag Toogle"
+""""""""""""""""""""
+map <leader>tg :TagbarToggle<cr>
 " ====== Tab Mapping"
 """""""""""""""""""""
 map <leader>tt :tabnew<cr>
@@ -180,6 +184,7 @@ map <leader>gs :Gstatus<cr>
 map <leader>gc :Gcommit<cr>
 map <leader>ga :Git add --all<cr>:Gcommit<cr>
 map <leader>gb :Gblame<cr>
+map <leader>gd :Gdiffsplit<cr>
 
 " ====== Call Windows
 map <C-h> :call WinMove('h')<cr>
