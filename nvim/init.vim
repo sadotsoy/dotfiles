@@ -44,9 +44,15 @@ if has('persistent_undo')
   set undolevels=3000
   set undoreload=10000
 endif
-set backupdir=~/.local/share/nvim/backup " Don't put backups in current dir
 set backup
+set backupdir=~/.local/share/nvim/backup// " Don't put backups in current dir
 set noswapfile
+
+set writebackup "Make backup before overwriting the current buffer
+
+set backupcopy=yes "Overwrite the original backup file
+
+au BufWritePre * let &bex = '@' . strftime("%F.%H:%M") "Meaningful backup name, ex: filename@2015-04-05.14:59
 
 " ====== Reload icons after init source"
 """"""""""""""""""""""""""""""""""""""""
@@ -102,11 +108,14 @@ Plug 'connorholyday/vim-snazzy'
 Plug 'scrooloose/nerdtree'
 " ====== search"
 """"""""""""""""
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 " ====== Auto Complete"
 """""""""""""""""""""""
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" set rtp+=/usr/local/opt/fzf
 call plug#end()
 
 
@@ -124,6 +133,13 @@ set ts=2 sw=2 et
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " ===============  Mappings ================	 	 "
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" ====== Searching"
+"""""""""""""""""""
+" to search files
+map <leader>ff :Files<cr>
+
+" to search inside files need the_silver_searcher
+map <leader>fa :Ag<cr>
 " ====== Tag Toogle"
 """"""""""""""""""""
 map <leader>tg :TagbarToggle<cr>
@@ -160,24 +176,6 @@ map <leader>ne :NERDTreeToggle<cr>
 nnoremap <silent> j gj
 nnoremap <silent> k gk
 
-" ====== Using CocList
-" Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
 " ====== Fugitive Tpope
 " check :help Gstatus for more keys
 map <leader>gs :Gstatus<cr>
@@ -206,7 +204,27 @@ function! WinMove(key)
     endif
 endfunction
 
-" ====== COC mapping
+" ====== COC mapping"
+"""""""""""""""""""""
+
+" ====== Using CocList"
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
@@ -267,17 +285,17 @@ nmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
 
-" Use `:Format` to format current buffer
-command! -nargs=0 Format :call CocAction('format')
+" " Use `:Format` to format current buffer
+" command! -nargs=0 Format :call CocAction('format')
 
-" Use `:Fold` to fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+" " Use `:Fold` to fold current buffer
+" command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
-" use `:OR` for organize import of current buffer
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+" " use `:OR` for organize import of current buffer
+" command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-" Add status line support, for integration with other plugin, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" " Add status line support, for integration with other plugin, checkout `:h coc-status`
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " NERDTree
 map <silent> <C-n> :NERDTreeFind<CR>
@@ -285,7 +303,12 @@ map <silent> <C-n> :NERDTreeFind<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " ============= CONFIGURATIONS =================="
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" ====== JAVASCRIPT CONFIGURATIONS (PLUGINS)
+
+" ====== GENERAL"
+"""""""""""""""""
+
+" ====== JAVASCRIPT CONFIGURATIONS (PLUGINS)"
+"""""""""""""""""""""""""""""""""""""""""""""
 let g:jsx_ext_requires = 0
 let g:vim_jsx_pretty_colorful_config = 1
 let g:javascript_plugin_flow = 1
@@ -293,7 +316,7 @@ let g:used_javascripts_libs = 'underscore'
 
 " ====== NerdTree"
 """"""""""""""""""
-let NERDTreeQuitOnOpen=1
+let g:NERDTreeQuitOnOpen=1
 
 " ====== Linter Options"
 """"""""""""""""""""""""
@@ -352,7 +375,7 @@ set shiftwidth=2
 set softtabstop=2
 
 " Add this option to avoid issues with webpack
-:set backupcopy=yes
+" :set backupcopy=yes
 
 " ==== coc configuations ===="
 """"""""""""""""""""""""""""""
@@ -369,7 +392,7 @@ set nobackup
 set nowritebackup
 
 " Better display for messages
-" set cmdheight=2
+set cmdheight=2
 
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
@@ -378,7 +401,7 @@ set updatetime=300
 set shortmess+=c
 
 " always show signcolumns
-" set signcolumn=yes
+set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
