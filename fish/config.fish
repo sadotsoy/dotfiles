@@ -78,7 +78,7 @@ alias dpru="docker system prune"
 alias ddel="docker rmi"
 alias dps="docker ps"
 # VIM
-alias nvrc="nvim ~/.config/nvim/init.vim"
+alias nvrc="nvim ~/dotfiles/nvim/init.vim"
 alias nvm="nvim ."
 
 alias vi3="nvim ~/.config/i3/config"

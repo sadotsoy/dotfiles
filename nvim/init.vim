@@ -4,7 +4,7 @@
 "╚██╗ ██╔╝██║██║╚██╔╝██║
 " ╚████╔╝ ██║██║ ╚═╝ ██║
 "  ╚═══╝  ╚═╝╚═╝     ╚═╝
-" Vim config files by @SadotCorts JUL 22 2019
+" Vim config files by @SadotCorts JUL 26 2019
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " ================ General ===============       "
@@ -20,7 +20,7 @@ setlocal textwidth=280		" have long lines wrap inside comments.
 " set guifont=Ubuntu\ Mono\ derivative\ Powerline:h15
 let g:rainbow_active = 1
 let mapleader = ','		" set the <leader>
-
+let g:python3_host_prog='/usr/local/bin/python3' " set python env
 set clipboard=unnamed " Yank and paste with the system clipboard
 
 set smarttab " tab respects 'tabstot', 'shiftwidth', and 'softtabstop'
@@ -44,9 +44,15 @@ if has('persistent_undo')
   set undolevels=3000
   set undoreload=10000
 endif
-set backupdir=~/.local/share/nvim/backup " Don't put backups in current dir
 set backup
+set backupdir=~/.local/share/nvim/backup// " Don't put backups in current dir
 set noswapfile
+
+set writebackup "Make backup before overwriting the current buffer
+
+set backupcopy=yes "Overwrite the original backup file
+
+au BufWritePre * let &bex = '@' . strftime("%F.%H:%M") "Meaningful backup name, ex: filename@2015-04-05.14:59
 
 " ====== Reload icons after init source"
 """"""""""""""""""""""""""""""""""""""""
@@ -74,7 +80,11 @@ Plug 'tpope/vim-surround' " surround
 Plug 'terryma/vim-multiple-cursors' " multiple cursors with <C-n>
 Plug 'fatih/vim-go', { 'tag': '*' }
 Plug 'chrisbra/NrrwRgn' " :NR, NW, NRP, NRM
-" ====== Syntax plugins"
+Plug 'mbbill/undotree' " undo history visualizer
+Plug 'majutsushi/tagbar' " displays TagBar in a window needs Universal Ctags
+Plug 'ludovicchabant/vim-gutentags' " auto-updating ctags works only for Universal Ctags
+Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'} " import JS components with tag needs Universal Ctags
+" ===== Syntax plugins"
 """"""""""""""""""""""""
 Plug 'pangloss/vim-javascript'
 " Plug 'sheerun/vim-polyglot'
@@ -100,11 +110,14 @@ Plug 'connorholyday/vim-snazzy'
 Plug 'scrooloose/nerdtree'
 " ====== search"
 """"""""""""""""
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 " ====== Auto Complete"
 """""""""""""""""""""""
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" set rtp+=/usr/local/opt/fzf
 call plug#end()
 
 
@@ -122,11 +135,30 @@ set ts=2 sw=2 et
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " ===============  Mappings ================	 	 "
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" ====== Searching"
+"""""""""""""""""""
+" to search files
+map <leader>ff :Files<cr>
+
+" to search inside files need the_silver_searcher
+map <leader>fa :Ag<cr>
+" ====== Terminal"
+""""""""""""""""""
+map <leader>tt :term/usr/local/bin/fish<cr>
+" tnoremap <silent><C-z> <C-\><C-n>:call Terminal()<Enter>
+" nnoremap <silent><C-z> :call Terminal()<Enter>
+" ====== Tag Toogle"
+""""""""""""""""""""
+map <leader>tg :TagbarToggle<cr>
+
+" ====== Undo Treee"
+""""""""""""""""""""
+map <leader>ut :UndotreeToggle<cr>
 " ====== Tab Mapping"
 """""""""""""""""""""
-map <leader>tt :tabnew<cr>
+map <leader>tc :tabnew<cr>
 map <leader>te :tabedit
-map <leader>tc :tabclose<cr>
+map <leader>tq :tabclose<cr>
 map <leader>to :tabonly<cr>
 map <leader>tn :tabnext<cr>
 map <leader>tp :tabprevious<cr>
@@ -142,41 +174,108 @@ map <leader>tm :tabmove<cr>
 
 "Copy to clipboard on selection+Y
 noremap Y "*y
+noremap p "*p
+noremap P "*P
 
 " vv to generate new vertical split
 nnoremap <silent> vv <C-w>v
-" NERDTree mappin
+
+" ====== NERDTree mappin"
+"""""""""""""""""""""""""
 map <leader>ne :NERDTreeToggle<cr>
 " moving up and down work as you would expect
 nnoremap <silent> j gj
 nnoremap <silent> k gk
 
-" ====== Using CocList
-" Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
 " ====== Fugitive Tpope
 " check :help Gstatus for more keys
 map <leader>gs :Gstatus<cr>
 map <leader>gc :Gcommit<cr>
-map <leader>ga :Git add --all<cr>:Gcommit<cr>
+map <leader>ga :!git add %<cr>:Gcommit<cr>
 map <leader>gb :Gblame<cr>
+map <leader>gd :Gdiffsplit<cr>
 
-" ====== Call Windows
+
+" ====== call Terminal"
+"""""""""""""""""""""""
+""
+" INESTABLE... check this https://gist.github.com/ram535/b1b7af6cd7769ec0481eb2eed549ea23
+" Toggle terminal buffer or create new one if there is none.
+"
+" nnoremap <silent> <C-z> :call terminal()<Enter>
+" tnoremap <silent> <C-z> <C-\><C-n>:call terminal#create()<Enter>
+""
+function! Terminal() abort
+  if !has('nvim')
+    return v:false
+  endif
+
+  " Create the terminal buffer.
+  if !exists('g:terminal') || !g:terminal.term.loaded
+    return TerminalCreate()
+  endif
+
+  " Go back to origin buffer if current buffer is terminal.
+  if g:terminal.term.bufferid ==# bufnr('')
+    silent execute 'buffer' g:terminal.origin.bufferid
+
+  " Launch terminal buffer and start insert mode.
+  else
+    let g: terminal.term.shell = '/usr/local/bin/fish'
+    let g: terminal.origin.bufferid = bufnr('')
+
+    silent execute 'buffer' g:terminal.term.bufferid
+    startinsert
+  endif
+endfunction
+
+""
+" Create the terminal buffer.
+""
+function! TerminalCreate() abort
+	if !has('nvim')
+		return v:false
+	endif
+
+	if !exists('g:terminal')
+		let g:terminal = {
+			\ 'opts': {},
+			\ 'term': {
+				\ 'loaded': v:null,
+				\ 'bufferid': v:null,
+        \ 'shell': v:null
+			\ },
+			\ 'origin': {
+				\ 'bufferid': v:null
+			\ }
+		\ }
+
+		function! g:terminal.opts.on_exit(jobid, data, event) abort
+			silent execute 'buffer' g:terminal.origin.bufferid
+			silent execute 'bdelete!' g:terminal.term.bufferid
+
+			let g:terminal.term.loaded = v:null
+			let g:terminal.term.bufferid = v:null
+			let g:terminal.origin.bufferid = v:null
+		endfunction
+	endif
+
+	if g:terminal.term.loaded
+		return v:false
+	endif
+
+	let g:terminal.origin.bufferid = bufnr('')
+
+	enew
+	call termopen(&shell, g:terminal.opts)
+
+	let g:terminal.term.loaded = v:true
+	let g:terminal.term.bufferid = bufnr('')
+endfunction
+
+" ====== Call Windows"
+""""""""""""""""""""""
+map <leader>wl :Windows<cr>
 map <C-h> :call WinMove('h')<cr>
 map <C-j> :call WinMove('j')<cr>
 map <C-k> :call WinMove('k')<cr>
@@ -196,7 +295,27 @@ function! WinMove(key)
     endif
 endfunction
 
-" ====== COC mapping
+" ====== COC mapping"
+"""""""""""""""""""""
+
+" ====== Using CocList"
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
@@ -257,17 +376,17 @@ nmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
 
-" Use `:Format` to format current buffer
-command! -nargs=0 Format :call CocAction('format')
+" " Use `:Format` to format current buffer
+" command! -nargs=0 Format :call CocAction('format')
 
-" Use `:Fold` to fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+" " Use `:Fold` to fold current buffer
+" command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
-" use `:OR` for organize import of current buffer
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+" " use `:OR` for organize import of current buffer
+" command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-" Add status line support, for integration with other plugin, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" " Add status line support, for integration with other plugin, checkout `:h coc-status`
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " NERDTree
 map <silent> <C-n> :NERDTreeFind<CR>
@@ -275,14 +394,30 @@ map <silent> <C-n> :NERDTreeFind<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " ============= CONFIGURATIONS =================="
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" ====== JAVASCRIPT CONFIGURATIONS (PLUGINS)
+
+" ====== GENERAL"
+"""""""""""""""""
+
+" ====== TERMINAL"
+""""""""""""""""""
+augroup custom_term
+  autocmd!
+  autocmd TermOpen * setlocal bufhidden=hide
+augroup END
+
+" ====== JAVASCRIPT CONFIGURATIONS (PLUGINS)"
+"""""""""""""""""""""""""""""""""""""""""""""
 let g:jsx_ext_requires = 0
 let g:vim_jsx_pretty_colorful_config = 1
 let g:javascript_plugin_flow = 1
 let g:used_javascripts_libs = 'underscore'
 
+" ====== NerdTree"
+""""""""""""""""""
+let g:NERDTreeQuitOnOpen=1
 
-" Linter Options
+" ====== Linter Options"
+""""""""""""""""""""""""
 let g:ale_linters = {
 \   'javascript': ['standard'],
 \}
@@ -338,7 +473,7 @@ set shiftwidth=2
 set softtabstop=2
 
 " Add this option to avoid issues with webpack
-:set backupcopy=yes
+" :set backupcopy=yes
 
 " ==== coc configuations ===="
 """"""""""""""""""""""""""""""
@@ -355,7 +490,7 @@ set nobackup
 set nowritebackup
 
 " Better display for messages
-" set cmdheight=2
+set cmdheight=2
 
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
@@ -364,7 +499,7 @@ set updatetime=300
 set shortmess+=c
 
 " always show signcolumns
-" set signcolumn=yes
+set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
