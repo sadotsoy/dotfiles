@@ -10,7 +10,6 @@
 " ================ General ===============       "
 """"""""""""""""""""""""""""""""""""""""""""""""""
 set shell=/bin/bash		" set the vim shell
-set number			" to show the number lines
 set autoindent			" automatically set indent of new line
 set smartindent
 set laststatus=2		" show the status line all the time
@@ -81,11 +80,13 @@ Plug 'terryma/vim-multiple-cursors' " multiple cursors with <C-n>
 Plug 'fatih/vim-go', { 'tag': '*' }
 Plug 'chrisbra/NrrwRgn' " :NR, NW, NRP, NRM
 Plug 'mbbill/undotree' " undo history visualizer
-Plug 'majutsushi/tagbar' " displays TagBar in a window needs Universal Ctags
-Plug 'ludovicchabant/vim-gutentags' " auto-updating ctags works only for Universal Ctags
-Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'} " import JS components with tag needs Universal Ctags
+" Plug 'majutsushi/tagbar' " displays TagBar in a window needs Universal Ctags
+" Plug 'ludovicchabant/vim-gutentags' " auto-updating ctags works only for https://dev.to/pluralsight/my-5-favorite-software-design-principles-4echUniversal Ctags
+" Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'} " import JS components with tag needs Universal Ctags
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' } " LaTeX preview plugin.
 " ===== Syntax plugins"
 """"""""""""""""""""""""
+Plug 'wellle/targets.vim' " text obejects with operators ci(operator) ex: ci,
 Plug 'pangloss/vim-javascript'
 " Plug 'sheerun/vim-polyglot'
 Plug 'mxw/vim-jsx'
@@ -126,7 +127,7 @@ call plug#end()
 " onehalfdark nova
 " spacegray tender
 " dracula snazzy
-colorscheme night-owl
+colorscheme dracula
 syntax enable
 set t_Co=256
 set background=dark
@@ -149,7 +150,11 @@ map <leader>tt :term/usr/local/bin/fish<cr>
 " nnoremap <silent><C-z> :call Terminal()<Enter>
 " ====== Tag Toogle"
 """"""""""""""""""""
-map <leader>tg :TagbarToggle<cr>
+" map <leader>tg :TagbarToggle<cr> need universal tags
+
+" ====== Buffers"
+"""""""""""""""""
+map <leader>bf :Buffers<cr>
 
 " ====== Undo Treee"
 """"""""""""""""""""
@@ -397,6 +402,8 @@ map <silent> <C-n> :NERDTreeFind<CR>
 
 " ====== GENERAL"
 """""""""""""""""
+" gutocmd Filetype tex setl updatetime=1 " constantly save to see the PDF generated when Uses LaTeX
+let g:livepreview_previewer = 'open -a Preview' " Set pdfViewer as default pdf viewer (OSX)
 
 " ====== TERMINAL"
 """"""""""""""""""
@@ -451,9 +458,9 @@ nnoremap <CR> :noh<CR><CR>
 :set smartcase
 
 "show line number and relative line number
-" set number relativenumber
-" set nu rnu
-set nu number
+set number relativenumber
+set nu rnu
+" set nu number
 " augroup numbertoggle
 "   autocmd!
 "   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
