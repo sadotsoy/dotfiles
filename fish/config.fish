@@ -19,10 +19,13 @@ end
 
 function fish_mode_prompt; end
 
+#GENERAL
+alias weather="curl http://v2.wttr.in/"
 # WORKSPACE
 alias guru="cd ~/workspace/guru"
 alias personal="cd ~/workspace/personal"
 alias vim="nvim"
+alias server="./utils/ngrock http 3000"
 # ALIAS
 # IPHONE
 alias iphone="sudo killall -STOP -c usbd"
@@ -84,10 +87,10 @@ alias nvm="nvim ."
 alias vi3="nvim ~/.config/i3/config"
 alias vkhd="nvim ~/.khdrc"
 # LS
-alias ls="exa"
-alias lsl="exa -lh"
-alias lsa="exa -lah"
-alias tree="exa -Th"
+alias ls="exa --long --git"
+alias lsl="exa -lh --git"
+alias lsa="exa -lah --git"
+alias tree="exa -Th "
 # SSH
 alias removessh="ssh-add -D"
 alias personalssh="ssh-add ~/.ssh/id_personal"
@@ -119,3 +122,4 @@ alias pip="pip3"
 alias env="virtualenv env"
 # OTHERS
 alias int="ifconfig"
+
