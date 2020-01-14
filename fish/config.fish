@@ -83,7 +83,7 @@ alias dbu="docker-compose build"
 alias dup="docker-compose up"
 alias dimg="docker images"
 alias dpru="docker system prune"
-alias ddel="docker rmi"
+alias ddel="docker rm -f"
 alias dps="docker ps"
 # VIM
 alias nvrc="nvim ~/dotfiles/nvim/init.vim"

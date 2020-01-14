@@ -1,10 +1,11 @@
-"██╗   ██╗██╗███╗   ███╗
-"██║   ██║██║████╗ ████║
-"██║   ██║██║██╔████╔██║
-"╚██╗ ██╔╝██║██║╚██╔╝██║
-" ╚████╔╝ ██║██║ ╚═╝ ██║
-"  ╚═══╝  ╚═╝╚═╝     ╚═╝
-" Vim config files by @SadotCorts JUL 26 2019
+".__   __.  _______   ______   ____    ____  __  .___  ___.
+"|  \ |  | |   ____| /  __  \  \   \  /   / |  | |   \/   |
+"|   \|  | |  |__   |  |  |  |  \   \/   /  |  | |  \  /  |
+"|  . `  | |   __|  |  |  |  |   \      /   |  | |  |\/|  |
+"|  |\   | |  |____ |  `--'  |    \    /    |  | |  |  |  |
+"|__| \__| |_______| \______/      \__/     |__| |__|  |__|
+"
+" Vim config files by @SadotCorts DIC 31 2019
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " ================ General ===============       "
@@ -23,9 +24,9 @@ let g:python3_host_prog='/usr/local/bin/python3' " set python env
 set clipboard=unnamed " Yank and paste with the system clipboard
 
 set smarttab " tab respects 'tabstot', 'shiftwidth', and 'softtabstop'
-set tabstop=4 " the visible width of tabs
-set softtabstop=4 " edit as if the tabs are 4 characters wide
-set shiftwidth=4 " number of spaces to use for indent and unindent
+set tabstop=2 " the visible width of tabs
+set softtabstop=2 " edit as if the tabs are 4 characters wide
+set shiftwidth=2 " number of spaces to use for indent and unindent
 set shiftround " round indent to a multiple of 'shiftwidth'
 filetype plugin indent on
 
@@ -35,23 +36,6 @@ set magic " set magic on, for regex
 set showmatch " show matching braces
 set mat=2 " how many tenths of a second to blink
 let NERDTreeShowHidden=1 " Sidebar nerdtree options
-
-" ====== Set backups"
-"""""""""""""""""""""
-if has('persistent_undo')
-  set undofile
-  set undolevels=3000
-  set undoreload=10000
-endif
-set backup
-set backupdir=~/.local/share/nvim/backup// " Don't put backups in current dir
-set noswapfile
-
-set writebackup "Make backup before overwriting the current buffer
-
-set backupcopy=yes "Overwrite the original backup file
-
-au BufWritePre * let &bex = '@' . strftime("%F.%H:%M") "Meaningful backup name, ex: filename@2015-04-05.14:59
 
 " ====== Reload icons after init source"
 """"""""""""""""""""""""""""""""""""""""
@@ -112,15 +96,15 @@ Plug 'scrooloose/nerdtree'
 " ====== search"
 """"""""""""""""
 " Plug 'ctrlpvim/ctrlp.vim'
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
+" Plug '/usr/local/opt/fzf'
+" Plug 'junegunn/fzf.vim'
+Plug 'Shougo/denite.nvim'
 " ====== Auto Complete"
 """""""""""""""""""""""
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " set rtp+=/usr/local/opt/fzf
 call plug#end()
-
 
 " ====== Color options"
 """""""""""""""""""""""
@@ -299,6 +283,76 @@ function! WinMove(key)
         exec "wincmd ".a:key
     endif
 endfunction
+
+" ====== DENITE setup"
+""""""""""""""""""""""""
+" Wrap in try/catch to avoid errors on initial install before plugin is available
+try
+" === Denite setup ==="
+" Use ripgrep for searching current directory for files
+" By default, ripgrep will respect rules in .gitignore
+"   --files: Print each file that would be searched (but don't search)
+"   --glob:  Include or exclues files for searching that match the given glob
+"            (aka ignore .git files)
+"
+call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
+
+" Use ripgrep in place of "grep"
+call denite#custom#var('grep', 'command', ['rg'])
+
+" Custom options for ripgrep
+"   --vimgrep:  Show results with every match on it's own line
+"   --hidden:   Search hidden directories and files
+"   --heading:  Show the file name above clusters of matches from each file
+"   --S:        Search case insensitively if the pattern is all lowercase
+call denite#custom#var('grep', 'default_opts', ['--hidden', '--vimgrep', '--heading', '-S'])
+
+" Recommended defaults for ripgrep via Denite docs
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
+
+" Remove date from buffer list
+call denite#custom#var('buffer', 'date_format', '')
+
+" Custom options for Denite
+"   auto_resize             - Auto resize the Denite window height automatically.
+"   prompt                  - Customize denite prompt
+"   direction               - Specify Denite window direction as directly below current pane
+"   winminheight            - Specify min height for Denite window
+"   highlight_mode_insert   - Specify h1-CursorLine in insert mode
+"   prompt_highlight        - Specify color of prompt
+"   highlight_matched_char  - Matched characters highlight
+"   highlight_matched_range - matched range highlight
+let s:denite_options = {'default' : {
+\ 'split': 'floating',
+\ 'start_mappingfilter': 1,
+\ 'auto_resize': 1,
+\ 'source_names': 'short',
+\ 'prompt': 'λ ',
+\ 'statusline': 0,
+\ 'highlight_matched_char': 'QuickFixLine',
+\ 'highlight_matched_range': 'Visual',
+\ 'highlight_window_background': 'Visual',
+\ 'highlight_filter_background': 'DiffAdd',
+\ 'winrow': 1,
+\ 'vertical_preview': 1
+\ }}
+
+" Loop through denite options and enable them
+function! s:profile(opts) abort
+  for l:fname in keys(a:opts)
+    for l:dopt in keys(a:opts[l:fname])
+      call denite#custom#option(l:fname, l:dopt, a:opts[l:fname][l:dopt])
+    endfor
+  endfor
+endfunction
+
+call s:profile(s:denite_options)
+catch
+  echo 'Denite not installed. It should work after running :PlugInstall'
+endtry
 
 " ====== COC mapping"
 """""""""""""""""""""
