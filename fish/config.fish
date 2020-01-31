@@ -1,5 +1,6 @@
 # Base16 Shell
 
+set -x OP_SESSION_my EMJkHkExAQ0jRdIiAWRcouctNvQoVL6u9nRTHazTzJc
 set -x GOPATH $HOME/go
 set -x GOBIN $HOME/go/bin
 set -x GOROOT /usr/local/go
@@ -8,6 +9,14 @@ set -x LC_ALL en_US.UTF-8
 set -x NODE_OPTIONS --max_old_space_size=4096
 set -gx PATH $PATH:$GOBIN
 set -gx PATH $PATH:$GOROOT/bin
+# ANDROID
+set -x ANDROID_HOME $HOME/Library/Android/sdk
+set -gx PATH $PATH:$ANDROID_HOME
+set -gx PATH $PATH:$ANDROID_HOME/emulator
+set -gx PATH $PATH:$ANDROID_HOME/tools
+set -gx PATH $PATH:$ANDROID_HOME/tools/bin
+set -gx PATH $PATH:$ANDROID_HOME/platform-tools
+
 
 if status --is-interactive
   set -g fish_user_abbreviations
@@ -33,6 +42,7 @@ alias server="./utils/ngrock http 3000"
 alias iphone="sudo killall -STOP -c usbd"
 # DEV
 alias rn="react-native"
+alias iosdevices="xcrun simctl list devices | grep iPhone"
 # FOLDERS
 alias dwn="cd ~/Downloads"
 alias doc="cd ~/Documents"
@@ -66,9 +76,10 @@ alias glog="git log --oneline --graph"
 alias clone="git clone"
 alias standup="git-standup"
 # ranger
-alias ran="ranger"
+alias ra="ranger"
 # NPM | YARN
 alias gls="npm ls -g --depth=0"
+alias rgm='npm ls -gp --depth=0 | awk -F/ \'/node_modules/ && !/\/npm$/ {print $NF}\' | xargs npm -g rm'
 alias nls="npm ls"
 alias npi="npm init"
 alias yain="yarn init"

@@ -49,6 +49,7 @@ endif
 call plug#begin()
 " ====== Utilities"
 """""""""""""""""""
+" Plug 'mhinz/vim-startify' " fancy startify
 Plug 'tpope/vim-commentary' " comment with powers
 Plug 'tpope/vim-fugitive' " the ultimate git helper
 Plug 'bling/vim-bufferline' " show the buffers
@@ -90,14 +91,15 @@ Plug 'ajh17/Spacegray.vim'
 Plug 'jacoborus/tender.vim'
 Plug 'haishanh/night-owl.vim'
 Plug 'connorholyday/vim-snazzy'
+Plug 'arzg/vim-colors-xcode'
 " ====== Files tree"
 """"""""""""""""""""
 Plug 'scrooloose/nerdtree'
 " ====== search"
 """"""""""""""""
-" Plug 'ctrlpvim/ctrlp.vim'
-" Plug '/usr/local/opt/fzf'
-" Plug 'junegunn/fzf.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'Shougo/denite.nvim'
 " ====== Auto Complete"
 """""""""""""""""""""""
@@ -109,9 +111,9 @@ call plug#end()
 " ====== Color options"
 """""""""""""""""""""""
 " onehalfdark nova
-" spacegray tender
+" spacegray tendexcodedarkr
 " dracula snazzy
-colorscheme dracula
+" xcodedark
 syntax enable
 set t_Co=256
 set background=dark
@@ -491,12 +493,12 @@ let g:ale_fix_on_save = 1
 
 set encoding=utf-8
 " Enable true color 启用终端24位色
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" if exists('+termguicolors')
+"   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"   set termguicolors
+" endif
+" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " Find files ctrlp"
 """""""""""""""""""
@@ -619,3 +621,10 @@ let g:NERDTreePatternMatchHighlightColor['.*_spec\.rb$'] = s:rspec_red " sets th
 let g:NERDTreePatternMatchHighlightColor['.*swp$'] = s:rspec_red " sets the color for files ending with _spec.rb
 
 iabbrev ddate <C-R>=strftime("%Y-%m-%d")<CR>
+
+" xcodeSettings colorscheme
+let g:xcodedark_green_comments = 0
+let g:xcodedark_emph_types = 1
+let g:xcodedark_emph_funcs = 0
+let g:xcodedark_emph_idents = 0
+colorscheme xcodedark
