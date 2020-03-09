@@ -80,7 +80,7 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'alampros/vim-styled-jsx'
 " ====== Linter"
 """"""""""""""""
-Plug 'w0rp/ale'
+" Plug 'dense-analysis/ale'
 " ====== Theme"
 """""""""""""""
 Plug 'flazz/vim-colorschemes'
@@ -103,6 +103,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'Shougo/denite.nvim'
 " ====== Auto Complete"
 """""""""""""""""""""""
+" for JS
+" :CocInstall coc-tsserver coc-eslint coc-json coc-prettier coc-css
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " set rtp+=/usr/local/opt/fzf
