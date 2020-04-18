@@ -1,21 +1,29 @@
 # Base16 Shell
 
-set -x OP_SESSION_my EMJkHkExAQ0jRdIiAWRcouctNvQoVL6u9nRTHazTzJc
-set -x GOPATH $HOME/go
-set -x GOBIN $HOME/go/bin
-set -x GOROOT /usr/local/go
+# ----GENERAL
 set -x EDITOR nvim
 set -x LC_ALL en_US.UTF-8
+# ----NODE
 set -x NODE_OPTIONS --max_old_space_size=4096
-set -gx PATH $PATH:$GOBIN
-set -gx PATH $PATH:$GOROOT/bin
-# ANDROID
-set -x ANDROID_HOME $HOME/Library/Android/sdk
-set -gx PATH $PATH:$ANDROID_HOME
-set -gx PATH $PATH:$ANDROID_HOME/emulator
-set -gx PATH $PATH:$ANDROID_HOME/tools
-set -gx PATH $PATH:$ANDROID_HOME/tools/bin
-set -gx PATH $PATH:$ANDROID_HOME/platform-tools
+# set -x OP_SESSION_my EMJkHkExAQ0jRdIiAWRcouctNvQoVL6u9nRTHazTzJc
+# ----GO
+# set -x GOPATH $HOME/go
+# set -x GOBIN $HOME/go/bin
+# set -x GOROOT /usr/local/go
+# set -gx PATH $PATH:$GOBIN
+# set -gx PATH $PATH:$GOROOT/bin
+# -----ANDROID
+# set -x ANDROID_HOME $HOME/Library/Android/sdk
+# set -gx PATH $PATH:$ANDROID_HOME
+# set -gx PATH $PATH:$ANDROID_HOME/emulator
+# set -gx PATH $PATH:$ANDROID_HOME/tools
+# set -gx PATH $PATH:$ANDROID_HOME/tools/bin
+# set -gx PATH $PATH:$ANDROID_HOME/platform-tools
+# ----PYTHON
+set -x PYTHON_PATH $HOME/Library/Python/3.7/bin
+set -g PATH $PATH:$PYTHON_PATH
+# ----CYPRES
+# set -x HTTP_PROXY http://my-company-proxy.com
 
 
 if status --is-interactive
@@ -35,13 +43,15 @@ alias password="jq '.details.fields[] | select(.designation==\"password\").value
 # WORKSPACE
 alias guru="cd ~/workspace/guru"
 alias personal="cd ~/workspace/personal"
-alias vim="nvim"
 alias server="./utils/ngrock http 3000"
+alias vim="nvim"
 # ALIAS
 # IPHONE
 alias iphone="sudo killall -STOP -c usbd"
 # DEV
 alias rn="react-native"
+alias rmn="rm -rf node_modules package-lock.json"
+alias rmy="rm -rf node_modules yarn-lock.json"
 alias iosdevices="xcrun simctl list devices | grep iPhone"
 # FOLDERS
 alias dwn="cd ~/Downloads"
@@ -50,52 +60,54 @@ alias devf="cd ~/Documents/Devf"
 # Transmission needed to instaled with brew
 alias tmr="transmission-remote"
 # GIT
-alias master="git checkout master"
-alias development="git checkout development"
-alias develop="git checkout develop"
-alias checkout="git checkout"
 alias branch="git branch"
-alias stash="git stash"
-alias reset="git reset HEAD"
+alias checkout="git checkout"
+alias clone="git clone"
+alias develop="git checkout develop"
+alias development="git checkout development"
 alias diff="git diff"
-alias pull="git pull origin"
-alias push="git push origin"
-alias pdev="git push origin development"
-alias pmas="git push -u origin master"
+alias fetch="git fetch"
 alias ga="git add"
-alias gs="git status"
-alias gcm="git commit"
 alias gbd="git branch -D"
+alias gcm="git commit"
+alias gco="git checkout"
 alias gcob="git checkout -b"
 alias gcof="git checkout --"
-alias gco="git checkout"
 alias gig="gitignore osx vim windows linux"
 alias gin="git init"
-alias gp="git push origin"
 alias glog="git log --oneline --graph"
-alias clone="git clone"
+alias gp="git push origin"
+alias gs="git status"
+alias master="git checkout master"
+alias pdev="git push origin development"
+alias pmas="git push -u origin master"
+alias pull="git pull origin"
+alias push="git push origin"
+alias reset="git reset HEAD"
 alias standup="git-standup"
+alias stash="git stash"
+alias vgit="git log | vim -R-"
 # ranger
 alias ra="ranger"
 # NPM | YARN
 alias gls="npm ls -g --depth=0"
-alias rgm='npm ls -gp --depth=0 | awk -F/ \'/node_modules/ && !/\/npm$/ {print $NF}\' | xargs npm -g rm'
 alias nls="npm ls"
+alias npg="sudo npm install --global"
 alias npi="npm init"
-alias yain="yarn init"
-alias yai="yarn install"
-alias yaga="yarn global add"
-alias yaa="yarn add"
 alias npis="npm install -s"
 alias nps="npm install --save"
-alias npg="sudo npm install --global"
+alias rgm='npm ls -gp --depth=0 | awk -F/ \'/node_modules/ && !/\/npm$/ {print $NF}\' | xargs npm -g rm'
+alias yaa="yarn add"
+alias yaga="yarn global add"
+alias yai="yarn install"
+alias yain="yarn init"
 # DOCKER
 alias dbu="docker-compose build"
-alias dup="docker-compose up"
+alias ddel="docker rm -f"
 alias dimg="docker images"
 alias dpru="docker system prune"
-alias ddel="docker rm -f"
 alias dps="docker ps"
+alias dup="docker-compose up"
 # VIM
 alias nvrc="nvim ~/dotfiles/nvim/init.vim"
 alias nvm="nvim ."
@@ -126,16 +138,16 @@ alias telegram="~/Applications/Telegram/Telegram"
 alias config="cd ~/.config"
 # APT GET
 alias install="brew install"
-alias update="brew update"
-alias upgrade="brew upgrade"
 alias remove="brew remove"
 alias search="brew search"
+alias update="brew update"
+alias upgrade="brew upgrade"
 # N
 alias n="sudo n"
 # PYTON/PIP
-alias python="python3"
-alias pip="pip3"
 alias env="virtualenv env"
+alias pip="pip3"
+alias python="python3"
 # OTHERS
 alias int="ifconfig"
 

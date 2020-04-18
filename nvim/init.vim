@@ -131,6 +131,10 @@ map <leader>ff :Files<cr>
 
 " to search inside files need the_silver_searcher
 map <leader>fa :Ag<cr>
+" ====== Prettier"
+""""""""""""""""""
+map <leader>pr :Prettier<cr>
+
 " ====== Terminal"
 """"""""""""""""""
 map <leader>tt :term/usr/local/bin/fish<cr>
