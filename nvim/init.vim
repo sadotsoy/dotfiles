@@ -88,7 +88,7 @@ call plug#end()
 " =================
 " == COLORSCHEMES =
 " colorschemes, dracula, gruvbox
-colorscheme gruvbox
+colorscheme dracula
 set background=dark termguicolors cursorline
 set t_Co=256
 set ts=2 sw=2 et
@@ -147,7 +147,7 @@ map <C-g>e :set spelllang=en_us<CR>
 " == LIGHT/DARK
 """" DEPENDS OF THE COLORSCHEME
 map <C-l>l :set background=light<CR>
-map <C-D>d :set background=light<CR>
+map <C-d>d :set background=dark<CR>
 
 " =================
 " == FUNCTIONS ====
