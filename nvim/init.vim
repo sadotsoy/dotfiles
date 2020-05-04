@@ -99,7 +99,10 @@ syntax enable
 "
 
 " == FILEMANAGER
-map <leader>le :Ag<cr>
+" LEXPLORE, left and right
+map <leader>e :Lex<cr>
+map <leader>er :Lex!<cr>
+
 " == SEARCHING
 map <leader>fa :Ag<cr>
 map <leader>ff :Files<cr>
