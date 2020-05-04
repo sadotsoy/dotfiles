@@ -94,9 +94,24 @@ set t_Co=256
 set ts=2 sw=2 et
 syntax enable
 
+" == Status-line
+set statusline=
+set statusline+=%#IncSearch#
+set statusline+=\ %y
+set statusline+=\ %r
+set statusline+=%#CursorLineNr#
+set statusline+=\ %F
+set statusline+=%= "Right side settings
+set statusline+=%#Search#
+set statusline+=\ %l/%L
+set statusline+=\ [%c]
+
 " =================
 " == MAPPING ======
 "
+
+" == EDIT CONFIG FILE
+map <leader>, :vsplit ~/.config/nvim/init.vim<CR>
 
 " == FILEMANAGER
 " LEXPLORE, left and right
