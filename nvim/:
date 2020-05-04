@@ -1,0 +1,60 @@
+" NeoVIM config file by @SadotCorts MAY 4 2020
+"
+
+" =================
+" == GENERAL ====== let mapleader = ','							" set the <leader>,
+set autoread										" detech when a file is changed
+set clipboard=unnamed						" Yank and Paste with the system clipboard
+set laststatus=2								" show the status line all the time
+set shell=/bin/bash							" set bash for vim command
+setlocal textwidth=280								" have long lines wrap inside comments
+
+" == Indent/Tabs
+set autoindent									" automatically set indent of new line
+set backspace=indent,eol,start	" make backspace behave in a same manner
+set shiftround									" round indenty to a multiple of 'shiftwidth'
+set shiftwidth=2								" number of spaces to use for indent or unidendt
+set smartindent									" tab respects 'tabsot', 'shifwidth'. and 'softtabstop'
+set softtabstop=2								" edit as if the tabs are 4 characters wide
+set tabstop=2										" the visible width of the tabs
+
+" == Others
+set magic												" set magic on, for regex
+set mat=2												" how many tenths of a second to blink
+set showmatch										" show matching braces
+filetype plugin indent on				" detecth the filetype
+
+" =================
+" == PLUGINS ======
+" == Initialize Plug
+call plug#begin()
+
+" == Utilities
+Plug 'airblade/vim-gitgutter' " shows a git diff
+Plug 'bling/vim-bufferline' " show the buffers
+Plug 'bronson/vim-trailing-whitespace' " just call :FixWhitespace
+Plug 'chrisbra/NrrwRgn' " :NR, NW, NRP, NRM
+Plug 'luochen1990/rainbow' " rainbow_parentheses
+Plug 'mbbill/undotree' " undo history visualizer
+Plug 'raimondi/delimitmate' " auto-completion for quotes, etc.
+Plug 'terryma/vim-multiple-cursors' " multiple cursors with <C-n>
+Plug 'tpope/vim-commentary' " comment with powers
+Plug 'tpope/vim-fugitive' " the ultimate git helper
+Plug 'tpope/vim-surround' " surround
+
+" == Syntax
+" === JS
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'yuezk/vim-js'
+
+" == Colorscheme
+" Plug 'dracula/vim', { 'as': 'dracula' }
+
+" == END Plug
+call plug#end()
+
+syntax enable
+set t_Co=256
+" set background=dark
+set ts=2 sw=2 et
+" colorscheme dracula
