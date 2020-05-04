@@ -97,6 +97,9 @@ syntax enable
 " =================
 " == MAPPING ======
 "
+
+" == FILEMANAGER
+map <leader>le :Ag<cr>
 " == SEARCHING
 map <leader>fa :Ag<cr>
 map <leader>ff :Files<cr>
