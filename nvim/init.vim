@@ -88,7 +88,7 @@ call plug#end()
 " =================
 " == COLORSCHEMES =
 " colorschemes, dracula, gruvbox
-colorscheme dracula
+colorscheme gruvbox
 set background=dark termguicolors cursorline
 set t_Co=256
 set ts=2 sw=2 et
