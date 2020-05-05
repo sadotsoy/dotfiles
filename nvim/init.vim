@@ -30,7 +30,8 @@ set spelllang=en_us,es_mx
 
 " == EMMET
 let g:user_emmet_mode='a'       "enable all function in all mode.
-
+let g:tagalong_verbose=1
+let g:tagalong_filetypes = ['html', 'jsx', 'javascriptreact', 'typescriptreact', 'javascript']
 " == SEARCH
 set ignorecase                  " Sensitive case for local search
 set smartcase
@@ -86,6 +87,7 @@ Plug 'vim-scripts/fountain.vim'
 " +== GENERAL
 Plug 'wellle/targets.vim'               " text obejects with operators ci(operator) ex: ci,
 Plug 'mattn/emmet-vim'                  " the good plugin
+Plug 'AndrewRadev/tagalong.vim'         " edit tags
 " :CocInstall coc-tsserver coc-eslint coc-json coc-prettier coc-css
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " intelli sense vscode
 
