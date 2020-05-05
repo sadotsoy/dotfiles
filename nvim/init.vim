@@ -57,6 +57,7 @@ Plug 'tpope/vim-commentary'             " comment with powers
 Plug 'tpope/vim-fugitive'               " the ultimate git helper
 Plug 'tpope/vim-surround'               " surround
 Plug 'junegunn/goyo.vim'                " Distraction-free writing in Vim.
+Plug 'junegunn/limelight.vim'           " Higlight the cursor position with goyo looks awesome
 
 " === FILE MANAGER
 Plug 'vim-scripts/fountain.vim'
@@ -117,6 +118,9 @@ set statusline+=%#Search#
 set statusline+=\ %c:%l/%L
 set statusline+=\ [%%%p]
 
+" +=== LIMELIGHT
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
 
 " =================
 " == MAPPING ======
@@ -208,3 +212,25 @@ function! WinMove(key)
         exec "wincmd ".a:key
     endif
 endfunction
+
+" +=== GOYO FUNCTIONS
+function! s:goyo_enter()
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  set nocursorline
+  Limelight
+  " ...
+endfunction
+
+function! s:goyo_leave()
+  set showmode
+  set showcmd
+  set scrolloff=5
+  set cursorline
+  Limelight!
+  " ...
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
