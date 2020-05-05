@@ -97,17 +97,23 @@ set t_Co=256
 set ts=2 sw=2 et
 syntax enable
 
-" == Status-line
+" +=== STATUSLINE
+set noshowmode
+set statusline=2
 set statusline=
 set statusline+=%#IncSearch#
-set statusline+=\ sadotsoy
-set statusline+=\ %r
+set statusline+=%{(mode()=='n')?'\ \ NORMAL\ ':''}
+set statusline+=%{(mode()=='i')?'\ \ INSERT\ ':''}
+set statusline+=%{(mode()=='r')?'\ \ REPLACE\ ':''}
+set statusline+=%{(mode()=='v')?'\ \ VISUAL\ ':''}
+set statusline+=%{(mode()=='V')?'\ \ V-LINE\ ':''}
 set statusline+=%#CursorLineNr#
-set statusline+=\ %F
+set statusline+=\ %t
 set statusline+=%= "Right side settings
 set statusline+=%#Search#
 set statusline+=\ %l/%L
 set statusline+=\ [%c]
+
 
 " =================
 " == MAPPING ======
@@ -172,10 +178,12 @@ map <C-g>e :set spelllang=en_us<CR>
 map <C-l>l :set background=light<CR>
 map <C-d>d :set background=dark<CR>
 
+
+
 " =================
 " == FUNCTIONS ====
 "
-" CREATE WINDOWS DEPENDS H,J,K,L
+" +==CREATE WINDOWS DEPENDS H,J,K,L
 map <leader>wl :Windows<cr>
 map <C-h> :call WinMove('h')<cr>
 map <C-j> :call WinMove('j')<cr>
