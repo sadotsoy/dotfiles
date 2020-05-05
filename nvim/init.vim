@@ -28,6 +28,9 @@ set tabstop=2										" the visible width of the tabs
 set spelllang=en_us,es_mx
 " set spell
 
+" == EMMET
+let g:user_emmet_mode='a'       "enable all function in all mode.
+
 " == SEARCH
 set ignorecase                  " Sensitive case for local search
 set smartcase
