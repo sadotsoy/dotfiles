@@ -1,4 +1,4 @@
-" NeoVIM config file by @SadotCorts MAY 4 2020
+" NeoVIM config file by @SadotCorts MAY 5 2020
 "
 
 " =================
@@ -27,6 +27,10 @@ set tabstop=2										" the visible width of the tabs
 " == SPELLING
 set spelllang=en_us,es_mx
 " set spell
+
+" == SEARCH
+set ignorecase
+set smartcase
 
 " == OTHERS
 filetype plugin indent on				" detecth the filetype
@@ -101,18 +105,17 @@ syntax enable
 set noshowmode
 set statusline=2
 set statusline=
-set statusline+=%#IncSearch#
-set statusline+=%{(mode()=='n')?'\ \ NORMAL\ ':''}
-set statusline+=%{(mode()=='i')?'\ \ INSERT\ ':''}
+set statusline+=%#IncSearch#%{(mode()=='n')?'\ \ NORMAL\ ':''}
+set statusline+=%#Search#%{(mode()=='i')?'\ \ INSERT\ ':''}
 set statusline+=%{(mode()=='r')?'\ \ REPLACE\ ':''}
-set statusline+=%{(mode()=='v')?'\ \ VISUAL\ ':''}
-set statusline+=%{(mode()=='V')?'\ \ V-LINE\ ':''}
+set statusline+=%#Visual#%{(mode()=='v')?'\ \ VISUAL\ ':''}
+set statusline+=%#StatusLine#%{(mode()=='V')?'\ \ V-LINE\ ':''}
 set statusline+=%#CursorLineNr#
-set statusline+=\ %t
+set statusline+=\ %f
 set statusline+=%= "Right side settings
 set statusline+=%#Search#
-set statusline+=\ %l/%L
-set statusline+=\ [%c]
+set statusline+=\ %c:%l/%L
+set statusline+=\ [%%%p]
 
 
 " =================
@@ -120,6 +123,8 @@ set statusline+=\ [%c]
 "
 " == EDIT CONFIG FILE
 map <leader>, :vsplit ~/.config/nvim/init.vim<CR>
+
+map <leader>hi :so $VIMRUNTIME/syntax/hitest.vim<CR>
 
 " == FILEMANAGER
 " LEXPLORE, left and right
