@@ -72,6 +72,9 @@ Plug 'othree/yajs.vim'
 " +== CSS/STYLES
 Plug 'ap/vim-css-color' "Displays a preview of colors with CSS
 
+" +== CSS/STYLES
+Plug 'tpope/vim-markdown'
+
 " === COLORSCHEME
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'morhetz/gruvbox' "My favorite theme
@@ -97,7 +100,7 @@ syntax enable
 " == Status-line
 set statusline=
 set statusline+=%#IncSearch#
-set statusline+=\ %y
+set statusline+=\ sadotsoy
 set statusline+=\ %r
 set statusline+=%#CursorLineNr#
 set statusline+=\ %F
@@ -109,7 +112,6 @@ set statusline+=\ [%c]
 " =================
 " == MAPPING ======
 "
-
 " == EDIT CONFIG FILE
 map <leader>, :vsplit ~/.config/nvim/init.vim<CR>
 
