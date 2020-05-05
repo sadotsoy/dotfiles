@@ -5,7 +5,7 @@
 " == GENERAL ======
 "
 let mapleader = ','							" set the <leader>,
-set autoread										" detech when a file is changed
+set autoread					  				" detech when a file is changed
 set clipboard=unnamed						" Yank and Paste with the system clipboard
 set laststatus=2								" show the status line all the time
 set shell=/bin/bash							" set bash for vim command
@@ -112,7 +112,7 @@ set statusline+=%{(mode()=='r')?'\ \ REPLACE\ ':''}
 set statusline+=%#Visual#%{(mode()=='v')?'\ \ VISUAL\ ':''}
 set statusline+=%#StatusLine#%{(mode()=='V')?'\ \ V-LINE\ ':''}
 set statusline+=%#CursorLineNr#
-set statusline+=\ %f
+set statusline+=\ %F
 set statusline+=%= "Right side settings
 set statusline+=%#Search#
 set statusline+=\ %c:%l/%L
