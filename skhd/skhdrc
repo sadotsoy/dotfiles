@@ -61,13 +61,11 @@ ctrl + cmd - 1  : yabai -m window --display 1; yabai -m display --focus 1
 shift + ctrl - a : yabai -m window --move rel:-20:0
 shift + ctrl - s : yabai -m window --move rel:0:20
 
-# increase window size
-lctrl + alt - d : yabai -m window --resize left:-20:0
-shift + alt - w : yabai -m window --resize top:0:-20
-
-# decrease window size
-shift + cmd - s : yabai -m window --resize bottom:0:-20
-shift + cmd - w : yabai -m window --resize top:0:20
+# increase/decrease window size
+ctrl + alt - d : yabai -m window --resize left:+20:0
+ctrl + alt - a : yabai -m window --resize left:-20:0
+ctrl + alt - w : yabai -m window --resize top:0:-20
+ctrl + alt - s : yabai -m window --resize top:0:+20
 
 # set insertion point in focused container
 ctrl + alt - h : yabai -m window --insert west
