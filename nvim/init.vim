@@ -10,6 +10,7 @@ set clipboard=unnamed						" Yank and Paste with the system clipboard
 set laststatus=2								" show the status line all the time
 set shell=/bin/bash							" set bash for vim command
 setlocal textwidth=280				  " have long lines wrap inside comments
+let g:node_client_debug = 1
 
 " == NUMBER LINES               " set relative number
 set number relativenumber
@@ -41,7 +42,17 @@ set smartcase
 hi! link CocErrorSign WarningMsg
 hi! link CocWarningSign Number
 hi! link CocInfoSign Type
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
+let g:coc_global_extensions = [
+  \ 'coc-emmet',
+  \ 'coc-css',
+  \ 'coc-html',
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint',
+  \ 'coc-prettier',
+  \ 'coc-json',
+  \ ]
 set hidden                      " TextEdit might fail if hidden is not set.
 set nobackup                    " Some servers have issues with backup files
 set nowritebackup
@@ -51,7 +62,7 @@ set updatetime=300              " Having longer updatetime (default is 4000 ms =
 set shortmess+=c                " Don't pass messages to ins-completion-menu.
 set signcolumn=yes              " Always show the signcolumn, otherwise it would shift the text each time
                                 "+= diagnostics appear/become resolved.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " == OTHERS
 filetype plugin indent on				" detecth the filetype

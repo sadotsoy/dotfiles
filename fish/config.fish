@@ -53,6 +53,9 @@ alias rn="react-native"
 alias rmn="rm -rf node_modules package-lock.json"
 alias rmy="rm -rf node_modules yarn-lock.json"
 alias iosdevices="xcrun simctl list devices | grep iPhone"
+# WINDOWMANAGER
+alias skhdrc="nvim ~/dotfiles/skhd/skhdrc"
+alias yabairc="nvim ~/dotfiles/yabai/yabairc"
 # FOLDERS
 alias dwn="cd ~/Downloads"
 alias doc="cd ~/Documents"
