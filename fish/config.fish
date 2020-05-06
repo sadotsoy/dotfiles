@@ -40,6 +40,8 @@ function fish_mode_prompt; end
 alias weather="curl http://v2.wttr.in/"
 #onePassword needs jq (brew)
 alias password="jq '.details.fields[] | select(.designation==\"password\").value'"
+# VIFM
+alias fm="vifm ."
 # WORKSPACE
 alias guru="cd ~/workspace/guru"
 alias personal="cd ~/workspace/personal"
