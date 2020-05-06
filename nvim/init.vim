@@ -122,7 +122,6 @@ Plug 'morhetz/gruvbox' "My favorite theme
 
 " === SEARCHING
 Plug '/usr/local/opt/fzf'
-Plug 'Shougo/denite.nvim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf.vim'
 

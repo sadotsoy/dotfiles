@@ -49,6 +49,7 @@ alias fm="vifm ."
 # WORKSPACE
 alias guru="cd ~/workspace/guru"
 alias personal="cd ~/workspace/personal"
+alias fk="cd ~/workspace/freshkampo"
 alias server="./utils/ngrock http 3000"
 alias vim="nvim"
 # ALIAS
