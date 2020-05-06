@@ -27,8 +27,14 @@ set tabstop=2										" the visible width of the tabs
 
 " == ALE && DEOPLITE LINTERS/COMPLETE
 let b:ale_linters = ['eslint']
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_set_highlights = 1
+let g:ale_set_signs             = 1
 let g:ale_sign_error = '•'
 let g:ale_sign_warning = '+'
+let g:ale_use_deprecated_neovim = 1
 let g:deoplete#enable_at_startup = 1
 
 " == SPELLING
@@ -153,6 +159,10 @@ map <leader>e :Lex<cr>
 map <leader>er :Lex!<cr>
 " VIFM
 map <leader><Space> :EditVifm .<CR>
+
+" == ALE MAPPING
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " == SEARCHING
 map <leader>fa :Ag<cr>
