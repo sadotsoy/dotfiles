@@ -93,6 +93,7 @@ Plug 'junegunn/limelight.vim'           " Higlight the cursor position with goyo
 
 " === FILE MANAGER
 Plug 'vim-scripts/fountain.vim'
+Plug 'vifm/vifm.vim'                    " VIFM
 
 " == SYNTAX
 " +== GENERAL
@@ -170,6 +171,8 @@ map <leader>hi :so $VIMRUNTIME/syntax/hitest.vim<CR>
 " LEXPLORE, left and right
 map <leader>e :Lex<cr>
 map <leader>er :Lex!<cr>
+" VIFM
+map <leader><Space> :EditVifm .<CR>
 
 " == SEARCHING
 map <leader>fa :Ag<cr>

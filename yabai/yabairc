@@ -26,3 +26,4 @@ yabai -m config split_ratio 0.5
 # float system preferences
 yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app="^Finder$" manage=off
+yabai -m rule --add app="^1Password 7$" manage=off
