@@ -6,7 +6,7 @@
 "
 let mapleader = ','							" set the <leader>,
 set autoread					  				" detech when a file is changed
-set clipboard=unnamed						" Yank and Paste with the system clipboard
+set clipboard^=unnamed,unnamedplus " Yank and Paste with the system clipboard
 set laststatus=2								" show the status line all the time
 set shell=/bin/bash							" set bash for vim command
 setlocal textwidth=280				  " have long lines wrap inside comments
