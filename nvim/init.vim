@@ -1,4 +1,4 @@
-" NeoVIM config file by @SadotCorts MAY 6 2020
+" NeoVIM config file by @SadotCorts MAY 7 2020
 "
 
 " =================
@@ -11,19 +11,43 @@ set laststatus=2								" show the status line all the time
 set shell=/bin/bash							" set bash for vim command
 setlocal textwidth=280				  " have long lines wrap inside comments
 let g:node_client_debug = 1
+set nowrap                      " display long lines
+" set hidden                      " Required to keep multiple open buffers
+" set cmdheight=1                 " More space for displaying messages
 
 " == NUMBER LINES               " set relative number
 set number relativenumber
 set nu rnu
 
 " == INDENT/TABS
-set autoindent									" automatically set indent of new line
-set backspace=indent,eol,start	" make backspace behave in a same manner
-set shiftround									" round indenty to a multiple of 'shiftwidth'
-set shiftwidth=2								" number of spaces to use for indent or unidendt
-set smartindent									" tab respects 'tabsot', 'shifwidth'. and 'softtabstop'
-set softtabstop=2								" edit as if the tabs are 4 characters wide
-set tabstop=2										" the visible width of the tabs
+set showtabline=2               " Alway show tabs
+set expandtab                   " Convert tabs to spaces
+set autoindent									" Automatically set indent of new line
+set backspace=indent,eol,start	" Make backspace behave in a same manner
+set shiftround									" Round indenty to a multiple of 'shiftwidth'
+set shiftwidth=2								" Number of spaces to use for indent or unidendt
+set smartindent									" Tab respects 'tabsot', 'shifwidth'. and 'softtabstop'
+set softtabstop=2								" Edit as if the tabs are 4 characters wide
+set tabstop=2										" The visible width of the tabs
+
+" == SPELLING
+set spelllang=en_us,es_mx
+
+" == SEARCH
+set ignorecase                  " Sensitive case for local search
+set smartcase
+
+" == EMMET
+let g:user_emmet_mode='a'       "enable all function in all mode.
+let g:tagalong_verbose=1
+let g:tagalong_filetypes = ['html', 'jsx', 'javascriptreact', 'typescriptreact', 'javascript']
+
+" == OTHERS
+filetype plugin indent on				" detecth the filetype
+set encoding=utf-8
+set magic												" set magic on, for regex
+set mat=2												" how many tenths of a second to blink
+set showmatch										" show matching braces
 
 " == ALE && DEOPLITE LINTERS/COMPLETE
 let b:ale_linters = ['eslint']
@@ -36,25 +60,6 @@ let g:ale_sign_error = '•'
 let g:ale_sign_warning = '+'
 let g:ale_use_deprecated_neovim = 1
 let g:deoplete#enable_at_startup = 1
-
-" == SPELLING
-set spelllang=en_us,es_mx
-" set spell
-
-" == EMMET
-let g:user_emmet_mode='a'       "enable all function in all mode.
-let g:tagalong_verbose=1
-let g:tagalong_filetypes = ['html', 'jsx', 'javascriptreact', 'typescriptreact', 'javascript']
-" == SEARCH
-set ignorecase                  " Sensitive case for local search
-set smartcase
-
-" == OTHERS
-filetype plugin indent on				" detecth the filetype
-set encoding=utf-8
-set magic												" set magic on, for regex
-set mat=2												" how many tenths of a second to blink
-set showmatch										" show matching braces
 
 " =================
 " == PLUGINS ======
@@ -125,7 +130,7 @@ set ts=2 sw=2 et
 syntax enable
 
 " +=== STATUSLINE
-set noshowmode
+set noshowmode             " No see again the inset on status
 set statusline=2
 set statusline=
 set statusline+=%#IncSearch#%{(mode()=='n')?'\ \ NORMAL\ ':''}
@@ -150,6 +155,9 @@ let g:limelight_conceal_ctermfg = 240
 " == EDIT CONFIG FILE
 map <leader>, :vsplit ~/.config/nvim/init.vim<CR>
 
+" == SEE ONLY THIS FILE ON THE BUFFER, BEATIFUL FOR DOCUMENTATION
+map <leader>o :only<cr>
+
 " == See the hi test
 map <leader>hi :so $VIMRUNTIME/syntax/hitest.vim<CR>
 
@@ -167,6 +175,7 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " == SEARCHING
 map <leader>fa :Ag<cr>
 map <leader>ff :Files<cr>
+
 
 " == RELOAD SOURCE
 map <C-s> :source ~/.config/nvim/init.vim<CR>
@@ -206,6 +215,7 @@ map <leader>gs :Gstatus<cr>
 map <leader><ENTER> :Goyo<cr>
 
 " == SPELLING
+map <leader>s :set spell<cr>
 " +=== SPANISH
 map <C-g>s :set spelllang=es_mx<CR>
 " +=== ENGLISH
