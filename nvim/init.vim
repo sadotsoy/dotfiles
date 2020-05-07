@@ -10,10 +10,11 @@ set clipboard^=unnamed,unnamedplus " Yank and Paste with the system clipboard
 set laststatus=2								" show the status line all the time
 set shell=/bin/bash							" set bash for vim command
 setlocal textwidth=280				  " have long lines wrap inside comments
-let g:node_client_debug = 1
 set nowrap                      " display long lines
 " set hidden                      " Required to keep multiple open buffers
 " set cmdheight=1                 " More space for displaying messages
+set wildignore+=*node_modules/**  " Ignore node_modules
+set mouse=a                       " Enable mouse to fix the resize scroll cycle
 
 " == NUMBER LINES               " set relative number
 set number relativenumber
@@ -88,6 +89,10 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-scripts/fountain.vim'
 Plug 'vifm/vifm.vim'                    " VIFM
 
+" === UNIVERSAL TAGS/ AUTOIMPORT JS
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
+
 " == SYNTAX
 " +== GENERAL
 Plug 'wellle/targets.vim'               " text obejects with operators ci(operator) ex: ci,
@@ -104,8 +109,12 @@ Plug 'othree/yajs.vim'
 " +== CSS/STYLES
 Plug 'ap/vim-css-color' "Displays a preview of colors with CSS
 
-" +== CSS/STYLES
+" +== MARKDOWN
 Plug 'tpope/vim-markdown'
+
+" == SNIPPETS
+Plug 'SirVer/ultisnips'
+Plug 'mlaursen/vim-react-snippets'
 
 " === COLORSCHEME
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -138,7 +147,7 @@ set statusline+=%{(mode()=='r')?'\ \ REPLACE\ ':''}
 set statusline+=%#Visual#%{(mode()=='v')?'\ \ VISUAL\ ':''}
 set statusline+=%#StatusLine#%{(mode()=='V')?'\ \ V-LINE\ ':''}
 set statusline+=%#CursorLineNr#
-set statusline+=\ %F
+set statusline+=\ %t
 set statusline+=%= "Right side settings
 set statusline+=%#Search#
 set statusline+=\ %c:%l/%L
@@ -271,4 +280,3 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
-" ++++ END
