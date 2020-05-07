@@ -4,8 +4,8 @@ window:
     columns: 100
     lines: 20
   padding:
-    x: 15
-    y: 15
+    x: 7
+    y: 7
   decorations: buttonless
   startup_mode: Windowed
 scrolling:
