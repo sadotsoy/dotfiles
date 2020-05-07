@@ -20,10 +20,9 @@ set number relativenumber
 set nu rnu
 
 " == INDENT/TABS
-set showtabline=2               " Alway show tabs
-set expandtab                   " Convert tabs to spaces
 set autoindent									" Automatically set indent of new line
 set backspace=indent,eol,start	" Make backspace behave in a same manner
+set expandtab                   " Convert tabs to spaces
 set shiftround									" Round indenty to a multiple of 'shiftwidth'
 set shiftwidth=2								" Number of spaces to use for indent or unidendt
 set smartindent									" Tab respects 'tabsot', 'shifwidth'. and 'softtabstop'
