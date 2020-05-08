@@ -42,8 +42,12 @@ alias weather="curl http://v2.wttr.in/"
 alias password="jq '.details.fields[] | select(.designation==\"password\").value'"
 # YABAI
 alias yab="brew services restart yabai"
+alias stayab="brew services start yabai"
+alias stoyab="brew services stop yabai"
 # skhd
-alias rskhd="skhd --reload"
+alias rsk="skhd --reload"
+alias stask="brew services start skhd"
+alias stosk="brew services stop skhd"
 # VIFM
 alias fm="vifm ."
 # WORKSPACE
