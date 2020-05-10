@@ -1,4 +1,4 @@
-" NeoVIM config file by @SadotCorts MAY 7 2020
+" NeoVIM config file by @SadotCorts MAY 9 2020
 "
 
 " =================
@@ -170,6 +170,7 @@ map <leader>o :only<cr>
 map <leader>hi :so $VIMRUNTIME/syntax/hitest.vim<CR>
 
 " == FILEMANAGER
+map <leader>l :ls<cr>
 " LEXPLORE, left and right
 map <leader>e :Lex<cr>
 map <leader>er :Lex!<cr>
@@ -179,6 +180,9 @@ map <leader><Space> :EditVifm .<CR>
 " == ALE MAPPING
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+" == ALE MAPPING
+map <leader>pdf :!pdflatex %<CR>
 
 " == SEARCHING
 map <leader>fa :Ag<cr>
