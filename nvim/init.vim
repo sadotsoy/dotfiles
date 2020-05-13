@@ -1,4 +1,4 @@
-" NeoVIM config file by @SadotCorts MAY 9 2020
+" NeoVIM config file by @SadotCorts MAY 13 2020
 "
 
 " =================
@@ -80,6 +80,7 @@ Plug 'tpope/vim-fugitive'               " the ultimate git helper
 Plug 'tpope/vim-surround'               " surround
 Plug 'junegunn/goyo.vim'                " Distraction-free writing in Vim.
 Plug 'junegunn/limelight.vim'           " Higlight the cursor position with goyo looks awesome
+Plug 'makerj/vim-pdf'                   " PDF reader
 
 " === LINTER & COMPLETE
 Plug 'dense-analysis/ale'
@@ -98,6 +99,7 @@ Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
 Plug 'wellle/targets.vim'               " text obejects with operators ci(operator) ex: ci,
 Plug 'mattn/emmet-vim'                  " the good plugin
 Plug 'AndrewRadev/tagalong.vim'         " edit tags
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 " +== JAVASCRIPT
 Plug 'maxmellon/vim-jsx-pretty'
@@ -124,6 +126,11 @@ Plug 'morhetz/gruvbox' "My favorite theme
 Plug '/usr/local/opt/fzf'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf.vim'
+
+" === PRESENTATIONS
+" need gem install vimdeck
+Plug 'tybenz/vimdeck' " Vim presentations with MARKDOWN
+
 
 " == END Plug
 call plug#end()
@@ -177,12 +184,18 @@ map <leader>er :Lex!<cr>
 " VIFM
 map <leader><Space> :EditVifm .<CR>
 
+" == PRETTIER
+map <leader>pr :Prettier<cr>
+
 " == ALE MAPPING
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
-" == ALE MAPPING
-map <leader>pdf :!pdflatex %<CR>
+" == PDF
+map <leader>pdf :command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> -
+
+" == PDFLATEX
+map <leader>ltx :!pdflatex %<CR>
 
 " == SEARCHING
 map <leader>fa :Ag<cr>
