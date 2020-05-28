@@ -100,6 +100,7 @@ Plug 'wellle/targets.vim'               " text obejects with operators ci(operat
 Plug 'mattn/emmet-vim'                  " the good plugin
 Plug 'AndrewRadev/tagalong.vim'         " edit tags
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'Yggdroot/indentLine'
 
 " +== JAVASCRIPT
 Plug 'maxmellon/vim-jsx-pretty'
@@ -119,8 +120,10 @@ Plug 'SirVer/ultisnips'
 Plug 'mlaursen/vim-react-snippets'
 
 " === COLORSCHEME
+Plug 'rafi/awesome-vim-colorschemes'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'morhetz/gruvbox' "My favorite theme
+Plug 'larsbs/vimterial_dark'
 
 " === SEARCHING
 Plug '/usr/local/opt/fzf'
@@ -134,12 +137,11 @@ Plug 'tybenz/vimdeck' " Vim presentations with MARKDOWN
 
 " == END Plug
 call plug#end()
-
 " =================
 " == COLORSCHEMES =
-" colorschemes, dracula, gruvbox
-colorscheme gruvbox
+" colorschemes, dracula, gruvbox, vimterial_dark or see https://github.com/rafi/awesome-vim-colorschemes
 set background=dark termguicolors cursorline
+colorscheme gruvbox
 set t_Co=256
 set ts=2 sw=2 et
 syntax enable
@@ -159,6 +161,8 @@ set statusline+=%= "Right side settings
 set statusline+=%#Search#
 set statusline+=\ %c:%l/%L
 set statusline+=\ [%%%p]
+" set statusline=%<%m%f:%l\ _%{winnr()}_\ %y%r%=<%b\ 0x%B>\ \ %c%V\ %P
+" set statusline=%m%f:%l/%L\ %P\ %<<%-3b\ 0x%-2B>\ %y%r%w%=b:%n\ w:%{winnr()}
 
 " +=== LIMELIGHT
 let g:limelight_conceal_ctermfg = 'gray'

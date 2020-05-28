@@ -22,6 +22,7 @@ set -x NODE_OPTIONS --max_old_space_size=4096
 # ----PYTHON
 set -x PYTHON_PATH $HOME/Library/Python/3.7/bin
 set -g PATH $PATH:$PYTHON_PATH
+set VIRTUAL_ENV "/Users/sadotsoy/workspace/freshkampo/fkguacamole"
 # ----CYPRES
 # set -x HTTP_PROXY http://my-company-proxy.com
 
