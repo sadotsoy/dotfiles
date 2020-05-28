@@ -36,7 +36,7 @@ module.exports = {
     cursorShape: "BLOCK",
 
     // set to `true` (without backticks and without quotes) for blinking cursor
-    cursorBlink: false,
+    cursorBlink: true,
 
     // color of the text
     foregroundColor: "#fff",
