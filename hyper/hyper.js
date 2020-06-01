@@ -15,7 +15,7 @@ module.exports = {
     fontFamily: "Hack",
 
     // default font weight: 'normal' or 'bold'
-    fontWeight: "normal",
+    fontWeight: "500",
 
     // font weight for bold characters: 'normal' or 'bold'
     fontWeightBold: "bold",
@@ -35,7 +35,6 @@ module.exports = {
     // `'BEAM'` for |, `'UNDERLINE'` for _, `'BLOCK'` for █
     cursorShape: "BLOCK",
 
-    // set to `true` (without backticks and without quotes) for blinking cursor
     cursorBlink: true,
 
     // color of the text
@@ -53,6 +52,9 @@ module.exports = {
 
     // custom CSS to embed in the main window
     css: `
+    .menu_menu {
+      display: none;
+    }
     `,
 
     // custom CSS to embed in the terminal window

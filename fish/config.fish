@@ -38,7 +38,12 @@ end
 function fish_mode_prompt; end
 
 #GENERAL
+#FKENV
+alias fkenv="source ~/workspace/freshkampo/fkguacamole/bin/activate.fish"
+kitty + complete setup fish | source
 alias weather="curl http://v2.wttr.in/"
+#kitty
+alias ktty="nvim ~/dotfiles/kitty/kitty.conf"
 #onePassword needs jq (brew)
 alias password="jq '.details.fields[] | select(.designation==\"password\").value'"
 # YABAI

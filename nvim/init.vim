@@ -101,6 +101,7 @@ Plug 'mattn/emmet-vim'                  " the good plugin
 Plug 'AndrewRadev/tagalong.vim'         " edit tags
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'Yggdroot/indentLine'
+" Plug 'ervandew/supertab'
 
 " +== JAVASCRIPT
 Plug 'maxmellon/vim-jsx-pretty'
