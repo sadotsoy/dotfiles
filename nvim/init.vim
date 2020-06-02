@@ -49,6 +49,11 @@ set magic												" set magic on, for regex
 set mat=2												" how many tenths of a second to blink
 set showmatch										" show matching braces
 
+" SNIPPETS
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+
 " == ALE && DEOPLITE LINTERS/COMPLETE
 let b:ale_linters = ['eslint']
 let g:ale_echo_msg_error_str = 'E'
@@ -123,13 +128,18 @@ Plug 'mlaursen/vim-react-snippets'
 " === COLORSCHEME
 " Plug 'rafi/awesome-vim-colorschemes' " most popular on vimawesome
 " Plug 'flazz/vim-colorschemes' "fore all
+Plug 'aonemd/kuroi.vim'
+Plug 'cocopon/iceberg.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'fenetikm/falcon'
+Plug 'jacoborus/tender.vim'
 Plug 'jaredgorski/spacecamp'
+Plug 'joshdick/onedark.vim'
+Plug 'kjssad/quantum.vim'
 Plug 'larsbs/vimterial_dark'
 Plug 'morhetz/gruvbox' "My favorite theme
+Plug 'rakr/vim-one'
 Plug 'sainnhe/edge'
-Plug 'kjssad/quantum.vim'
 
 " === SEARCHING
 Plug '/usr/local/opt/fzf'
@@ -146,8 +156,13 @@ call plug#end()
 " =================
 " == COLORSCHEMES =
 " colorschemes, dracula, gruvbox, vimterial_dark or see https://github.com/rafi/awesome-vim-colorschemes
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark termguicolors cursorline
-colorscheme falcon
+"
+" set 1 for the specific themes support
+" let g:one_allow_italics = 1 " I love italic for comments
+" let g:onedark_terminal_italics = 1
+colorscheme kuroi
 set t_Co=256
 set ts=2 sw=2 et
 syntax enable
