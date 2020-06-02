@@ -1,4 +1,4 @@
-" NeoVIM config file by @SadotCorts MAY 13 2020
+" NeoVIM config file by @SadotCorts JUN 2 2020
 "
 
 " =================
@@ -121,10 +121,15 @@ Plug 'SirVer/ultisnips'
 Plug 'mlaursen/vim-react-snippets'
 
 " === COLORSCHEME
-Plug 'rafi/awesome-vim-colorschemes'
+" Plug 'rafi/awesome-vim-colorschemes' " most popular on vimawesome
+" Plug 'flazz/vim-colorschemes' "fore all
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'morhetz/gruvbox' "My favorite theme
+Plug 'fenetikm/falcon'
+Plug 'jaredgorski/spacecamp'
 Plug 'larsbs/vimterial_dark'
+Plug 'morhetz/gruvbox' "My favorite theme
+Plug 'sainnhe/edge'
+Plug 'kjssad/quantum.vim'
 
 " === SEARCHING
 Plug '/usr/local/opt/fzf'
@@ -142,7 +147,7 @@ call plug#end()
 " == COLORSCHEMES =
 " colorschemes, dracula, gruvbox, vimterial_dark or see https://github.com/rafi/awesome-vim-colorschemes
 set background=dark termguicolors cursorline
-colorscheme gruvbox
+colorscheme falcon
 set t_Co=256
 set ts=2 sw=2 et
 syntax enable
@@ -254,7 +259,7 @@ map <C-g>e :set spelllang=en_us<CR>
 " == LIGHT/DARK
 """" DEPENDS OF THE COLORSCHEME
 map <C-l>l :set background=light<CR>
-map <C-d>d :set background=dark<CR>
+map <C-d>d :set background=dark<!-- <CR> -->
 
 " =================
 " == FUNCTIONS ====
