@@ -1,4 +1,4 @@
-" NeoVIM config file by @SadotCorts JUN 2 2020
+" NeoVIM config file by @SadotCorts JUN 2 2020 :)
 "
 
 " =================
