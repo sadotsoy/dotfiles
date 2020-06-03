@@ -109,14 +109,16 @@ Plug 'Yggdroot/indentLine'
 " Plug 'ervandew/supertab'
 
 " +== JAVASCRIPT
+" Plug 'phodge/vim-javascript-syntax'
+" Plug 'allanhortle/vim-boring-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'yuezk/vim-js'
-Plug 'othree/yajs.vim'
+" Plug 'othree/yajs.vim'
 " 2
 " Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 
 " +== CSS/STYLES
-Plug 'ap/vim-css-color' "Displays a preview of colors with CSS
+" Plug 'ap/vim-css-color' "Displays a preview of colors with CSS
 
 " +== MARKDOWN
 Plug 'tpope/vim-markdown'
@@ -129,14 +131,18 @@ Plug 'mlaursen/vim-react-snippets'
 " Plug 'rafi/awesome-vim-colorschemes' " most popular on vimawesome
 " Plug 'flazz/vim-colorschemes' "fore all
 Plug 'aonemd/kuroi.vim'
+Plug 'arcticicestudio/nord-vim'
 Plug 'cocopon/iceberg.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'drewtempelmeyer/palenight.vim'
 Plug 'fenetikm/falcon'
+Plug 'haishanh/night-owl.vim'
 Plug 'jacoborus/tender.vim'
 Plug 'jaredgorski/spacecamp'
 Plug 'joshdick/onedark.vim'
 Plug 'kjssad/quantum.vim'
 Plug 'larsbs/vimterial_dark'
+Plug 'lifepillar/vim-gruvbox8'
 Plug 'morhetz/gruvbox' "My favorite theme
 Plug 'rakr/vim-one'
 Plug 'sainnhe/edge'
@@ -162,10 +168,12 @@ set background=dark termguicolors cursorline
 " set 1 for the specific themes support
 " let g:one_allow_italics = 1 " I love italic for comments
 " let g:onedark_terminal_italics = 1
+" let g:quantum_italics=1
+" let g:palenight_terminal_italics=1
+syntax enable
 colorscheme kuroi
 set t_Co=256
 set ts=2 sw=2 et
-syntax enable
 
 " +=== STATUSLINE
 set noshowmode             " No see again the inset on status
