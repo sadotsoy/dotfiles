@@ -1,4 +1,4 @@
-" NeoVIM config file by @SadotCorts JUN 2 2020 :)
+" NeoVIM config file by @SadotCorts JUN 3 2020 :)
 "
 
 " =================
@@ -130,6 +130,7 @@ Plug 'mlaursen/vim-react-snippets'
 " === COLORSCHEME
 " Plug 'rafi/awesome-vim-colorschemes' " most popular on vimawesome
 " Plug 'flazz/vim-colorschemes' "fore all
+Plug 'lifepillar/vim-colortemplate' " tool to create colortemplate
 Plug 'aonemd/kuroi.vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'cocopon/iceberg.vim'
