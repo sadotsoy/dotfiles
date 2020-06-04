@@ -1,4 +1,4 @@
-" NeoVIM config file by @SadotCorts JUN 3 2020 :)
+" NeoVIM config file by @SadotCorts JUN 4 2020 :)
 "
 
 " =================
@@ -130,7 +130,6 @@ Plug 'mlaursen/vim-react-snippets'
 " === COLORSCHEME
 " Plug 'rafi/awesome-vim-colorschemes' " most popular on vimawesome
 " Plug 'flazz/vim-colorschemes' "fore all
-Plug 'lifepillar/vim-colortemplate' " tool to create colortemplate
 Plug 'aonemd/kuroi.vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'cocopon/iceberg.vim'
@@ -143,10 +142,14 @@ Plug 'jaredgorski/spacecamp'
 Plug 'joshdick/onedark.vim'
 Plug 'kjssad/quantum.vim'
 Plug 'larsbs/vimterial_dark'
+Plug 'lifepillar/vim-colortemplate' " tool to create colortemplate
 Plug 'lifepillar/vim-gruvbox8'
 Plug 'morhetz/gruvbox' "My favorite theme
 Plug 'rakr/vim-one'
 Plug 'sainnhe/edge'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'szorfein/fromthehell.vim'
+Plug 'wadackel/vim-dogrun'
 
 " === SEARCHING
 Plug '/usr/local/opt/fzf'
@@ -163,7 +166,6 @@ call plug#end()
 " =================
 " == COLORSCHEMES =
 " colorschemes, dracula, gruvbox, vimterial_dark or see https://github.com/rafi/awesome-vim-colorschemes
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark termguicolors cursorline
 "
 " set 1 for the specific themes support
@@ -172,7 +174,7 @@ set background=dark termguicolors cursorline
 " let g:quantum_italics=1
 " let g:palenight_terminal_italics=1
 syntax enable
-colorscheme kuroi
+colorscheme fromthehell
 set t_Co=256
 set ts=2 sw=2 et
 
