@@ -76,7 +76,6 @@ Plug 'airblade/vim-gitgutter'           " shows a git diff
 Plug 'bling/vim-bufferline'             " show the buffers
 Plug 'bronson/vim-trailing-whitespace'  " just call :FixWhitespace
 Plug 'chrisbra/NrrwRgn'                 " :NR, NW, NRP, NRM
-Plug 'luochen1990/rainbow'              " rainbow_parentheses
 Plug 'mbbill/undotree'                  " undo history visualizer
 Plug 'raimondi/delimitmate'             " auto-completion for quotes, etc.
 Plug 'terryma/vim-multiple-cursors'     " multiple cursors with <C-n>
@@ -106,6 +105,7 @@ Plug 'mattn/emmet-vim'                  " the good plugin
 Plug 'AndrewRadev/tagalong.vim'         " edit tags
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'Yggdroot/indentLine'
+Plug 'luochen1990/rainbow'
 " Plug 'ervandew/supertab'
 
 " +== JAVASCRIPT
@@ -145,6 +145,7 @@ Plug 'larsbs/vimterial_dark'
 Plug 'lifepillar/vim-colortemplate' " tool to create colortemplate
 Plug 'lifepillar/vim-gruvbox8'
 Plug 'morhetz/gruvbox' "My favorite theme
+Plug 'nightsense/cosmic_latte'
 Plug 'rakr/vim-one'
 Plug 'sainnhe/edge'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
