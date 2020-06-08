@@ -1,4 +1,4 @@
-" NeoVIM config file by @SadotCorts JUN 4 2020 :)
+" NeoVIM config file by @SadotCorts JUN 8 2020 :)
 "
 
 " =================
@@ -55,7 +55,10 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 
 " == ALE && DEOPLITE LINTERS/COMPLETE
+" Fix files with prettier, and then ESLint.
 let b:ale_linters = ['eslint']
+let b:ale_fixers = ['prettier', 'eslint']
+let g:ale_fix_on_save = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_echo_msg_warning_str = 'W'
@@ -100,12 +103,13 @@ Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
 
 " == SYNTAX
 " +== GENERAL
-Plug 'wellle/targets.vim'               " text obejects with operators ci(operator) ex: ci,
-Plug 'mattn/emmet-vim'                  " the good plugin
 Plug 'AndrewRadev/tagalong.vim'         " edit tags
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'Yggdroot/indentLine'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'luochen1990/rainbow'
+Plug 'mattn/emmet-vim'                  " the good plugin
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'wellle/targets.vim'               " text obejects with operators ci(operator) ex: ci,
 " Plug 'ervandew/supertab'
 
 " +== JAVASCRIPT
