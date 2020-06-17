@@ -40,6 +40,7 @@ function fish_mode_prompt; end
 #GENERAL
 #FKENV
 alias fkenv="source ~/workspace/freshkampo/fkguacamole/bin/activate.fish"
+alias mng="./manage.py"
 kitty + complete setup fish | source
 alias weather="curl http://v2.wttr.in/"
 #kitty

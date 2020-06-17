@@ -1,20 +1,25 @@
-" NeoVIM config file by @SadotCorts JUN 8 2020 :)
+" NeoVIM config file by @SadotCorts JUN 16 2020 :)
 "
 
 " =================
 " == GENERAL ======
 "
 let mapleader = ','							" set the <leader>,
+" set colorcolumn=50
+" set hidden                      " Required to keep multiple open buffers
 set autoread					  				" detech when a file is changed
 set clipboard^=unnamed,unnamedplus " Yank and Paste with the system clipboard
+set cmdheight=2                 " More space for displaying messages
 set laststatus=2								" show the status line all the time
-set shell=/bin/bash							" set bash for vim command
-setlocal textwidth=280				  " have long lines wrap inside comments
-set nowrap                      " display long lines
-" set hidden                      " Required to keep multiple open buffers
-" set cmdheight=1                 " More space for displaying messages
-set wildignore+=*node_modules/**  " Ignore node_modules
 set mouse=a                       " Enable mouse to fix the resize scroll cycle
+set nobackup
+set noswapfile
+set nowrap                      " display long lines
+set scrolloff=8
+set shell=/bin/bash							" set bash for vim command
+set updatetime=50               " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
+set wildignore+=*node_modules/**  " Ignore node_modules
+setlocal textwidth=280				  " have long lines wrap inside comments
 
 " == NUMBER LINES               " set relative number
 set number relativenumber
@@ -38,9 +43,9 @@ set ignorecase                  " Sensitive case for local search
 set smartcase
 
 " == EMMET
+" let g:tagalong_filetypes = ['html', 'jsx', 'javascriptreact', 'typescriptreact', 'javascript']
+" let g:tagalong_verbose=1
 let g:user_emmet_mode='a'       "enable all function in all mode.
-let g:tagalong_verbose=1
-let g:tagalong_filetypes = ['html', 'jsx', 'javascriptreact', 'typescriptreact', 'javascript']
 
 " == OTHERS
 filetype plugin indent on				" detecth the filetype
@@ -54,11 +59,15 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 
+" === COC COMPLETE
+let g:coc_global_extensions=['coc-css', 'coc-bookmark', 'coc-emmet', 'coc-tsserver']
+
 " == ALE && DEOPLITE LINTERS/COMPLETE
 " Fix files with prettier, and then ESLint.
 let b:ale_linters = ['eslint']
-let b:ale_fixers = ['prettier', 'eslint']
-let g:ale_fix_on_save = 1
+let b:ale_fixers = ['pretier', 'eslint']
+let g:ale_javascript_eslint_use_global = 1
+let g:ale_linters_explicit = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_echo_msg_warning_str = 'W'
@@ -67,7 +76,7 @@ let g:ale_set_signs             = 1
 let g:ale_sign_error = '•'
 let g:ale_sign_warning = '+'
 let g:ale_use_deprecated_neovim = 1
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 
 " =================
 " == PLUGINS ======
@@ -75,26 +84,25 @@ let g:deoplete#enable_at_startup = 1
 call plug#begin()
 
 " == UTILITIES
+" Plug 'bling/vim-bufferline'             " show the buffers
+" Plug 'chrisbra/NrrwRgn'                 " :NR, NW, NRP, NRM
+" Plug 'junegunn/limelight.vim'           " Higlight the cursor position with goyo looks awesome
+" Plug 'mbbill/undotree'                  " undo history visualizer
+" Plug 'terryma/vim-multiple-cursors'     " multiple cursors with <C-n>
 Plug 'airblade/vim-gitgutter'           " shows a git diff
-Plug 'bling/vim-bufferline'             " show the buffers
 Plug 'bronson/vim-trailing-whitespace'  " just call :FixWhitespace
-Plug 'chrisbra/NrrwRgn'                 " :NR, NW, NRP, NRM
-Plug 'mbbill/undotree'                  " undo history visualizer
+Plug 'junegunn/goyo.vim'                " Distraction-free writing in Vim.
 Plug 'raimondi/delimitmate'             " auto-completion for quotes, etc.
-Plug 'terryma/vim-multiple-cursors'     " multiple cursors with <C-n>
 Plug 'tpope/vim-commentary'             " comment with powers
 Plug 'tpope/vim-fugitive'               " the ultimate git helper
 Plug 'tpope/vim-surround'               " surround
-Plug 'junegunn/goyo.vim'                " Distraction-free writing in Vim.
-Plug 'junegunn/limelight.vim'           " Higlight the cursor position with goyo looks awesome
-Plug 'makerj/vim-pdf'                   " PDF reader
 
 " === LINTER & COMPLETE
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'dense-analysis/ale'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
 " === FILE MANAGER
-Plug 'vim-scripts/fountain.vim'
 Plug 'vifm/vifm.vim'                    " VIFM
 
 " === UNIVERSAL TAGS/ AUTOIMPORT JS
@@ -103,29 +111,30 @@ Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
 
 " == SYNTAX
 " +== GENERAL
-Plug 'AndrewRadev/tagalong.vim'         " edit tags
+" Plug 'AndrewRadev/tagalong.vim'         " edit tags
+" Plug 'ervandew/supertab'
 Plug 'Yggdroot/indentLine'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'luochen1990/rainbow'
 Plug 'mattn/emmet-vim'                  " the good plugin
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'wellle/targets.vim'               " text obejects with operators ci(operator) ex: ci,
-" Plug 'ervandew/supertab'
 
 " +== JAVASCRIPT
-" Plug 'phodge/vim-javascript-syntax'
 " Plug 'allanhortle/vim-boring-javascript'
+" Plug 'othree/yajs.vim'
+" Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+" Plug 'phodge/vim-javascript-syntax'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'yuezk/vim-js'
-" Plug 'othree/yajs.vim'
-" 2
-" Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 
 " +== CSS/STYLES
 " Plug 'ap/vim-css-color' "Displays a preview of colors with CSS
+" Plug 'hail2u/vim-css3-syntax'
+" Plug 'cakebaker/scss-syntax.vim'
 
 " +== MARKDOWN
-Plug 'tpope/vim-markdown'
+" Plug 'tpope/vim-markdown'
 
 " == SNIPPETS
 Plug 'SirVer/ultisnips'
@@ -157,14 +166,9 @@ Plug 'szorfein/fromthehell.vim'
 Plug 'wadackel/vim-dogrun'
 
 " === SEARCHING
+" Plug 'ctrlpvim/ctrlp.vim'
 Plug '/usr/local/opt/fzf'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf.vim'
-
-" === PRESENTATIONS
-" need gem install vimdeck
-Plug 'tybenz/vimdeck' " Vim presentations with MARKDOWN
-
 
 " == END Plug
 call plug#end()
@@ -217,6 +221,12 @@ map <leader>o :only<cr>
 " == See the hi test
 map <leader>hi :so $VIMRUNTIME/syntax/hitest.vim<CR>
 
+" == Sort
+map <leader>so :sort<CR>
+
+" === UltiSnips
+map <leader>ue :UltiSnipsEdit<cr>
+
 " == FILEMANAGER
 map <leader>l :ls<cr>
 " LEXPLORE, left and right
@@ -260,8 +270,22 @@ map <leader>to :tabonly<cr>
 map <leader>tp :tabprevious<cr>
 map <leader>tq :tabclose<cr>
 
-" == VERTICAL SPLIT
-nnoremap <silent> vv <C-w>v
+" == COC
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> {g <Plug>(ale_previous_wrap)
+nmap <silent> }g <Plug>(ale_next_wrap)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+"
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
 
 " == RESIZE WINDOW
 nnoremap <Up> :resize +2<CR>
@@ -295,26 +319,16 @@ map <C-d>d :set background=dark<!-- <CR> -->
 " =================
 " == FUNCTIONS ====
 "
-" +==CREATE WINDOWS DEPENDS H,J,K,L
+" +== MOVE WINDOWS DEPENDS H,J,K,L
 map <leader>wl :Windows<cr>
-map <C-h> :call WinMove('h')<cr>
-map <C-j> :call WinMove('j')<cr>
-map <C-k> :call WinMove('k')<cr>
-map <C-l> :call WinMove('l')<cr>
-" Window movement shortcuts
-" move to the window in the direction shown, or create a new window
-function! WinMove(key)
-    let t:curwin = winnr()
-    exec "wincmd ".a:key
-    if (t:curwin == winnr())
-        if (match(a:key,'[jk]'))
-            wincmd v
-        else
-            wincmd s
-        endif
-        exec "wincmd ".a:key
-    endif
-endfunction
+map <C-h> :wincmd h<CR>
+map <C-j> :wincmd j<CR>
+map <C-k> :wincmd k<CR>
+map <C-l> :wincmd l<CR>
+" == SPLITS
+nnoremap <silent> vv <C-w>v
+nnoremap <silent> vs <C-w>s
+
 
 " +=== GOYO FUNCTIONS
 function! s:goyo_enter()
