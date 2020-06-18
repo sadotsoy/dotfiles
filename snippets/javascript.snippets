@@ -1,8 +1,24 @@
-# UltiSnips for vim
 snippet i "import module"
 import ${1} from '${2}';
 endsnippet
 
 snippet afc "arrow function"
-(${1}) => {${2}};
+(${1}) => {${2}}
+endsnippet
+
+snippet obj "object"
+const ${1} = {${2}}
+endsnippet
+
+snippet usf "use effect"
+useEffect(() => {
+  }, [${1}])
+endsnippet
+
+snippet sad "sad log"
+console.log('sad: ${1}', ${2})
+endsnippet
+
+snippet @pa "param doc"
+@param {${1}} ${2} ${3}
 endsnippet

@@ -1,4 +1,4 @@
-" NeoVIM config file by @SadotCorts JUN 16 2020 :)
+" NeoVIM config file by @SadotCorts JUN 18 2020 :)
 "
 
 " =================
@@ -65,14 +65,16 @@ let g:coc_global_extensions=['coc-css', 'coc-bookmark', 'coc-emmet', 'coc-tsserv
 " == ALE && DEOPLITE LINTERS/COMPLETE
 " Fix files with prettier, and then ESLint.
 let b:ale_linters = ['eslint']
-let b:ale_fixers = ['pretier', 'eslint']
-let g:ale_javascript_eslint_use_global = 1
+let b:ale_fixers = ['prettier'. 'eslint']
+let g:ale_fix_on_save = 0
+" let g:ale_javascript_eslint_use_global = 1
+let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_linters_explicit = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_set_highlights = 1
-let g:ale_set_signs             = 1
+let g:ale_set_signs = 1
 let g:ale_sign_error = '•'
 let g:ale_sign_warning = '+'
 let g:ale_use_deprecated_neovim = 1
@@ -86,7 +88,7 @@ call plug#begin()
 " == UTILITIES
 " Plug 'bling/vim-bufferline'             " show the buffers
 " Plug 'chrisbra/NrrwRgn'                 " :NR, NW, NRP, NRM
-" Plug 'junegunn/limelight.vim'           " Higlight the cursor position with goyo looks awesome
+Plug 'junegunn/limelight.vim'           " Higlight the cursor position with goyo looks awesome
 " Plug 'mbbill/undotree'                  " undo history visualizer
 " Plug 'terryma/vim-multiple-cursors'     " multiple cursors with <C-n>
 Plug 'airblade/vim-gitgutter'           " shows a git diff
@@ -141,29 +143,43 @@ Plug 'SirVer/ultisnips'
 Plug 'mlaursen/vim-react-snippets'
 
 " === COLORSCHEME
-" Plug 'rafi/awesome-vim-colorschemes' " most popular on vimawesome
 " Plug 'flazz/vim-colorschemes' "fore all
+" Plug 'rafi/awesome-vim-colorschemes' " most popular on vimawesome
+Plug 'andreypopp/vim-colors-plain'
 Plug 'aonemd/kuroi.vim'
 Plug 'arcticicestudio/nord-vim'
+Plug 'arzg/vim-colors-xcode'
+Plug 'cideM/yui'
 Plug 'cocopon/iceberg.vim'
+Plug 'danishprakash/vim-yami'
+Plug 'davidosomething/vim-colors-meh'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'fenetikm/falcon'
+Plug 'fxn/vim-monochrome'
 Plug 'haishanh/night-owl.vim'
+Plug 'hardselius/warlock'
+Plug 'https://git.sr.ht/~romainl/vim-bruin'
+Plug 'huyvohcmc/atlas.vim'
 Plug 'jacoborus/tender.vim'
+Plug 'jaredgorski/fogbell.vim'
 Plug 'jaredgorski/spacecamp'
 Plug 'joshdick/onedark.vim'
 Plug 'kjssad/quantum.vim'
 Plug 'larsbs/vimterial_dark'
 Plug 'lifepillar/vim-colortemplate' " tool to create colortemplate
 Plug 'lifepillar/vim-gruvbox8'
-Plug 'morhetz/gruvbox' "My favorite theme
+Plug 'morhetz/gruvbox' "not more My favorite theme
 Plug 'nightsense/cosmic_latte'
+Plug 'nikolvs/vim-sunbather'
+Plug 'pgdouyon/vim-yin-yang'
 Plug 'rakr/vim-one'
 Plug 'sainnhe/edge'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'szorfein/fromthehell.vim'
 Plug 'wadackel/vim-dogrun'
+Plug 'sadotsoy/darkforce-vim-colors'
+" Plug 'sadotsoy/darkforce-vim-colors', { 'branch': 'develop' }
 
 " === SEARCHING
 " Plug 'ctrlpvim/ctrlp.vim'
@@ -182,8 +198,11 @@ set background=dark termguicolors cursorline
 " let g:onedark_terminal_italics = 1
 " let g:quantum_italics=1
 " let g:palenight_terminal_italics=1
+" let g:yui_comments='emphasize'
+" let g:monochrome_italic_comments = 1
+let g:darkforce_italic_comments = 1
 syntax enable
-colorscheme fromthehell
+colorscheme darkforce
 set t_Co=256
 set ts=2 sw=2 et
 
@@ -217,6 +236,12 @@ map <leader>, :vsplit ~/.config/nvim/init.vim<CR>
 
 " == SEE ONLY THIS FILE ON THE BUFFER, BEATIFUL FOR DOCUMENTATION
 map <leader>o :only<cr>
+
+" === PLUG
+map <leader>pi :PlugInstall<CR>
+map <leader>pc :PlugClean<CR>
+map <leader>pu :PlugUpdate<CR>
+map <leader>pg :PlugUpgrade<CR>
 
 " == See the hi test
 map <leader>hi :so $VIMRUNTIME/syntax/hitest.vim<CR>
