@@ -1,20 +1,21 @@
-" NeoVIM config file by @SadotCorts JUN 18 2020 :)
+" NeoVIM config file by @SadotCorts JUN 27 2020 :)
 "
 
 " =================
 " == GENERAL ======
 "
 let mapleader = ','							" set the <leader>,
-" set colorcolumn=50
-" set hidden                      " Required to keep multiple open buffers
+" set colorcolumn=200
+" set nowrap                      " display long lines
 set autoread					  				" detech when a file is changed
 set clipboard^=unnamed,unnamedplus " Yank and Paste with the system clipboard
 set cmdheight=2                 " More space for displaying messages
+set diffopt+=vertical           " vertical split
+set hidden                      " Required to keep multiple open buffers
 set laststatus=2								" show the status line all the time
-set mouse=a                       " Enable mouse to fix the resize scroll cycle
+set mouse=a                     " Enable mouse to fix the resize scroll cycle
 set nobackup
 set noswapfile
-set nowrap                      " display long lines
 set scrolloff=8
 set shell=/bin/bash							" set bash for vim command
 set updatetime=50               " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
@@ -42,6 +43,11 @@ set spelllang=en_us,es_mx
 set ignorecase                  " Sensitive case for local search
 set smartcase
 
+" == Abbreviations
+" === HELP
+" open help in vertical split
+cabbrev h vert h
+
 " == EMMET
 " let g:tagalong_filetypes = ['html', 'jsx', 'javascriptreact', 'typescriptreact', 'javascript']
 " let g:tagalong_verbose=1
@@ -54,22 +60,19 @@ set magic												" set magic on, for regex
 set mat=2												" how many tenths of a second to blink
 set showmatch										" show matching braces
 
-" SNIPPETS
+" == SNIPPETS
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 
 " === COC COMPLETE
-let g:coc_global_extensions=['coc-css', 'coc-bookmark', 'coc-emmet', 'coc-tsserver']
+let g:coc_global_extensions=['coc-css', 'coc-emmet', 'coc-tsserver']
 
 " == ALE && DEOPLITE LINTERS/COMPLETE
 " Fix files with prettier, and then ESLint.
-let b:ale_linters = ['eslint']
-let b:ale_fixers = ['prettier'. 'eslint']
-let g:ale_fix_on_save = 0
-" let g:ale_javascript_eslint_use_global = 1
-let g:ale_javascript_prettier_use_local_config = 1
-let g:ale_linters_explicit = 1
+let g:ale_linters = {'javascript': ['eslint']}
+let g:ale_fixers = {'javascript': ['prettier', 'eslint'], 'scss': ['prettier'], 'vim': ['prettier']}
+let g:ale_javascript_eslint_use_local = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_echo_msg_warning_str = 'W'
@@ -77,8 +80,6 @@ let g:ale_set_highlights = 1
 let g:ale_set_signs = 1
 let g:ale_sign_error = '•'
 let g:ale_sign_warning = '+'
-let g:ale_use_deprecated_neovim = 1
-" let g:deoplete#enable_at_startup = 1
 
 " =================
 " == PLUGINS ======
@@ -88,19 +89,18 @@ call plug#begin()
 " == UTILITIES
 " Plug 'bling/vim-bufferline'             " show the buffers
 " Plug 'chrisbra/NrrwRgn'                 " :NR, NW, NRP, NRM
-Plug 'junegunn/limelight.vim'           " Higlight the cursor position with goyo looks awesome
 " Plug 'mbbill/undotree'                  " undo history visualizer
 " Plug 'terryma/vim-multiple-cursors'     " multiple cursors with <C-n>
 Plug 'airblade/vim-gitgutter'           " shows a git diff
 Plug 'bronson/vim-trailing-whitespace'  " just call :FixWhitespace
 Plug 'junegunn/goyo.vim'                " Distraction-free writing in Vim.
+Plug 'junegunn/limelight.vim'           " Higlight the cursor position with goyo looks awesome
 Plug 'raimondi/delimitmate'             " auto-completion for quotes, etc.
 Plug 'tpope/vim-commentary'             " comment with powers
 Plug 'tpope/vim-fugitive'               " the ultimate git helper
 Plug 'tpope/vim-surround'               " surround
 
 " === LINTER & COMPLETE
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
@@ -113,27 +113,20 @@ Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
 
 " == SYNTAX
 " +== GENERAL
-" Plug 'AndrewRadev/tagalong.vim'         " edit tags
-" Plug 'ervandew/supertab'
 Plug 'Yggdroot/indentLine'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'luochen1990/rainbow'
 Plug 'mattn/emmet-vim'                  " the good plugin
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'wellle/targets.vim'               " text obejects with operators ci(operator) ex: ci,
 
 " +== JAVASCRIPT
-" Plug 'allanhortle/vim-boring-javascript'
-" Plug 'othree/yajs.vim'
-" Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-" Plug 'phodge/vim-javascript-syntax'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'yuezk/vim-js'
 
 " +== CSS/STYLES
 " Plug 'ap/vim-css-color' "Displays a preview of colors with CSS
 " Plug 'hail2u/vim-css3-syntax'
-" Plug 'cakebaker/scss-syntax.vim'
+Plug 'cakebaker/scss-syntax.vim'
 
 " +== MARKDOWN
 " Plug 'tpope/vim-markdown'
@@ -179,18 +172,20 @@ Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'szorfein/fromthehell.vim'
 Plug 'wadackel/vim-dogrun'
 Plug 'sadotsoy/darkforce-vim-colors'
+" Plug '~/workspace/personal/darkforce-vim-color'
 " Plug 'sadotsoy/darkforce-vim-colors', { 'branch': 'develop' }
 
 " === SEARCHING
-" Plug 'ctrlpvim/ctrlp.vim'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
 " == END Plug
 call plug#end()
+
+
+
 " =================
 " == COLORSCHEMES =
-" colorschemes, dracula, gruvbox, vimterial_dark or see https://github.com/rafi/awesome-vim-colorschemes
 set background=dark termguicolors cursorline
 "
 " set 1 for the specific themes support
@@ -200,7 +195,6 @@ set background=dark termguicolors cursorline
 " let g:palenight_terminal_italics=1
 " let g:yui_comments='emphasize'
 " let g:monochrome_italic_comments = 1
-let g:darkforce_italic_comments = 1
 syntax enable
 colorscheme darkforce
 set t_Co=256
@@ -216,20 +210,20 @@ set statusline+=%{(mode()=='r')?'\ \ REPLACE\ ':''}
 set statusline+=%#Visual#%{(mode()=='v')?'\ \ VISUAL\ ':''}
 set statusline+=%#StatusLine#%{(mode()=='V')?'\ \ V-LINE\ ':''}
 set statusline+=%#CursorLineNr#
-set statusline+=\ %t
+set statusline+=\ %t " fileName
 set statusline+=%= "Right side settings
+set statusline+=%#Todo#
+set statusline+=\ [%n] " Buffer number
 set statusline+=%#Search#
-set statusline+=\ %c:%l/%L
-set statusline+=\ [%%%p]
-" set statusline=%<%m%f:%l\ _%{winnr()}_\ %y%r%=<%b\ 0x%B>\ \ %c%V\ %P
-" set statusline=%m%f:%l/%L\ %P\ %<<%-3b\ 0x%-2B>\ %y%r%w%=b:%n\ w:%{winnr()}
+set statusline+=\ %c:%l/%L " column:line/TOTALLINES
+set statusline+=\ [%%%p] " percent of the cursor position respect the file
 
 " +=== LIMELIGHT
 let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_ctermfg = 240
 
 " =================
-" == MAPPING ======
+" == MAPPINGS ======
 "
 " == EDIT CONFIG FILE
 map <leader>, :vsplit ~/.config/nvim/init.vim<CR>
@@ -253,19 +247,11 @@ map <leader>so :sort<CR>
 map <leader>ue :UltiSnipsEdit<cr>
 
 " == FILEMANAGER
-map <leader>l :ls<cr>
-" LEXPLORE, left and right
-map <leader>e :Lex<cr>
-map <leader>er :Lex!<cr>
 " VIFM
 map <leader><Space> :EditVifm .<CR>
 
 " == PRETTIER
-map <leader>pr :Prettier<cr>
-
-" == ALE MAPPING
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+map <leader>pr :ALEFix<cr>
 
 " == PDF
 map <leader>pdf :command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> -
@@ -274,15 +260,19 @@ map <leader>pdf :command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q
 map <leader>ltx :!pdflatex %<CR>
 
 " == SEARCHING
+map <leader>bf :Buffers<cr>
+map <leader>co :Commits<cr>
 map <leader>fa :Ag<cr>
 map <leader>ff :Files<cr>
-
+map <leader>fl :Lines<cr>
+map <leader>fm :Marks<cr>
+map <leader>fs :Snippets<cr>
+map <leader>gf :GitFiles?<cr>
+map <leader>ma :Maps<cr>
+map <leader>wl :Windows<cr>
 
 " == RELOAD SOURCE
 map <C-s> :source ~/.config/nvim/init.vim<CR>
-
-" == BUFFERS
-map <leader>bf :Buffers<cr>
 
 " == TAB MAPPING
 map <leader>tc :tabnew<cr>
@@ -295,9 +285,9 @@ map <leader>to :tabonly<cr>
 map <leader>tp :tabprevious<cr>
 map <leader>tq :tabclose<cr>
 
-" == COC
+" == ALE COC
 " Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+" Use `{g` and `}g` to navigate linter diagnostics
 nmap <silent> {g <Plug>(ale_previous_wrap)
 nmap <silent> }g <Plug>(ale_next_wrap)
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -310,7 +300,6 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
-
 
 " == RESIZE WINDOW
 nnoremap <Up> :resize +2<CR>
@@ -345,11 +334,11 @@ map <C-d>d :set background=dark<!-- <CR> -->
 " == FUNCTIONS ====
 "
 " +== MOVE WINDOWS DEPENDS H,J,K,L
-map <leader>wl :Windows<cr>
 map <C-h> :wincmd h<CR>
 map <C-j> :wincmd j<CR>
 map <C-k> :wincmd k<CR>
 map <C-l> :wincmd l<CR>
+
 " == SPLITS
 nnoremap <silent> vv <C-w>v
 nnoremap <silent> vs <C-w>s
@@ -376,4 +365,3 @@ endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
-
