@@ -1,4 +1,4 @@
-" NeoVIM config file by @SadotCorts JUN 27 2020 :)
+" NeoVIM config file by @sadotsoy JUL 06 2020 :)
 "
 
 " =================
@@ -46,7 +46,7 @@ set smartcase
 " == Abbreviations
 " === HELP
 " open help in vertical split
-cabbrev h vert h
+" cabbrev :h vert h
 
 " == EMMET
 " let g:tagalong_filetypes = ['html', 'jsx', 'javascriptreact', 'typescriptreact', 'javascript']
@@ -61,17 +61,28 @@ set mat=2												" how many tenths of a second to blink
 set showmatch										" show matching braces
 
 " == SNIPPETS
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
 
 " === COC COMPLETE
-let g:coc_global_extensions=['coc-css', 'coc-emmet', 'coc-tsserver']
+let g:coc_global_extensions=['coc-css', 'coc-emmet', 'coc-tsserver', 'coc-snippets']
 
 " == ALE && DEOPLITE LINTERS/COMPLETE
 " Fix files with prettier, and then ESLint.
 let g:ale_linters = {'javascript': ['eslint']}
-let g:ale_fixers = {'javascript': ['prettier', 'eslint'], 'scss': ['prettier'], 'vim': ['prettier']}
+let g:ale_fixers = {'javascript': ['prettier', 'eslint'], 'scss': ['prettier'], 'vim': ['prettier'], 'html': ['prettier']}
 let g:ale_javascript_eslint_use_local = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
@@ -99,6 +110,8 @@ Plug 'raimondi/delimitmate'             " auto-completion for quotes, etc.
 Plug 'tpope/vim-commentary'             " comment with powers
 Plug 'tpope/vim-fugitive'               " the ultimate git helper
 Plug 'tpope/vim-surround'               " surround
+Plug 'rizzatti/dash.vim'                " open dash app
+Plug 'majutsushi/tagbar'                " toogle tag bar
 
 " === LINTER & COMPLETE
 Plug 'dense-analysis/ale'
@@ -109,7 +122,7 @@ Plug 'vifm/vifm.vim'                    " VIFM
 
 " === UNIVERSAL TAGS/ AUTOIMPORT JS
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
+Plug 'kristijanhusak/vim-js-file-import', {'do': 'yarn minstall'}
 
 " == SYNTAX
 " +== GENERAL
@@ -125,19 +138,21 @@ Plug 'yuezk/vim-js'
 
 " +== CSS/STYLES
 " Plug 'ap/vim-css-color' "Displays a preview of colors with CSS
-" Plug 'hail2u/vim-css3-syntax'
+Plug 'hail2u/vim-css3-syntax'
 Plug 'cakebaker/scss-syntax.vim'
 
 " +== MARKDOWN
 " Plug 'tpope/vim-markdown'
 
 " == SNIPPETS
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 Plug 'mlaursen/vim-react-snippets'
 
 " === COLORSCHEME
 " Plug 'flazz/vim-colorschemes' "fore all
 " Plug 'rafi/awesome-vim-colorschemes' " most popular on vimawesome
+Plug 'AlessandroYorba/Breve'
+Plug 'AlessandroYorba/Sierra'
 Plug 'andreypopp/vim-colors-plain'
 Plug 'aonemd/kuroi.vim'
 Plug 'arcticicestudio/nord-vim'
@@ -167,11 +182,11 @@ Plug 'nightsense/cosmic_latte'
 Plug 'nikolvs/vim-sunbather'
 Plug 'pgdouyon/vim-yin-yang'
 Plug 'rakr/vim-one'
+Plug 'sadotsoy/darkforce-vim-colors'
 Plug 'sainnhe/edge'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'szorfein/fromthehell.vim'
 Plug 'wadackel/vim-dogrun'
-Plug 'sadotsoy/darkforce-vim-colors'
 " Plug '~/workspace/personal/darkforce-vim-color'
 " Plug 'sadotsoy/darkforce-vim-colors', { 'branch': 'develop' }
 
@@ -244,7 +259,7 @@ map <leader>hi :so $VIMRUNTIME/syntax/hitest.vim<CR>
 map <leader>so :sort<CR>
 
 " === UltiSnips
-map <leader>ue :UltiSnipsEdit<cr>
+map <leader>ue :CocList snippets<cr>
 
 " == FILEMANAGER
 " VIFM
@@ -263,12 +278,14 @@ map <leader>ltx :!pdflatex %<CR>
 map <leader>bf :Buffers<cr>
 map <leader>co :Commits<cr>
 map <leader>fa :Ag<cr>
+map <leader>fc :Colors<cr>
 map <leader>ff :Files<cr>
 map <leader>fl :Lines<cr>
 map <leader>fm :Marks<cr>
 map <leader>fs :Snippets<cr>
 map <leader>gf :GitFiles?<cr>
 map <leader>ma :Maps<cr>
+map <leader>tg :TagbarToggle<cr>
 map <leader>wl :Windows<cr>
 
 " == RELOAD SOURCE
@@ -342,6 +359,20 @@ map <C-l> :wincmd l<CR>
 " == SPLITS
 nnoremap <silent> vv <C-w>v
 nnoremap <silent> vs <C-w>s
+
+" COC TAB FUNCTIONS
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
 
 
 " +=== GOYO FUNCTIONS
