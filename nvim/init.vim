@@ -1,4 +1,4 @@
-" NeoVIM config file by @sadotsoy JUL 06 2020 :)
+" NeoVIM config file by @sadotsoy JUL 07 2020 :)
 "
 
 " =================
@@ -302,11 +302,13 @@ map <leader>to :tabonly<cr>
 map <leader>tp :tabprevious<cr>
 map <leader>tq :tabclose<cr>
 
-" == ALE COC
-" Use `[g` and `]g` to navigate diagnostics
-" Use `{g` and `}g` to navigate linter diagnostics
+" == ALE MAPPING
 nmap <silent> {g <Plug>(ale_previous_wrap)
 nmap <silent> }g <Plug>(ale_next_wrap)
+
+" == COC MAPPING
+" Use `[g` and `]g` to navigate diagnostics
+" Use `{g` and `}g` to navigate linter diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 "
@@ -315,8 +317,10 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+
+" Symbol renaming
+nmap <leader>rr <Plug>(coc-rename)
+nmap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
 " == RESIZE WINDOW
 nnoremap <Up> :resize +2<CR>
@@ -324,7 +328,7 @@ nnoremap <Down> :resize -2<CR>
 nnoremap <Left> :vertical resize +2<CR>
 nnoremap <Right> :vertical resize -2<CR>
 
-" == FUGITIVE TPOPE
+" == FUGITIVE TPOPE MAPING
 " CHECK :HELP GSTATUS FOR MORE KEYS
 map <leader>ga :!git add %<cr>:Gcommit<cr>
 map <leader>gb :Gblame<cr>
