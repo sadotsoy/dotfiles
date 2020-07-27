@@ -1,4 +1,4 @@
-" NeoVIM config file by @sadotsoy JUL 07 2020 :)
+" NeoVIM config file by @sadotsoy JUL 27 2020 :)
 "
 
 " =================
@@ -83,6 +83,7 @@ let g:coc_global_extensions=['coc-css', 'coc-emmet', 'coc-tsserver', 'coc-snippe
 " Fix files with prettier, and then ESLint.
 let g:ale_linters = {'javascript': ['eslint']}
 let g:ale_fixers = {'javascript': ['prettier', 'eslint'], 'scss': ['prettier'], 'vim': ['prettier'], 'html': ['prettier']}
+let g:ale_fix_on_save = 1
 let g:ale_javascript_eslint_use_local = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
@@ -131,10 +132,15 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'luochen1990/rainbow'
 Plug 'mattn/emmet-vim'                  " the good plugin
 Plug 'wellle/targets.vim'               " text obejects with operators ci(operator) ex: ci,
+Plug 'junegunn/vim-emoji'
 
 " +== JAVASCRIPT
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'yuezk/vim-js'
+Plug 'heavenshell/vim-jsdoc', {
+  \ 'for': ['javascript', 'javascript.jsx','typescript'],
+  \ 'do': 'make install'
+\}
 
 " +== CSS/STYLES
 " Plug 'ap/vim-css-color' "Displays a preview of colors with CSS
@@ -150,6 +156,7 @@ Plug 'mlaursen/vim-react-snippets'
 
 " === COLORSCHEME
 " Plug 'flazz/vim-colorschemes' "fore all
+" Plug 'lifepillar/vim-colortemplate' " tool to create colortemplate
 " Plug 'rafi/awesome-vim-colorschemes' " most popular on vimawesome
 Plug 'AlessandroYorba/Breve'
 Plug 'AlessandroYorba/Sierra'
@@ -175,9 +182,8 @@ Plug 'jaredgorski/spacecamp'
 Plug 'joshdick/onedark.vim'
 Plug 'kjssad/quantum.vim'
 Plug 'larsbs/vimterial_dark'
-Plug 'lifepillar/vim-colortemplate' " tool to create colortemplate
 Plug 'lifepillar/vim-gruvbox8'
-Plug 'morhetz/gruvbox' "not more My favorite theme
+Plug 'morhetz/gruvbox'
 Plug 'nightsense/cosmic_latte'
 Plug 'nikolvs/vim-sunbather'
 Plug 'pgdouyon/vim-yin-yang'
@@ -243,6 +249,11 @@ let g:limelight_conceal_ctermfg = 240
 " == EDIT CONFIG FILE
 map <leader>, :vsplit ~/.config/nvim/init.vim<CR>
 
+" === Sessions
+" GURU
+nmap <silent> ß :mks! Session.vim<CR>
+nmap <silent> ® :source Session.vim<CR>
+
 " == SEE ONLY THIS FILE ON THE BUFFER, BEATIFUL FOR DOCUMENTATION
 map <leader>o :only<cr>
 
@@ -263,10 +274,14 @@ map <leader>ue :CocList snippets<cr>
 
 " == FILEMANAGER
 " VIFM
-map <leader><Space> :EditVifm .<CR>
+map <leader><Space>r :EditVifm .<CR>
+map <leader><Space>e :Vifm<CR>
 
 " == PRETTIER
 map <leader>pr :ALEFix<cr>
+
+" === JSDOC
+map <leader>js :JsDoc<cr>
 
 " == PDF
 map <leader>pdf :command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> -
@@ -328,6 +343,9 @@ nnoremap <Down> :resize -2<CR>
 nnoremap <Left> :vertical resize +2<CR>
 nnoremap <Right> :vertical resize -2<CR>
 
+" == emoji
+nmap <leader>em :%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<CR>
+
 " == FUGITIVE TPOPE MAPING
 " CHECK :HELP GSTATUS FOR MORE KEYS
 map <leader>ga :!git add %<cr>:Gcommit<cr>
@@ -378,6 +396,9 @@ endfunction
 
 let g:coc_snippet_next = '<tab>'
 
+" +=== Fuzzy
+let g:fzf_layout = { 'window':{ 'width': 0.8, 'height': 0.8 }}
+let $FZF_DEFAULT_OPTS='--reverse'
 
 " +=== GOYO FUNCTIONS
 function! s:goyo_enter()
