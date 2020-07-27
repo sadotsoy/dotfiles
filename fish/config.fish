@@ -3,6 +3,7 @@
 # ----GENERAL
 set -x EDITOR nvim
 set -x LC_ALL en_US.UTF-8
+set -x BYOBU_PREFIX /usr/local
 # ----NODE
 set -x NODE_OPTIONS --max_old_space_size=4096
 # set -x OP_SESSION_my EMJkHkExAQ0jRdIiAWRcouctNvQoVL6u9nRTHazTzJc
@@ -20,9 +21,9 @@ set -x NODE_OPTIONS --max_old_space_size=4096
 # set -gx PATH $PATH:$ANDROID_HOME/tools/bin
 # set -gx PATH $PATH:$ANDROID_HOME/platform-tools
 # ----PYTHON
-set -x PYTHON_PATH $HOME/Library/Python/3.7/bin
-set -g PATH $PATH:$PYTHON_PATH
-set VIRTUAL_ENV "/Users/sadotsoy/workspace/freshkampo/fkguacamole"
+# set -x PYTHON_PATH $HOME/Library/Python/3.7/bin
+# set -g PATH $PATH:$PYTHON_PATH
+# set VIRTUAL_ENV "/Users/sadotsoy/workspace/freshkampo/fkguacamole"
 # ----CYPRES
 # set -x HTTP_PROXY http://my-company-proxy.com
 
@@ -41,7 +42,7 @@ function fish_mode_prompt; end
 #FKENV
 alias fkenv="source ~/workspace/freshkampo/fkguacamole/bin/activate.fish"
 alias mng="./manage.py"
-kitty + complete setup fish | source
+# kitty + complete setup fish | source
 alias weather="curl http://v2.wttr.in/"
 #kitty
 alias ktty="nvim ~/dotfiles/kitty/kitty.conf"
