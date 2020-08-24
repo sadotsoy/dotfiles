@@ -1,26 +1,33 @@
-" NeoVIM config file by @sadotsoy AUG 21 2020 :)
+" NeoVIM config file by @sadotsoy AUG 24 2020 :)
 "
-
 " =================
 " == GENERAL ======
-"
 let mapleader = ','							" set the <leader>,
 " set colorcolumn=200
 " set nowrap                      " display long lines
+au BufWritePre * let &bex = '@' "Meaningful backup name, ex: filename@
 set autoread					  				" detech when a file is changed
-set cursorline                  " active cursorline
+set backup                      " Turn on backup option
+set backupcopy=yes              " Overwrite the original backup file
+set backupdir=~/.backup//       " Where to store backups
 set clipboard^=unnamed,unnamedplus " Yank and Paste with the system clipboard
 set cmdheight=2                 " More space for displaying messages
+set cursorline                  " active cursorline
 set diffopt+=vertical           " vertical split
+set directory=~/.swap//         " Where to store swap files
 set hidden                      " Required to keep multiple open buffers
+set hlsearch                    " Show the prev search pattern
+set incsearch                   " set to the first match pattern
 set laststatus=2								" show the status line all the time
 set mouse=a                     " Enable mouse to fix the resize scroll cycle
-set nobackup
-set noswapfile
 set scrolloff=8
 set shell=/bin/bash							" set bash for vim command
+set showcmd
 set updatetime=50               " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
 set wildignore+=*node_modules/**  " Ignore node_modules
+set wildmenu
+set writebackup
+set confirm
 setlocal textwidth=280				  " have long lines wrap inside comments
 
 " == NUMBER LINES               " set relative number
@@ -273,6 +280,9 @@ map <leader>so :sort<CR>
 nmap <silent> ß :mks! Session.vim<CR>
 nmap <silent> ® :source Session.vim<CR>
 "
+" === Recovers
+" noremap <leader>re :vnew | r #<CR>
+"
 " == SEE ONLY THIS FILE ON THE BUFFER, BEATIFUL FOR DOCUMENTATION
 map <leader>o :only<cr>
 "
@@ -364,9 +374,10 @@ nmap <leader>em :%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<CR>
 " CHECK :HELP GSTATUS FOR MORE KEYS
 map <leader>ga :!git add %<cr>:Gcommit<cr>
 map <leader>gb :Gblame<cr>
-map <leader>gm :Gcommit<cr>
-map <leader>gd :Gdiffsplit<cr>
 map <leader>gc :GCheckout<cr>
+map <leader>gd :Gdiffsplit<cr>
+map <leader>gm :Gcommit<cr>
+map <leader>gp :Gpush<cr>
 map <leader>gs :G<cr>
 nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
