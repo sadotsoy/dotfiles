@@ -12,6 +12,7 @@ set backupcopy=yes              " Overwrite the original backup file
 set backupdir=~/.backup//       " Where to store backups
 set clipboard^=unnamed,unnamedplus " Yank and Paste with the system clipboard
 set cmdheight=2                 " More space for displaying messages
+set confirm
 set cursorline                  " active cursorline
 set diffopt+=vertical           " vertical split
 set directory=~/.swap//         " Where to store swap files
@@ -27,12 +28,15 @@ set updatetime=50               " Having longer updatetime (default is 4000 ms =
 set wildignore+=*node_modules/**  " Ignore node_modules
 set wildmenu
 set writebackup
-set confirm
 setlocal textwidth=280				  " have long lines wrap inside comments
 
 " == NUMBER LINES               " set relative number
 set number relativenumber
 set nu rnu
+
+" == Splits
+set splitbelow                  " move the new split below the current [DOWN]
+set splitright                  " move focus to the new split
 
 " == INDENT/TABS
 set autoindent									" Automatically set indent of new line
