@@ -39,6 +39,7 @@ end
 function fish_mode_prompt; end
 
 #GENERAL
+alias alcr="nvim ~/dotfiles/alacritty/alacritty.yml"
 #FKENV
 alias fkenv="source ~/workspace/freshkampo/fkguacamole/bin/activate.fish"
 alias mng="./manage.py"
@@ -143,7 +144,7 @@ alias lsa="exa -lah --git"
 alias tree="exa -Th "
 # SSH
 alias removessh="ssh-add -D"
-alias personalssh="ssh-add ~/.ssh/id_personal"
+alias personalssh="ssh-add ~/.ssh/id_sadtsoy"
 # MK
 alias mk="mkdir"
 # TOUCH
