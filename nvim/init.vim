@@ -1,30 +1,42 @@
-" NeoVIM config file by @sadotsoy JUL 27 2020 :)
+" NeoVIM config file by @sadotsoy AUG 24 2020 :)
 "
-
 " =================
 " == GENERAL ======
-"
 let mapleader = ','							" set the <leader>,
 " set colorcolumn=200
 " set nowrap                      " display long lines
+au BufWritePre * let &bex = '@' "Meaningful backup name, ex: filename@
 set autoread					  				" detech when a file is changed
+set backup                      " Turn on backup option
+set backupcopy=yes              " Overwrite the original backup file
+set backupdir=~/.backup//       " Where to store backups
 set clipboard^=unnamed,unnamedplus " Yank and Paste with the system clipboard
 set cmdheight=2                 " More space for displaying messages
+set confirm
+set cursorline                  " active cursorline
 set diffopt+=vertical           " vertical split
+set directory=~/.swap//         " Where to store swap files
 set hidden                      " Required to keep multiple open buffers
+set hlsearch                    " Show the prev search pattern
+set incsearch                   " set to the first match pattern
 set laststatus=2								" show the status line all the time
 set mouse=a                     " Enable mouse to fix the resize scroll cycle
-set nobackup
-set noswapfile
 set scrolloff=8
 set shell=/bin/bash							" set bash for vim command
+set showcmd
 set updatetime=50               " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
 set wildignore+=*node_modules/**  " Ignore node_modules
+set wildmenu
+set writebackup
 setlocal textwidth=280				  " have long lines wrap inside comments
 
 " == NUMBER LINES               " set relative number
 set number relativenumber
 set nu rnu
+
+" == Splits
+set splitbelow                  " move the new split below the current [DOWN]
+set splitright                  " move focus to the new split
 
 " == INDENT/TABS
 set autoindent									" Automatically set indent of new line
@@ -127,7 +139,6 @@ Plug 'kristijanhusak/vim-js-file-import', {'do': 'yarn minstall'}
 
 " == SYNTAX
 " +== GENERAL
-Plug 'Yggdroot/indentLine'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'luochen1990/rainbow'
 Plug 'mattn/emmet-vim'                  " the good plugin
@@ -137,10 +148,6 @@ Plug 'junegunn/vim-emoji'
 " +== JAVASCRIPT
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'yuezk/vim-js'
-Plug 'heavenshell/vim-jsdoc', {
-  \ 'for': ['javascript', 'javascript.jsx','typescript'],
-  \ 'do': 'make install'
-\}
 
 " +== CSS/STYLES
 " Plug 'ap/vim-css-color' "Displays a preview of colors with CSS
@@ -167,7 +174,7 @@ Plug 'arzg/vim-colors-xcode'
 Plug 'cideM/yui'
 Plug 'cocopon/iceberg.vim'
 Plug 'danishprakash/vim-yami'
-Plug 'davidosomething/vim-colors-meh'
+Plug 'davidosomething/vim-colors-meh' " gshit
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'fenetikm/falcon'
@@ -199,6 +206,7 @@ Plug 'wadackel/vim-dogrun'
 " === SEARCHING
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'stsewd/fzf-checkout.vim'
 
 " == END Plug
 call plug#end()
@@ -207,7 +215,7 @@ call plug#end()
 
 " =================
 " == COLORSCHEMES =
-set background=dark termguicolors cursorline
+set background=dark termguicolors
 "
 " set 1 for the specific themes support
 " let g:one_allow_italics = 1 " I love italic for comments
@@ -246,55 +254,73 @@ let g:limelight_conceal_ctermfg = 240
 " =================
 " == MAPPINGS ======
 "
+" == CLOSE && WRITE
+map <C-x> :wq<CR>
+"
+" == WRITE
+map <C-w> :w<CR>
+"
+" == RELOAD SOURCE
+map <C-s> :source ~/.config/nvim/init.vim<CR>
+"
 " == EDIT CONFIG FILE
 map <leader>, :vsplit ~/.config/nvim/init.vim<CR>
-
+"
+" == Sort
+map <leader>so :sort<CR>
+"
+" === Folds
+" open all folds
+" nnoremap zr zR
+" Fold all tag
+" nnoremap fat zfat
+" Fold all inside tag
+" nnoremap z zfit
+"
 " === Sessions
 " GURU
+" ALT + R to load the session
+" ALT + S to save the session
 nmap <silent> ß :mks! Session.vim<CR>
 nmap <silent> ® :source Session.vim<CR>
-
+"
+" === Recovers
+" noremap <leader>re :vnew | r #<CR>
+"
 " == SEE ONLY THIS FILE ON THE BUFFER, BEATIFUL FOR DOCUMENTATION
 map <leader>o :only<cr>
-
+"
+" == FILEMANAGER
+" VIFM
+map <leader><Space>r :EditVifm .<CR>
+map <leader><Space>e :Vifm<CR>
+"
+" == PRETTIER
+map <leader>pr :ALEFix<cr>
+"
 " === PLUG
 map <leader>pi :PlugInstall<CR>
 map <leader>pc :PlugClean<CR>
 map <leader>pu :PlugUpdate<CR>
 map <leader>pg :PlugUpgrade<CR>
-
+"
 " == See the hi test
 map <leader>hi :so $VIMRUNTIME/syntax/hitest.vim<CR>
-
-" == Sort
-map <leader>so :sort<CR>
-
+"
 " === UltiSnips
 map <leader>ue :CocList snippets<cr>
-
-" == FILEMANAGER
-" VIFM
-map <leader><Space>r :EditVifm .<CR>
-map <leader><Space>e :Vifm<CR>
-
-" == PRETTIER
-map <leader>pr :ALEFix<cr>
-
-" === JSDOC
-map <leader>js :JsDoc<cr>
-
+"
 " == PDF
 map <leader>pdf :command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> -
-
+"
 " == PDFLATEX
 map <leader>ltx :!pdflatex %<CR>
-
+"
 " == SEARCHING
 map <leader>bf :Buffers<cr>
 map <leader>co :Commits<cr>
 map <leader>fa :Ag<cr>
 map <leader>fc :Colors<cr>
-map <leader>ff :Files<cr>
 map <leader>fl :Lines<cr>
 map <leader>fm :Marks<cr>
 map <leader>fs :Snippets<cr>
@@ -302,9 +328,11 @@ map <leader>gf :GitFiles?<cr>
 map <leader>ma :Maps<cr>
 map <leader>tg :TagbarToggle<cr>
 map <leader>wl :Windows<cr>
-
-" == RELOAD SOURCE
-map <C-s> :source ~/.config/nvim/init.vim<CR>
+" fzf file fuzzy search that respects .gitignore
+" If in git directory, show only files that are committed, staged, or unstaged
+" else use regular :Files
+" CREDITS : https://rietta.com/blog/hide-gitignored-files-fzf-vim/
+nnoremap <expr> <C-p> (len(system('git rev-parse')) ? ':Files' : ':GFiles --exclude-standard --others --cached')."\<cr>"
 
 " == TAB MAPPING
 map <leader>tc :tabnew<cr>
@@ -316,11 +344,11 @@ map <leader>tn :tabnext<cr>
 map <leader>to :tabonly<cr>
 map <leader>tp :tabprevious<cr>
 map <leader>tq :tabclose<cr>
-
+"
 " == ALE MAPPING
 nmap <silent> {g <Plug>(ale_previous_wrap)
 nmap <silent> }g <Plug>(ale_next_wrap)
-
+"
 " == COC MAPPING
 " Use `[g` and `]g` to navigate diagnostics
 " Use `{g` and `}g` to navigate linter diagnostics
@@ -332,43 +360,47 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-
+"
 " Symbol renaming
 nmap <leader>rr <Plug>(coc-rename)
 nmap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
-
+"
 " == RESIZE WINDOW
 nnoremap <Up> :resize +2<CR>
 nnoremap <Down> :resize -2<CR>
 nnoremap <Left> :vertical resize +2<CR>
 nnoremap <Right> :vertical resize -2<CR>
-
+"
 " == emoji
 nmap <leader>em :%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<CR>
-
-" == FUGITIVE TPOPE MAPING
+"
+" == GIT MAPPING
 " CHECK :HELP GSTATUS FOR MORE KEYS
 map <leader>ga :!git add %<cr>:Gcommit<cr>
 map <leader>gb :Gblame<cr>
-map <leader>gc :Gcommit<cr>
+map <leader>gc :GCheckout<cr>
 map <leader>gd :Gdiffsplit<cr>
-map <leader>gs :Gstatus<cr>
-
+map <leader>gm :Gcommit<cr>
+map <leader>gp :Gpush<cr>
+map <leader>gs :G<cr>
+nmap <leader>gh :diffget //3<CR>
+nmap <leader>gu :diffget //2<CR>
+"
 " == GOYO
 map <leader><ENTER> :Goyo<cr>
-
+"
 " == SPELLING
 map <leader>s :set spell<cr>
 " +=== SPANISH
 map <C-g>s :set spelllang=es_mx<CR>
 " +=== ENGLISH
 map <C-g>e :set spelllang=en_us<CR>
-
+"
 " == LIGHT/DARK
 """" DEPENDS OF THE COLORSCHEME
 map <C-l>l :set background=light<CR>
 map <C-d>d :set background=dark<!-- <CR> -->
-
+"
 " =================
 " == FUNCTIONS ====
 "

@@ -43,7 +43,7 @@ function fish_mode_prompt; end
 alias fkenv="source ~/workspace/freshkampo/fkguacamole/bin/activate.fish"
 alias mng="./manage.py"
 # kitty + complete setup fish | source
-alias weather="curl http://v2.wttr.in/"
+alias weather="curl http://v2.wttr.in/gdl"
 #kitty
 alias ktty="nvim ~/dotfiles/kitty/kitty.conf"
 #onePassword needs jq (brew)
@@ -174,3 +174,5 @@ alias python="python3"
 alias int="ifconfig"
 
 set -g fish_user_paths "/usr/local/opt/imagemagick@6/bin" $fish_user_paths
+# source (curl -sSL git.io/forgit.fish | psub)
+
