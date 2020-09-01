@@ -21,9 +21,11 @@ set hlsearch                    " Show the prev search pattern
 set incsearch                   " set to the first match pattern
 set laststatus=2								" show the status line all the time
 set mouse=a                     " Enable mouse to fix the resize scroll cycle
+set scroll=5
 set scrolloff=8
 set shell=/bin/bash							" set bash for vim command
 set showcmd
+set sidescrolloff=8
 set updatetime=50               " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
 set wildignore+=*node_modules/**  " Ignore node_modules
 set wildmenu
@@ -195,16 +197,16 @@ Plug 'nightsense/cosmic_latte'
 Plug 'nikolvs/vim-sunbather'
 Plug 'pgdouyon/vim-yin-yang'
 Plug 'rakr/vim-one'
-Plug 'sadotsoy/darkforce-vim-colors'
+" Plug 'sadotsoy/darkforce-vim-colors'
 Plug 'sainnhe/edge'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'szorfein/fromthehell.vim'
 Plug 'wadackel/vim-dogrun'
-" Plug '~/workspace/personal/darkforce-vim-color'
+Plug '~/workspace/personal/darkforce-vim-colors'
 " Plug 'sadotsoy/darkforce-vim-colors', { 'branch': 'develop' }
 
 " === SEARCHING
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'stsewd/fzf-checkout.vim'
 
@@ -215,7 +217,7 @@ call plug#end()
 
 " =================
 " == COLORSCHEMES =
-set background=dark termguicolors
+set background=dark
 "
 " set 1 for the specific themes support
 " let g:one_allow_italics = 1 " I love italic for comments
@@ -255,6 +257,7 @@ let g:limelight_conceal_ctermfg = 240
 " == MAPPINGS ======
 "
 " == CLOSE && WRITE
+nnoremap <leader>q :q!<CR>
 map <C-x> :wq<CR>
 "
 " == WRITE
