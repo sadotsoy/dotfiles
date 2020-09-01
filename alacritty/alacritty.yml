@@ -3,7 +3,7 @@
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty it self.
-# env:
+env:
   # TERM env customization.
   #
   # If this property is not set, alacritty will set it to xterm-256color.
@@ -11,7 +11,7 @@
   # Note that some xterm terminfo databases don't declare support for italics.
   # You can verify this by checking for the presence of `smso` and `sitm` in
   # `infocmp xterm-256color`.
-  # TERM: xterm-256color-italic
+  TERM: xterm-256color
 # Window Customization
 window:
   # Window dimensions (changes require restart)
@@ -56,7 +56,7 @@ window:
 scrolling:
   # maximum number of lines in the scrollback buffer. Specifying '0' will
   # disable scrolling.
-  history: 0
+  history: 1000
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).
   multiplier: 3
@@ -71,6 +71,7 @@ font:
   normal:
     family: Hack
     style: Regular
+    # family: "Source Code Pro"
   bold:
     family: Hack
     style: Bold
@@ -151,6 +152,10 @@ cursor:
 # Live config reload (changes require restart)
 live_config_reload: true
 
+# debug:
+  # Display the time it takes to redraw each frame.
+  # render_timer: true
+
 mouse:
   # Click settings
   #
@@ -184,8 +189,8 @@ key_bindings:
   - { key: B,      mods: Command,            action: SearchBackward   }
 
   # Vi Mode
-  - { key: Space,  mods: Shift|Control, mode: Vi, action: ScrollToBottom          }
-  #- { key: Space,  mods: Shift|Control,           action: ToggleViMode            }
+  # - { key: Space,  mods: Shift|Control, mode: Vi, action: ScrollToBottom          }
+  # - { key: Space,  mods: Shift|Control,           action: ToggleViMode            }
   #- { key: Escape,                      mode: Vi, action: ClearSelection          }
   #- { key: I,                           mode: Vi, action: ScrollToBottom          }
   #- { key: I,                           mode: Vi, action: ToggleViMode            }

@@ -197,12 +197,12 @@ Plug 'nightsense/cosmic_latte'
 Plug 'nikolvs/vim-sunbather'
 Plug 'pgdouyon/vim-yin-yang'
 Plug 'rakr/vim-one'
-" Plug 'sadotsoy/darkforce-vim-colors'
+Plug 'sadotsoy/darkforce-vim-colors'
 Plug 'sainnhe/edge'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'szorfein/fromthehell.vim'
 Plug 'wadackel/vim-dogrun'
-Plug '~/workspace/personal/darkforce-vim-colors'
+" Plug '~/workspace/personal/darkforce-vim-colors'
 " Plug 'sadotsoy/darkforce-vim-colors', { 'branch': 'develop' }
 
 " === SEARCHING
@@ -386,6 +386,7 @@ map <leader>gd :Gdiffsplit<cr>
 map <leader>gm :Gcommit<cr>
 map <leader>gp :Gpush<cr>
 map <leader>gs :G<cr>
+map <leader>gw :Gwrite<cr>
 nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
 "

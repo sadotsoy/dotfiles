@@ -64,6 +64,7 @@ alias guru="cd ~/workspace/guru"
 alias personal="cd ~/workspace/personal"
 alias fk="cd ~/workspace/freshkampo"
 alias server="./utils/ngrock http 3000"
+alias ed="nvim"
 alias vim="nvim"
 # ALIAS
 # IPHONE
@@ -133,7 +134,7 @@ alias dps="docker ps"
 alias dup="docker-compose up"
 # VIM
 alias nvrc="nvim ~/dotfiles/nvim/init.vim"
-alias nvm="nvim -c \":EditVifm\""
+alias vf="nvim -c \":EditVifm\""
 
 alias vi3="nvim ~/.config/i3/config"
 alias vkhd="nvim ~/.khdrc"
