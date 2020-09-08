@@ -387,8 +387,8 @@ map <leader>gm :Gcommit<cr>
 map <leader>gp :Gpush<cr>
 map <leader>gs :G<cr>
 map <leader>gw :Gwrite<cr>
-nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
+nmap <leader>gh :diffget //3<CR>
 "
 " == GOYO
 map <leader><ENTER> :Goyo<cr>

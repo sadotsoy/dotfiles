@@ -38,6 +38,10 @@ end
 
 function fish_mode_prompt; end
 
+#Z
+alias zh="cd (z -l | hh | sed 's/^[0-9,.]* *//')"
+# FzF
+alias hh="fzf --inline-info --height 20% --reverse"
 #GENERAL
 alias alcr="nvim ~/dotfiles/alacritty/alacritty.yml"
 #FKENV
