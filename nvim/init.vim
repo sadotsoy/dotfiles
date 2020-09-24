@@ -442,8 +442,9 @@ function! s:statusline_generator()
   let bufferNumber = "  [%n]"
   let filePath = " %f "
   let percent = " [%%%p] " " percent of the cursor position respect the file
-  " results
+  " modes wrapper
   let mode = normal.insert.replace.visual.vblock
+  " final result
   return mode.gray.filePath.sepRight.yellow.bufferNumber.sep.orange.columnLines.sep.pink2.percent
 endfunction
 let &statusline = s:statusline_generator() " set the status line
