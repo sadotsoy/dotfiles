@@ -11,7 +11,7 @@ window:
 scrolling:
   history: 10000
   multiplier: 3
-dynamic_title: true
+window.dynamic_title: true
 
 # Font Customization
 font:
