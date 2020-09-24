@@ -38,7 +38,12 @@ end
 
 function fish_mode_prompt; end
 
+#Z
+alias zh="cd (z -l | hh | sed 's/^[0-9,.]* *//')"
+# FzF
+alias hh="fzf --inline-info --height 20% --reverse"
 #GENERAL
+alias alcr="nvim ~/dotfiles/alacritty/alacritty.yml"
 #FKENV
 alias fkenv="source ~/workspace/freshkampo/fkguacamole/bin/activate.fish"
 alias mng="./manage.py"
@@ -63,6 +68,7 @@ alias guru="cd ~/workspace/guru"
 alias personal="cd ~/workspace/personal"
 alias fk="cd ~/workspace/freshkampo"
 alias server="./utils/ngrock http 3000"
+alias ed="nvim"
 alias vim="nvim"
 # ALIAS
 # IPHONE
@@ -132,7 +138,7 @@ alias dps="docker ps"
 alias dup="docker-compose up"
 # VIM
 alias nvrc="nvim ~/dotfiles/nvim/init.vim"
-alias nvm="nvim -c \":EditVifm\""
+alias vf="nvim -c \":EditVifm\""
 
 alias vi3="nvim ~/.config/i3/config"
 alias vkhd="nvim ~/.khdrc"
@@ -143,7 +149,7 @@ alias lsa="exa -lah --git"
 alias tree="exa -Th "
 # SSH
 alias removessh="ssh-add -D"
-alias personalssh="ssh-add ~/.ssh/id_personal"
+alias personalssh="ssh-add ~/.ssh/id_sadtsoy"
 # MK
 alias mk="mkdir"
 # TOUCH
