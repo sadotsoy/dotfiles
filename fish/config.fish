@@ -42,6 +42,7 @@ function fish_mode_prompt; end
 alias zh="cd (z -l | hh | sed 's/^[0-9,.]* *//')"
 # FzF
 alias hh="fzf --inline-info --height 20% --reverse"
+alias nh="nvim (hh | sed 's/^[0-9,.]* *//')"
 #GENERAL
 alias alcr="nvim ~/dotfiles/alacritty/alacritty.yml"
 #FKENV
@@ -115,6 +116,8 @@ alias reset="git reset HEAD"
 alias standup="git-standup"
 alias stash="git stash"
 alias vgit="git log | vim -R-"
+# gsearch need 'string' and path
+alias gsearch="git log -c -S"
 # ranger
 alias ra="ranger"
 # NPM | YARN
