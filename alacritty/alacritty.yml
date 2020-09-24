@@ -61,10 +61,12 @@ scrolling:
   # scrollback is enabled (history > 0).
   multiplier: 3
 
+
   # Window tilte
   # title: Sadotsoy
   # Allow terminal applications to change Alacritty's window title.
   window.dynamic_title: true
+
 
 # Font Customization
 font:
