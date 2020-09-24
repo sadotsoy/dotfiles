@@ -2,53 +2,49 @@
 "
 " =================
 " == GENERAL ======
-let mapleader = ','							" set the <leader>,
-" set colorcolumn=200
-" set nowrap                      " display long lines
-au BufWritePre * let &bex = '@' "Meaningful backup name, ex: filename@
-set autoread					  				" detech when a file is changed
-set backup                      " Turn on backup option
-set backupcopy=yes              " Overwrite the original backup file
-set backupdir=~/.backup//       " Where to store backups
-set clipboard^=unnamed,unnamedplus " Yank and Paste with the system clipboard
-set cmdheight=2                 " More space for displaying messages
+let mapleader = ','                        " set the <leader>
+au BufWritePre * let &bex = '@'            " Meaningful backup name, ex: filename@
+set autoread                               " detech when a file is changed
+set backup                                 " Turn on backup option
+set backupcopy=yes                         " Overwrite the original backup file
+set backupdir=~/.backup//                  " Where to store backups
+set clipboard^=unnamed,unnamedplus         " Yank and Paste with the system clipboard
+set cmdheight=2                            " More space for displaying messages
 set confirm
-set cursorline                  " active cursorline
-set diffopt+=vertical           " vertical split
-set directory=~/.swap//         " Where to store swap files
-set hidden                      " Required to keep multiple open buffers
-set hlsearch                    " Show the prev search pattern
-set incsearch                   " set to the first match pattern
-set laststatus=2								" show the status line all the time
-set mouse=a                     " Enable mouse to fix the resize scroll cycle
+set cursorline                             " active cursorline
+set diffopt+=vertical                      " vertical split
+set directory=~/.swap//                    " Where to store swap files
+set hidden                                 " Required to keep multiple open buffers
+set hlsearch                               " Show the prev search pattern
+set incsearch                              " set to the first match pattern
+set laststatus=2                           " show the status line all the time
+set mouse=a                                " Enable mouse to fix the resize scroll cycle
+set noshowmode                             " hide the mode
 set scroll=5
 set scrolloff=8
-set shell=/bin/bash							" set bash for vim command
+set shell=/bin/bash                        " set bash for vim command
 set showcmd
 set sidescrolloff=8
-set updatetime=50               " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
-set wildignore+=*node_modules/**  " Ignore node_modules
+set updatetime=50                          " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
+set wildignore+=*node_modules/**           " Ignore node_modules
 set wildmenu
 set writebackup
-setlocal textwidth=280				  " have long lines wrap inside comments
-
-" == NUMBER LINES               " set relative number
-set number relativenumber
+setlocal textwidth=280                     " have long lines wrap inside comments
+set number relativenumber                 " relative lines
 set nu rnu
-
 " == Splits
-set splitbelow                  " move the new split below the current [DOWN]
-set splitright                  " move focus to the new split
+set splitbelow                             " move the new split below the current [DOWN]
+set splitright                             " move focus to the new split
 
 " == INDENT/TABS
-set autoindent									" Automatically set indent of new line
-set backspace=indent,eol,start	" Make backspace behave in a same manner
-set expandtab                   " Convert tabs to spaces
-set shiftround									" Round indenty to a multiple of 'shiftwidth'
-set shiftwidth=2								" Number of spaces to use for indent or unidendt
-set smartindent									" Tab respects 'tabsot', 'shifwidth'. and 'softtabstop'
-set softtabstop=2								" Edit as if the tabs are 4 characters wide
-set tabstop=2										" The visible width of the tabs
+set autoindent                             " Automatically set indent of new line
+set backspace=indent,eol,start             " Make backspace behave in a same manner
+set expandtab                              " Convert tabs to spaces
+set shiftround                             " Round indenty to a multiple of 'shiftwidth'
+set shiftwidth=2                           " Number of spaces to use for indent or unidendt
+set smartindent                            " Tab respects 'tabsot', 'shifwidth'. and 'softtabstop'
+set softtabstop=2                          " Edit as if the tabs are 4 characters wide
+set tabstop=2                              " The visible width of the tabs
 
 " == SPELLING
 set spelllang=en_us,es_mx
@@ -113,20 +109,23 @@ let g:ale_sign_warning = '+'
 call plug#begin()
 
 " == UTILITIES
-" Plug 'bling/vim-bufferline'             " show the buffers
-" Plug 'chrisbra/NrrwRgn'                 " :NR, NW, NRP, NRM
-" Plug 'mbbill/undotree'                  " undo history visualizer
-" Plug 'terryma/vim-multiple-cursors'     " multiple cursors with <C-n>
-Plug 'airblade/vim-gitgutter'           " shows a git diff
-Plug 'bronson/vim-trailing-whitespace'  " just call :FixWhitespace
+" Plug 'bling/vim-bufferline'           " show the buffers
+" Plug 'chrisbra/NrrwRgn'               " :NR, NW, NRP, NRM
+" Plug 'jiangmiao/auto-pairs'           " auto pairs surrounds.
+" Plug 'junegunn/vim-slash'             " search with swords.
+" Plug 'mbbill/undotree'                " undo history visualizer
+" Plug 'terryma/vim-multiple-cursors'   " multiple cursors with <C-n>
 Plug 'junegunn/goyo.vim'                " Distraction-free writing in Vim.
 Plug 'junegunn/limelight.vim'           " Higlight the cursor position with goyo looks awesome
-Plug 'raimondi/delimitmate'             " auto-completion for quotes, etc.
-Plug 'tpope/vim-commentary'             " comment with powers
-Plug 'tpope/vim-fugitive'               " the ultimate git helper
-Plug 'tpope/vim-surround'               " surround
-Plug 'rizzatti/dash.vim'                " open dash app
+Plug 'junegunn/vim-easy-align'          " easy align use ga
 Plug 'majutsushi/tagbar'                " toogle tag bar
+Plug 'rizzatti/dash.vim'                " open dash app
+
+" === GIT
+" Plug 'rhysd/git-messenger.vim'        " popup to show commits
+Plug 'airblade/vim-gitgutter'           " shows a git diff
+Plug 'junegunn/gv.vim'                  " git commit browser :GV -S foobar
+Plug 'tpope/vim-fugitive'               " the ultimate git helper
 
 " === LINTER & COMPLETE
 Plug 'dense-analysis/ale'
@@ -136,16 +135,20 @@ Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'vifm/vifm.vim'                    " VIFM
 
 " === UNIVERSAL TAGS/ AUTOIMPORT JS
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'kristijanhusak/vim-js-file-import', {'do': 'yarn minstall'}
+Plug 'ludovicchabant/vim-gutentags'
 
 " == SYNTAX
 " +== GENERAL
-Plug 'editorconfig/editorconfig-vim'
-Plug 'luochen1990/rainbow'
+Plug 'bronson/vim-trailing-whitespace'  " just call :FixWhitespace
+Plug 'editorconfig/editorconfig-vim'    " editorconfig
+Plug 'junegunn/vim-emoji'               " vim emoji
+Plug 'luochen1990/rainbow'              " rainbow close surrounds
 Plug 'mattn/emmet-vim'                  " the good plugin
+Plug 'raimondi/delimitmate'             " auto-completion for quotes, etc surrounds.
+Plug 'tpope/vim-commentary'             " comment with powers
+Plug 'tpope/vim-surround'               " surround
 Plug 'wellle/targets.vim'               " text obejects with operators ci(operator) ex: ci,
-Plug 'junegunn/vim-emoji'
 
 " +== JAVASCRIPT
 Plug 'maxmellon/vim-jsx-pretty'
@@ -153,8 +156,8 @@ Plug 'yuezk/vim-js'
 
 " +== CSS/STYLES
 " Plug 'ap/vim-css-color' "Displays a preview of colors with CSS
-Plug 'hail2u/vim-css3-syntax'
 Plug 'cakebaker/scss-syntax.vim'
+Plug 'hail2u/vim-css3-syntax'
 
 " +== MARKDOWN
 " Plug 'tpope/vim-markdown'
@@ -231,23 +234,6 @@ colorscheme darkforce
 set t_Co=256
 set ts=2 sw=2 et
 
-" +=== STATUSLINE
-set noshowmode             " No see again the inset on status
-set statusline=2
-set statusline=
-set statusline+=%#IncSearch#%{(mode()=='n')?'\ \ NORMAL\ ':''}
-set statusline+=%#Search#%{(mode()=='i')?'\ \ INSERT\ ':''}
-set statusline+=%{(mode()=='r')?'\ \ REPLACE\ ':''}
-set statusline+=%#Visual#%{(mode()=='v')?'\ \ VISUAL\ ':''}
-set statusline+=%#StatusLine#%{(mode()=='V')?'\ \ V-LINE\ ':''}
-set statusline+=%#CursorLineNr#
-set statusline+=\ %t " fileName
-set statusline+=%= "Right side settings
-set statusline+=%#Todo#
-set statusline+=\ [%n] " Buffer number
-set statusline+=%#Search#
-set statusline+=\ %c:%l/%L " column:line/TOTALLINES
-set statusline+=\ [%%%p] " percent of the cursor position respect the file
 
 " +=== LIMELIGHT
 let g:limelight_conceal_ctermfg = 'gray'
@@ -256,9 +242,14 @@ let g:limelight_conceal_ctermfg = 240
 " =================
 " == MAPPINGS ======
 "
+"
+" Start interactive Easy Align in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive Easy Align for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 " == CLOSE && WRITE
 nnoremap <leader>q :q!<CR>
-map <C-x> :wq<CR>
+map <C-q> :wq<CR>
 "
 " == WRITE
 map <C-w> :w<CR>
@@ -311,7 +302,8 @@ map <leader>pg :PlugUpgrade<CR>
 map <leader>hi :so $VIMRUNTIME/syntax/hitest.vim<CR>
 "
 " === UltiSnips
-map <leader>ue :CocList snippets<cr>
+" map <leader>ue :CocList snippets<cr>
+map <leader>ue :CocCommand snippets.editSnippets<cr>
 "
 " == PDF
 map <leader>pdf :command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> -
@@ -383,12 +375,14 @@ map <leader>ga :!git add %<cr>:Gcommit<cr>
 map <leader>gb :Gblame<cr>
 map <leader>gc :GCheckout<cr>
 map <leader>gd :Gdiffsplit<cr>
+map <leader>ge :GitMessenger<cr>
 map <leader>gm :Gcommit<cr>
 map <leader>gp :Gpush<cr>
 map <leader>gs :G<cr>
+map <leader>gv :GV<CR>
 map <leader>gw :Gwrite<cr>
-nmap <leader>gu :diffget //2<CR>
 nmap <leader>gh :diffget //3<CR>
+nmap <leader>gu :diffget //2<CR>
 "
 " == GOYO
 map <leader><ENTER> :Goyo<cr>
@@ -404,10 +398,7 @@ map <C-g>e :set spelllang=en_us<CR>
 """" DEPENDS OF THE COLORSCHEME
 map <C-l>l :set background=light<CR>
 map <C-d>d :set background=dark<!-- <CR> -->
-"
-" =================
-" == FUNCTIONS ====
-"
+
 " +== MOVE WINDOWS DEPENDS H,J,K,L
 map <C-h> :wincmd h<CR>
 map <C-j> :wincmd j<CR>
@@ -417,6 +408,45 @@ map <C-l> :wincmd l<CR>
 " == SPLITS
 nnoremap <silent> vv <C-w>v
 nnoremap <silent> vs <C-w>s
+
+"
+" =================
+" ==== MACROS =====
+" macro to surround all the word
+let @s = 'ysiw'
+
+"
+" =================
+" == { FUNCTIONS } ====
+
+" == STATUSLINE
+function! s:statusline_generator()
+  " modes
+  let normal= "%#MoreMsg#%{(mode()=='n')?'\ \ NORMAL\ ':''}"
+  let insert= "%#Underlined#%{(mode()=='i')?'\ \ INSERT\ ':''}"
+  let replace = "%{(mode()=='r')?'\ \ REPLACE\ ':''}"
+  let visual = "%#Folded#%{(mode()=='v')?'\ \ VISUAL\ ':''}"
+  " let vline = "%#Folded#%{(mode()=='V')?'\ \ V-LINE\ ':''}"
+  let vblock = "%#Search#%{(mode()=='\<C-V>')?'\ \ V-BLOCK\ ':''}"
+  " utils
+  let sep = '  '
+  let sepRight= ' %= '
+  " colors
+  let gray = '%#CursorLineNr#'
+  let yellow = '%#String#'
+  let pink = '%#DfPopup#'
+  let pink2 = '%#SpecialComment#'
+  let orange = '%#Function#'
+  " data
+  let columnLines = " [%c:%l/%L]" "column:line/TOTALLINES
+  let bufferNumber = "  [%n]"
+  let filePath = " %f "
+  let percent = " [%%%p] " " percent of the cursor position respect the file
+  " results
+  let mode = normal.insert.replace.visual.vblock
+  return mode.gray.filePath.sepRight.yellow.bufferNumber.sep.orange.columnLines.sep.pink2.percent
+endfunction
+let &statusline = s:statusline_generator() " set the status line
 
 " COC TAB FUNCTIONS
 inoremap <silent><expr> <TAB>
