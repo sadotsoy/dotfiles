@@ -123,6 +123,8 @@ Plug 'rizzatti/dash.vim'                " open dash app
 
 " === GIT
 " Plug 'rhysd/git-messenger.vim'        " popup to show commits
+Plug 'Kachyz/vim-gitmoji'               " gitmoji c-x c-u
+set completefunc=emoji#complete
 Plug 'airblade/vim-gitgutter'           " shows a git diff
 Plug 'junegunn/gv.vim'                  " git commit browser :GV -S foobar
 Plug 'tpope/vim-fugitive'               " the ultimate git helper
