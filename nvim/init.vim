@@ -1,4 +1,4 @@
-" NeoVIM config file by @sadotsoy SEP 24 2020 :)
+" NeoVIM config file by @sadotsoy OCT 1 2020 :)
 "
 " == GENERAL STUFF ======
 source $HOME/.config/nvim/general/settings.vim
