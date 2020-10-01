@@ -44,12 +44,6 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-let g:coc_snippet_next = '<tab>'
-
-" +=== Fuzzy Search
-let g:fzf_layout = { 'window':{ 'width': 0.9, 'height': 0.9 }}
-let $FZF_DEFAULT_OPTS='--reverse'
-
 " +=== GOYO FUNCTIONS
 function! s:goyo_enter()
   set noshowmode
