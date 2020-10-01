@@ -256,6 +256,8 @@ map <C-q> :wq<CR>
 " == WRITE
 map <C-w> :w<CR>
 "
+" gitmoji
+nnoremap <Leader>mo i<C-X><C-U><BS><BS><BS><BS><BS><BS><BS><BS>
 " == RELOAD SOURCE
 map <C-s> :source ~/.config/nvim/init.vim<CR>
 "
@@ -274,7 +276,6 @@ map <leader>so :sort<CR>
 " nnoremap z zfit
 "
 " === Sessions
-" GURU
 " ALT + R to load the session
 " ALT + S to save the session
 nmap <silent> ß :mks! Session.vim<CR>
@@ -313,7 +314,8 @@ map <leader>pdf :command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q
 " == PDFLATEX
 map <leader>ltx :!pdflatex %<CR>
 "
-" == SEARCHING
+" == SEARCHING Fuzzy
+map <leader>bc :BCommits<cr>
 map <leader>bf :Buffers<cr>
 map <leader>co :Commits<cr>
 map <leader>fa :Ag<cr>
@@ -465,8 +467,8 @@ endfunction
 
 let g:coc_snippet_next = '<tab>'
 
-" +=== Fuzzy
-let g:fzf_layout = { 'window':{ 'width': 0.8, 'height': 0.8 }}
+" +=== Fuzzy Search
+let g:fzf_layout = { 'window':{ 'width': 0.9, 'height': 0.9 }}
 let $FZF_DEFAULT_OPTS='--reverse'
 
 " +=== GOYO FUNCTIONS
