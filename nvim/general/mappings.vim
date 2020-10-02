@@ -186,3 +186,7 @@ map <C-l> :wincmd l<CR>
 " == SPLITS
 nnoremap <silent> vv <C-w>v
 nnoremap <silent> vs <C-w>s
+
+" == Colors
+map <leader>hco :ColorToggle<CR>
+map <leader>sco :ColorSwapFgBg<CR>
