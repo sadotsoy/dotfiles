@@ -58,6 +58,7 @@ Plug 'yuezk/vim-js'
 " Plug 'ap/vim-css-color' "Displays a preview of colors with CSS
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'hail2u/vim-css3-syntax'
+Plug 'chrisbra/Colorizer' " Higlight colors
 
 " +== MARKDOWN
 " Plug 'tpope/vim-markdown'
