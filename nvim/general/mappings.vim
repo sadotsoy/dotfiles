@@ -15,8 +15,6 @@ map <C-q> :wq<CR>
 " == WRITE
 map <C-w> :w<CR>
 "
-" gitmoji
-nnoremap <Leader>mo i<C-X><C-U><BS><BS><BS><BS><BS><BS><BS><BS>
 " == RELOAD SOURCE
 map <C-s> :source ~/.config/nvim/init.vim<CR>
 "
@@ -74,15 +72,12 @@ map <leader>pdf :command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q
 map <leader>ltx :!pdflatex %<CR>
 "
 " == SEARCHING Fuzzy
-map <leader>bc :BCommits<cr>
 map <leader>bf :Buffers<cr>
-map <leader>co :Commits<cr>
 map <leader>fa :Ag<cr>
 map <leader>fc :Colors<cr>
 map <leader>fl :Lines<cr>
 map <leader>fm :Marks<cr>
 map <leader>fs :Snippets<cr>
-map <leader>gf :GitFiles?<cr>
 map <leader>ma :Maps<cr>
 map <leader>tg :TagbarToggle<cr>
 map <leader>wl :Windows<cr>
@@ -91,6 +86,7 @@ map <leader>wl :Windows<cr>
 " else use regular :Files
 " CREDITS : https://rietta.com/blog/hide-gitignored-files-fzf-vim/
 nnoremap <expr> <C-p> (len(system('git rev-parse')) ? ':Files' : ':GFiles --exclude-standard --others --cached')."\<cr>"
+" nnoremap <expr> <C-p>:Files<cr>
 
 " == TAB MAPPING
 map <leader>tc :tabnew<cr>
@@ -127,33 +123,36 @@ let g:coc_snippet_next = '<c-j>'
 let g:coc_snippet_prev = '<c-k>'
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
-"
+
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-"
+
 " Symbol renaming
 nmap <leader>rr <Plug>(coc-rename)
 nmap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
-"
+
 " == RESIZE WINDOW
 nnoremap <Up> :resize +2<CR>
 nnoremap <Down> :resize -2<CR>
 nnoremap <Left> :vertical resize +2<CR>
 nnoremap <Right> :vertical resize -2<CR>
-"
+
 " == emoji
 nmap <leader>em :%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<CR>
-"
+
 " == GIT MAPPING
 " CHECK :HELP GSTATUS FOR MORE KEYS
+map <leader>bc :BCommits<cr>
+map <leader>co :Commits<cr>
 map <leader>ga :!git add %<cr>:Gcommit<cr>
 map <leader>gb :Gblame<cr>
 map <leader>gc :GCheckout<cr>
 map <leader>gd :Gdiffsplit<cr>
 map <leader>ge :GitMessenger<cr>
+map <leader>gf :GitFiles?<cr>
 map <leader>gm :Gcommit<cr>
 map <leader>gp :Gpush<cr>
 map <leader>gs :G<cr>
@@ -161,7 +160,10 @@ map <leader>gv :GV<CR>
 map <leader>gw :Gwrite<cr>
 nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
-"
+" ++ gitmoji
+nnoremap <Leader>mo i<C-X><C-U><BS><BS><BS><BS><BS><BS><BS><BS>
+
+
 " == GOYO
 map <leader><ENTER> :Goyo<cr>
 "
@@ -190,3 +192,7 @@ nnoremap <silent> vs <C-w>s
 " == Colors
 map <leader>hco :ColorToggle<CR>
 map <leader>sco :ColorSwapFgBg<CR>
+
+" == Lists
+" += see the syn(TAX) list
+map <leader>sli :syn list<CR>
