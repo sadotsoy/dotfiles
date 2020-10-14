@@ -62,6 +62,8 @@ Plug 'chrisbra/Colorizer' " Higlight colors
 
 " +== MARKDOWN
 " Plug 'tpope/vim-markdown'
+Plug 'godlygeek/tabular' " script for text filtering and alignment
+Plug 'plasticboy/vim-markdown' " Markdown vim mode
 
 " == SNIPPETS
 " Plug 'SirVer/ultisnips'
