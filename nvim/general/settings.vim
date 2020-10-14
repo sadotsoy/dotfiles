@@ -3,6 +3,7 @@
 " == GENERAL SETTINGS ======
 let mapleader = ','                        " set the <leader>
 au BufWritePre * let &bex = '@'            " Meaningful backup name, ex: filename@
+autocmd BufEnter * silent! lcd %:p:h
 set autochdir                              " change working directory by file
 set nomodeline
 set autoread                               " detech when a file is changed
@@ -66,3 +67,6 @@ set encoding=utf-8
 set magic												" set magic on, for regex
 set mat=2												" how many tenths of a second to blink
 set showmatch										" show matching braces
+
+" == PLUGINS
+set completefunc=emoji#complete
