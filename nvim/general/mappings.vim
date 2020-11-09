@@ -100,14 +100,14 @@ map <leader>tp :tabprevious<cr>
 map <leader>tq :tabclose<cr>
 "
 " == ALE MAPPING
-nmap <silent> {g <Plug>(ale_previous_wrap)
-nmap <silent> }g <Plug>(ale_next_wrap)
+nmap <silent> [g <Plug>(ale_previous_wrap)
+nmap <silent> ]g <Plug>(ale_next_wrap)
 "
 " == COC MAPPING
 " Use `[g` and `]g` to navigate diagnostics
 " Use `{g` and `}g` to navigate linter diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> {g <Plug>(coc-diagnostic-prev)
+nmap <silent> }g <Plug>(coc-diagnostic-next)
 
 " Snippets
 " let g:UltiSnipsExpandTrigger="<tab>"
@@ -150,7 +150,7 @@ map <leader>co :Commits<cr>
 map <leader>ga :!git add %<cr>:Gcommit<cr>
 map <leader>gb :Gblame<cr>
 map <leader>gc :GCheckout<cr>
-map <leader>gd :Gdiffsplit<cr>
+map <leader>gd :Gdiffsplit!<cr>
 map <leader>ge :GitMessenger<cr>
 map <leader>gf :GitFiles?<cr>
 map <leader>gm :Gcommit<cr>
@@ -169,6 +169,8 @@ map <leader><ENTER> :Goyo<cr>
 "
 " == SPELLING
 map <leader>s :set spell<cr>
+" === see list of alternatives
+map <C-g>= z=
 " +=== SPANISH
 map <C-g>s :set spelllang=es_mx<CR>
 " +=== ENGLISH
