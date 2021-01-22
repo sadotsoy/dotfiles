@@ -1,19 +1,34 @@
 " FUNCTIONS FILE @sadotsoy
 "
 " == { FUNCTIONS } ====
+"
+" Linter status line
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%dW %dE',
+    \   all_non_errors,
+    \   all_errors
+    \)
+endfunction
 
 " == STATUSLINE
 function! s:statusline_generator()
   " modes
-  let normal= "%#MoreMsg#%{(mode()=='n')?'\ \ NORMAL\ ':''}"
-  let insert= "%#Underlined#%{(mode()=='i')?'\ \ INSERT\ ':''}"
-  let replace = "%{(mode()=='r')?'\ \ REPLACE\ ':''}"
-  let visual = "%#Folded#%{(mode()=='v')?'\ \ VISUAL\ ':''}"
-  " let vline = "%#Folded#%{(mode()=='V')?'\ \ V-LINE\ ':''}"
-  let vblock = "%#Search#%{(mode()=='\<C-V>')?'\ \ V-BLOCK\ ':''}"
+  let normal= "%#MoreMsg#%{(mode()=='n')?'\ \ N\ ':''}"
+  let insert= "%#Underlined#%{(mode()=='i')?'\ \ I\ ':''}"
+  let replace = "%{(mode()=='r')?'\ \ R\ ':''}"
+  let visual = "%#Folded#%{(mode()=='v')?'\ \ V\ ':''}"
+  " let vline = "%#Folded#%{(mode()=='V')?'\ \ V-L\ ':''}"
+  let vblock = "%#Search#%{(mode()=='\<C-V>')?'\ \ V-B\ ':''}"
   " utils
   let sep = '  '
   let sepRight= ' %= '
+  let pipe='|'
   " colors
   let gray = '%#CursorLineNr#'
   let yellow = '%#String#'
@@ -28,7 +43,7 @@ function! s:statusline_generator()
   " modes wrapper
   let mode = normal.insert.replace.visual.vblock
   " final result
-  return mode.gray.filePath.sepRight.yellow.bufferNumber.sep.orange.columnLines.sep.pink2.percent
+  return mode.gray.filePath.sepRight.yellow.sep.pipe.LinterStatus().pipe.yellow.bufferNumber.sep.orange.columnLines.sep.pink2.percent
 endfunction
 let &statusline = s:statusline_generator() " set the status line
 
