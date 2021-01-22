@@ -35,6 +35,7 @@ Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'vifm/vifm.vim'                    " VIFM
 
 " === UNIVERSAL TAGS/ AUTOIMPORT JS
+" TODO: something is breaking gutentags
 Plug 'kristijanhusak/vim-js-file-import', {'do': 'yarn minstall'}
 Plug 'ludovicchabant/vim-gutentags'
 

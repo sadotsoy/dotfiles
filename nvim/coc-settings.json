@@ -1,9 +1,8 @@
 {
-  "suggest.echodocSupport": true,
-  "suggest.maxCompleteItemCount": 20,
-  "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact"],
   "diagnostic.errorSign": "•",
+  "diagnostic.infoSign": "•",
+  "diagnostic.enable": false,
   "diagnostic.warningSign": "•",
-  "diagnostic.infoSign": "•"
+  "suggest.echodocSupport": true,
+  "suggest.maxCompleteItemCount": 20
 }
-
