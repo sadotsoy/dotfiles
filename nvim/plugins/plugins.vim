@@ -2,13 +2,6 @@
 "
 " =================
 " == PLUGINS ======
-" == auto-install vim-plug
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  "autocmd VimEnter * PlugInstall
-  autocmd VimEnter * PlugInstall | source $MYVIMRC
-endif
 
 " == INITIALIZE PLUG
 call plug#begin()
@@ -42,6 +35,7 @@ Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'vifm/vifm.vim'                    " VIFM
 
 " === UNIVERSAL TAGS/ AUTOIMPORT JS
+" TODO: something is breaking gutentags
 Plug 'kristijanhusak/vim-js-file-import', {'do': 'yarn minstall'}
 Plug 'ludovicchabant/vim-gutentags'
 
@@ -65,9 +59,12 @@ Plug 'yuezk/vim-js'
 " Plug 'ap/vim-css-color' "Displays a preview of colors with CSS
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'hail2u/vim-css3-syntax'
+Plug 'chrisbra/Colorizer' " Higlight colors
 
 " +== MARKDOWN
 " Plug 'tpope/vim-markdown'
+Plug 'godlygeek/tabular' " script for text filtering and alignment
+Plug 'plasticboy/vim-markdown' " Markdown vim mode
 
 " == SNIPPETS
 " Plug 'SirVer/ultisnips'

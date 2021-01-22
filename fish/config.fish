@@ -21,7 +21,7 @@ set -x NODE_OPTIONS --max_old_space_size=4096
 # set -gx PATH $PATH:$ANDROID_HOME/tools/bin
 # set -gx PATH $PATH:$ANDROID_HOME/platform-tools
 # ----PYTHON
-# set -x PYTHON_PATH $HOME/Library/Python/3.7/bin
+# set -x PYTHON_PATH /usr/local/bin/python3
 # set -g PATH $PATH:$PYTHON_PATH
 # set VIRTUAL_ENV "/Users/sadotsoy/workspace/freshkampo/fkguacamole"
 # ----CYPRES
