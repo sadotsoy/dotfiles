@@ -3,8 +3,8 @@
 " == GENERAL SETTINGS ======
 let mapleader = ','                        " set the <leader>
 au BufWritePre * let &bex = '@'            " Meaningful backup name, ex: filename@
-autocmd BufEnter * silent! lcd %:p:h
-set autochdir                              " change working directory by file
+" autocmd BufEnter * silent! lcd %:p:h
+" set autochdir                              " change working directory by file
 set nomodeline
 set autoread                               " detech when a file is changed
 set backup                                 " Turn on backup option
@@ -70,3 +70,9 @@ set showmatch										" show matching braces
 
 " == PLUGINS
 set completefunc=emoji#complete
+
+" Filetypes
+" REACT
+augroup filetypedetect
+    autocmd BufNew,BufNewFile,BufRead *.js,*.jsx :setfiletype javascriptreact
+augroup END
