@@ -8,18 +8,20 @@
 xmap ga <Plug>(EasyAlign)
 " Start interactive Easy Align for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
 " == CLOSE && WRITE
 nnoremap <leader>q :q!<CR>
-map <C-q> :wq<CR>
-"
+
 " == WRITE
-map <C-w> :w<CR>
+map <C-w>w :w<CR>
 "
 " == RELOAD SOURCE
-map <C-s> :source ~/.config/nvim/init.vim<CR>
+map <C-s>s :source $HOME/.config/nvim/init.vim<CR>
 "
 " == EDIT CONFIG FILE
-map <leader>, :vsplit ~/.config/nvim/init.vim<CR>
+map <leader>, :vsplit $HOME/.config/nvim/init.vim<CR>
+
+map <leader><Space>s :EditVifm $HOME/dotfiles/nvim/<CR>
 "
 " == Sort
 map <leader>so :sort<CR>
@@ -35,8 +37,8 @@ map <leader>so :sort<CR>
 " === Sessions
 " ALT + R to load the session
 " ALT + S to save the session
-nmap <silent> ß :mks! Session.vim<CR>
-nmap <silent> ® :source Session.vim<CR>
+nmap ß :mks! Session.vim<CR>
+nmap ® :source Session.vim<CR>
 "
 " === Recovers
 " noremap <leader>re :vnew | r #<CR>
@@ -124,6 +126,10 @@ let g:coc_snippet_prev = '<c-k>'
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 
+" refactor
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -133,6 +139,7 @@ nmap <silent> gr <Plug>(coc-references)
 " Symbol renaming
 nmap <leader>rr <Plug>(coc-rename)
 nmap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>psw :CocSearch <C-R>=expand("<cword>")<CR><CR>/<C-r><C-w><CR>
 
 " == RESIZE WINDOW
 nnoremap <Up> :resize +2<CR>
