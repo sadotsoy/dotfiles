@@ -21,7 +21,7 @@ map <C-s>s :source $HOME/.config/nvim/init.vim<CR>
 " == EDIT CONFIG FILE
 map <leader>, :vsplit $HOME/.config/nvim/init.vim<CR>
 
-map <leader><Space>s :EditVifm $HOME/dotfiles/nvim/<CR>
+map <leader><Space>s :Vifm /Users/sadotsoy/dotfiles/nvim/<CR>
 "
 " == Sort
 map <leader>so :sort<CR>
@@ -160,7 +160,7 @@ map <leader>gc :GCheckout<cr>
 map <leader>gd :Gdiffsplit!<cr>
 map <leader>ge :GitMessenger<cr>
 map <leader>gf :GitFiles?<cr>
-map <leader>gm :Gcommit<cr>
+map <leader>gm :Git commit<cr>
 map <leader>gp :Gpush<cr>
 map <leader>gs :G<cr>
 map <leader>gv :GV<CR>
