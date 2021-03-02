@@ -8,6 +8,10 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 echo "Creating the nvim folder in config path"
 mkdir "~/.config/nvim/"
 
+echo "Creating backup and swap folders"
+mkdir "~/.backup/"
+mkdir "~/.swap/"
+
 echo "Linking init.vim"
 ln -s "./init.vim" "~/.config/nvim/"
 

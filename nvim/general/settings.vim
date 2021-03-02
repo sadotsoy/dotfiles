@@ -8,13 +8,13 @@ au BufWritePre * let &bex = '@'            " Meaningful backup name, ex: filenam
 set autoread                               " detech when a file is changed
 set backup                                 " Turn on backup option
 set backupcopy=yes                         " Overwrite the original backup file
-set backupdir=~/.backup//                  " Where to store backups
+set backupdir=~/.backup/                  " Where to store backups
 set clipboard^=unnamed,unnamedplus         " Yank and Paste with the system clipboard
 set cmdheight=2                            " More space for displaying messages
 set confirm
 set cursorline                             " active cursorline
 set diffopt+=vertical                      " vertical split
-set directory=~/.swap//                    " Where to store swap files
+set directory=~/.swap/                    " Where to store swap files
 set hidden                                 " Required to keep multiple open buffers
 set hlsearch                               " Show the prev search pattern
 set incsearch                              " set to the first match pattern
@@ -80,6 +80,11 @@ set lcs=tab:-->,trail:- " display chars for tabs and trailing spaces
 augroup filetypedetect
     autocmd BufNew,BufNewFile,BufRead *.js,*.jsx :setfiletype javascriptreact
 augroup END
+
+" == PYTHON
+" Providers
+" let g:python3_host_prog  = '~/.envs/neovim/bin/python'
+" let g:loaded_python_provider = 0
 
 " augroup vimrc-statusline
 "     autocmd WinEnter * let g:status_line_active='simon'
