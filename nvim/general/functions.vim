@@ -16,9 +16,29 @@ function! LinterStatus() abort
     \)
 endfunction
 
+" return if exist git branch
+function! StatuslineGit() abort
+  if exists("g:git_branch")
+    return g:git_branch
+  endif
+  return ''
+endfunction
+
+" get git branch
+function! GetGitBranch() abort
+  let l:is_git_dir = system('echo -n $(git rev-parse --is-inside-work-tree)')
+  let g:git_branch = l:is_git_dir == 'true' ?
+        \ system('bash -c "echo -n $(git rev-parse --abbrev-ref HEAD)"') : ''
+endfunction
+
+function! BufferActive() abort
+  return g:status_line_active
+endfunction
+
 " == STATUSLINE
 function! s:statusline_generator()
   " modes
+  " let active = (a:".startup_win_id." == win_getid()) ? "Active" : "None"
   let normal= "%#MoreMsg#%{(mode()=='n')?'\ \ N\ ':''}"
   let insert= "%#Underlined#%{(mode()=='i')?'\ \ I\ ':''}"
   let replace = "%{(mode()=='r')?'\ \ R\ ':''}"
@@ -29,6 +49,7 @@ function! s:statusline_generator()
   let sep = '  '
   let sepRight= ' %= '
   let pipe='|'
+  let tild='~'
   " colors
   let gray = '%#CursorLineNr#'
   let yellow = '%#String#'
@@ -37,13 +58,16 @@ function! s:statusline_generator()
   let orange = '%#Function#'
   " data
   let columnLines = " [%c:%l/%L]" "column:line/TOTALLINES
-  let bufferNumber = "  [%n]"
+  let bufferNumber = " [%n]"
   let filePath = " %f "
-  let percent = " [%%%p] " " percent of the cursor position respect the file
+  let fileType = " %y"
+  let percent = "[%%%p] " " percent of the cursor position respect the file
+  let gitBranch= "%{StatuslineGit()}"
+  let bufferActive = "%{BufferActive()}"
   " modes wrapper
   let mode = normal.insert.replace.visual.vblock
   " final result
-  return mode.gray.filePath.sepRight.yellow.sep.pipe.LinterStatus().pipe.yellow.bufferNumber.sep.orange.columnLines.sep.pink2.percent
+  return mode.gray.filePath.sepRight.pink.sep.tild.LinterStatus().tild.sep.yellow.yellow.bufferNumber.orange.columnLines.sep.pink2.percent
 endfunction
 let &statusline = s:statusline_generator() " set the status line
 

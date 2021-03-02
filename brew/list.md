@@ -1,44 +1,73 @@
 # Brew list
 
-- chunkwm
-- libtermkey
-- perl
-- exa
-- libtiff
-- python
-- freetype
-- libtool
-- python
-- @
-- 2
-- gdbm
-- libunistring
-- readline
-- gettext
-- libuv
-- redis
-- gradle
-- libvterm
-- ruby
-- icu4c
-- libyaml
-- screenresolution
-- imagemagick
-- luajit
-- sqlite
-- jemalloc
-- mongodb
-- unibilium
-- jpeg
-- msgpack
-- vim
-- khd
-- neofetch
-- wget
-- libidn2
-- node
-- xz
-- libpng
-- openssl
-- yar
-- n
+aom
+libcbor
+openssl@1.1
+brotli
+libde265
+pcre
+coreutils
+libffi
+pcre2
+ctags
+libfido2
+python@3.9
+docbook
+libheif
+readline
+docbook-xsl
+liblqr
+screenresolution
+exa
+libomp
+sfnt2woff
+findutils
+libpng
+sfnt2woff-zopfli
+fish
+libtermkey
+shared-mime-info
+freetype
+libtiff
+sqlite
+fzf
+libtool
+tcl-tk
+gdbm
+libuv
+the_silver_searcher
+gettext
+libvterm
+tree
+ghostscript
+little-cms2
+unibilium
+glib
+luajit-openresty
+vifm
+gmp
+moreutils
+webp
+gnu-getopt
+msgpack
+woff2
+grep
+n
+x265
+hstr
+neofetch
+xmlto
+icu4c
+neovim
+xz
+ilmbase
+node
+yarn
+imagemagick
+openexr
+z
+jpeg
+openjpeg
+ldns
+openssh
+alacritty
