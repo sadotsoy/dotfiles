@@ -8,24 +8,24 @@ then
     # Install the correct homebrew for each OS type
     if test "$(uname)" = "Darwin"
     then
-       ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    elif test "$(expr substr $(uname -s) 1 5)" = "Linux"
-    then
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
 fi
 
+echo "brew installed, updating and upgrading"
 # Make sure we're using the latest Homebrew.
 brew update
 
 # Upgrade any already-installed formulae.
 brew upgrade
 
+echo "brew prefix added"
 # Save Homebrew's installed location.
 BREW_PREFIX=$(brew --prefix)
 
 # Install GNU core utilities (those that come with macOS are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
+echo "installing utils"
 brew install coreutils
 ln -s "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
 
@@ -36,67 +36,51 @@ brew install findutils
 # Install GNU `sed`, overwriting the built-in `sed`.
 brew install gnu-sed --with-default-names
 
-# Install `wget` with IRI support.
-brew install wget --with-iri
-
+# brew installing dev tools
+echo "Installing dev tools"
+brew install alacritty
 brew install gmp
 brew install grep
-brew install openssh
-brew install node
-brew install yarn
 brew install n
+brew install neovim
+brew install node
+brew install openssh
+brew install yarn
 
 # Install font tools.
-brew tap bramstein/webfonttools
+echo "Installing fonts utils"
 brew install sfnt2woff
 brew install sfnt2woff-zopfli
 brew install woff2
+brew tap bramstein/webfonttools
 
-# Install fish shell and fisherman
+# Install fish shell and fisher plugin manager
+echo "Installing fish, fisher and setted to default shell"
 brew install fish
-curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
-echo /usr/local/bin/fish >> /etc/shells
+curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+# sudo bash -c 'echo "/usr/local/bin/fish" > /etc/shells'
+echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
 chsh -s /usr/local/bin/fish
 
 # Install other useful binaries.
+echo "Installing useful binaries"
+brew install ag
+brew install ctags
+brew install exa
+brew install fzf
+brew install hstr
+brew install imagemagick --with-webp
 brew install jpeg
 brew install neofetch
-brew install exa
-brew install imagemagick --with-webp
-#brew install ack
-#brew install autojump
-#brew install git
-#brew install gpg
-#brew install git-lfs
-#brew install imagemagick --with-webp
-#brew install lua
-#brew install lynx
-#brew install p7zip
-#brew install pigz
-#brew install pv
-#brew install rsync
-#brew install rename
-#brew install rlwrap
-#brew install ssh-copy-id
-#brew install tree
-#brew install vbindiff
-#brew install youtube-dl
-#brew install zopfli
+brew install tree
+brew install z
+
+ln -s "${BREW_PREFIX}/opt/fzf/install" "${BREW_PREFIX}/opt/fzf/install"
 
 # Installs Casks
+echo "Installing cask"
 brew tap caskroom/cask
 
-## Apps I use
-brew cask install 1password
-brew cask install dash
-brew cask install macvim
-#brew cask install brave
-brew cask install iterm2
-brew cask install webstorm
-brew cask install postman
-brew cask install slack
-brew cask install telegram
-brew cask install whatsapp
-
 # Remove outdated versions from the cellar.
+echo "Cleanup"
 brew cleanup
