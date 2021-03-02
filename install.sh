@@ -6,11 +6,5 @@ source brew/brew.sh
 # Install fish plugins and set my config file
 source fish/fish.sh
 
-# Install OSX WM
-source osxWM/osxWM.sh
-
-# Install plugin manager and set the vimrc file
-source vim/vim.sh
-
-# Set permissions
-source npm/npm.sh
+# Move config files and install vim plug
+source neovim/neovim.sh
