@@ -67,7 +67,7 @@ alias fm="vifm ."
 # WORKSPACE
 alias guru="cd ~/workspace/guru"
 alias personal="cd ~/workspace/personal"
-alias fk="cd ~/workspace/freshkampo"
+alias frida="cd ~/workspace/frida"
 alias server="./utils/ngrock http 3000"
 alias ed="nvim"
 alias vim="nvim"
@@ -152,7 +152,7 @@ alias lsa="exa -lah --git"
 alias tree="exa -Th "
 # SSH
 alias removessh="ssh-add -D"
-alias personalssh="ssh-add ~/.ssh/id_sadtsoy"
+alias personalssh="ssh-add ~/.ssh/id_sadotsoy"
 # MK
 alias mk="mkdir"
 # TOUCH

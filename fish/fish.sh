@@ -5,8 +5,13 @@
 # ln config.fish /Users/sadotsoy/.config/fish
 
 # Install fish plugins and themes
-echo "Installing plugins and theme"
-fisher add oh-my-fish/theme-perryh
-fisher add fisherman/getopts
-fisher add fisherman/git_util
-fisher add fisherman/gitignore
+echo "Installing fish plugins and theme"
+fisher install fisherman/getopts
+fisher install fisherman/git_util
+fisher install fisherman/gitignore
+fisher install franciscolourenco/done
+fisher install jethrokuan/z
+fisher install jorgebucaran/fisher
+fisher install jorgebucaran/hydro
+fisher install oh-my-fishoxfish
+fisher install pure-fish/pure
