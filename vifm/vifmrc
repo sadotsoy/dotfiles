@@ -6,6 +6,7 @@
 " show hidden/dotfiles by default
 windo normal zo
 only
+colorscheme gruvboxcolor
 
 " Automatically resolve symbolic links on l or Enter.
 set followlinks

@@ -46,6 +46,7 @@ brew install neovim
 brew install node
 brew install openssh
 brew install yarn
+brew install vifm
 
 # Install font tools.
 echo "Installing fonts utils"
@@ -54,10 +55,6 @@ brew install sfnt2woff-zopfli
 brew install woff2
 brew tap bramstein/webfonttools
 
-# Install fish shell and fisher plugin manager
-echo "Installing fish, fisher and setted to default shell"
-brew install fish
-curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 # sudo bash -c 'echo "/usr/local/bin/fish" > /etc/shells'
 echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
 chsh -s /usr/local/bin/fish

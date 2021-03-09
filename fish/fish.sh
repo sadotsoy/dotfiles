@@ -4,7 +4,17 @@
 # echo "Moving config.fish"
 # ln config.fish /Users/sadotsoy/.config/fish
 
+
+# Install fish shell and fisher plugin manager
+echo "Installing fish, fisher and setted to default shell"
+brew install fish
+
+/bin/bash -c "$(curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher)"
+
 # Install fish plugins and themes
+echo "Moving config.fish to config path"
+ln -s "${HOME}/dotfiles/fish/config.fish" "${HOME}/.config/fish/"
+
 echo "Installing fish plugins and theme"
 fisher install fisherman/getopts
 fisher install fisherman/git_util
