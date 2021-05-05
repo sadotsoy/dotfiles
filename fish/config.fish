@@ -173,6 +173,7 @@ alias remove="brew remove"
 alias search="brew search"
 alias update="brew update"
 alias upgrade="brew upgrade"
+alias brw="nvim ~/dotfiles/brew/brew.sh"
 # N
 alias n="sudo n"
 # PYTON/PIP
