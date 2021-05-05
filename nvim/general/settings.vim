@@ -61,6 +61,11 @@ set smartcase
 " open help in vertical split
 " cabbrev :h vert h
 
+" == FOLDS
+set foldmethod=syntax
+set foldnestmax=20
+set nofoldenable
+set foldlevel=2
 " == OTHERS
 filetype plugin indent on    " detecth the filetype
 set encoding=utf-8
