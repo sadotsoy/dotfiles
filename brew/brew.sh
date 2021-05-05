@@ -47,6 +47,7 @@ brew install node
 brew install openssh
 brew install yarn
 brew install vifm
+brew install jq
 
 # Install font tools.
 echo "Installing fonts utils"
