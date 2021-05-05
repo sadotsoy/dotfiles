@@ -8,7 +8,7 @@ let g:coc_snippet_next = '<tab>'
 " == ALE && DEOPLITE LINTERS/COMPLETE
 " Fix files with prettier, and then ESLint.
 let g:ale_linters = {'javascript': ['eslint'], 'javascripreact': ['eslint']}
-let g:ale_fixers = {'javascript': ['prettier', 'eslint'], 'scss': ['prettier'], 'vim': ['prettier'], 'html': ['prettier'], 'json': ['prettier']}
+let g:ale_fixers = {'javascript': ['prettier', 'eslint'],'css': ['prettier'], 'scss': ['prettier'], 'vim': ['prettier'], 'html': ['prettier'], 'json': ['prettier']}
 let g:ale_fix_on_save = 1
 let g:ale_javascript_eslint_use_local = 1
 let g:ale_echo_msg_error_str = 'E'
