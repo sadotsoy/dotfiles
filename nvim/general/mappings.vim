@@ -28,11 +28,19 @@ map <leader>so :sort<CR>
 "
 " === Folds
 " open all folds
-" nnoremap zr zR
-" Fold all tag
-" nnoremap fat zfat
-" Fold all inside tag
-" nnoremap z zfit
+" INSIDE
+nnoremap zr zR
+" nnoremap zo zO
+" MANUAL
+" nnoremap zit zfit
+" nnoremap zi{ zfi{
+" nnoremap zi[ zfi[
+" nnoremap zi( zfi(
+" AROUND
+" nnoremap zat zfat
+" nnoremap za{ zfa{
+" nnoremap za[ zfa[
+" nnoremap za( zfa(
 "
 " === Sessions
 " ALT + R to load the session
@@ -205,3 +213,7 @@ map <leader>sco :ColorSwapFgBg<CR>
 " == Lists
 " += see the syn(TAX) list
 map <leader>sli :syn list<CR>
+
+" == JSON
+" += format json using jq command
+map <leader>jq :%!jq<CR>
