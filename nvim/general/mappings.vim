@@ -173,8 +173,8 @@ map <leader>gp :Gpush<cr>
 map <leader>gs :G<cr>
 map <leader>gv :GV<CR>
 map <leader>gw :Gwrite<cr>
-nmap <leader>gh :diffget //3<CR>
-nmap <leader>gu :diffget //2<CR>
+nmap <leader>gl :diffget //3<CR>
+nmap <leader>gh :diffget //2<CR>
 " ++ gitmoji
 nnoremap <Leader>mo i<C-X><C-U><BS><BS><BS><BS><BS><BS><BS><BS>
 
@@ -217,3 +217,7 @@ map <leader>sli :syn list<CR>
 " == JSON
 " += format json using jq command
 map <leader>jq :%!jq<CR>
+
+" == CLIPBOARD
+nnoremap +p "+p
+nnoremap +y "+y
