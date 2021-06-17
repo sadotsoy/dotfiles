@@ -51,9 +51,13 @@ Plug 'tpope/vim-commentary'             " comment with powers
 Plug 'tpope/vim-surround'               " surround
 Plug 'wellle/targets.vim'               " text obejects with operators ci(operator) ex: ci,
 
+" +== PUG
+Plug 'digitaltoad/vim-pug'
+
 " +== JAVASCRIPT
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'yuezk/vim-js'
+Plug 'leafgarland/typescript-vim'       " typescript syntax
 
 " +== CSS/STYLES
 " Plug 'ap/vim-css-color' "Displays a preview of colors with CSS

@@ -7,8 +7,8 @@ let g:coc_snippet_next = '<tab>'
 
 " == ALE && DEOPLITE LINTERS/COMPLETE
 " Fix files with prettier, and then ESLint.
-let g:ale_linters = {'javascript': ['eslint'], 'javascripreact': ['eslint']}
-let g:ale_fixers = {'javascript': ['prettier', 'eslint'],'css': ['prettier'], 'scss': ['prettier'], 'vim': ['prettier'], 'html': ['prettier'], 'json': ['prettier']}
+let g:ale_linters = {'javascript': ['eslint'], 'javascripreact': ['eslint'], 'typescript': ['eslint'], 'typescriptreact': ['eslint']}
+let g:ale_fixers = {'javascript': ['prettier', 'eslint'], 'typescript': ['prettier', 'eslint'], 'typescriptreact': ['prettier', 'eslint'], 'css': ['prettier'], 'scss': ['prettier'], 'vim': ['prettier'], 'html': ['prettier'], 'json': ['prettier']}
 let g:ale_fix_on_save = 1
 let g:ale_javascript_eslint_use_local = 1
 let g:ale_echo_msg_error_str = 'E'
@@ -24,6 +24,9 @@ let g:ale_sign_warning = '-'
 " +=== LIMELIGHT
 let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_ctermfg = 240
+
+" +=== TYPESCRIPT
+let g:typescript_indent_disable = 1
 
 " +=== Fuzzy Search
 let g:fzf_layout = { 'window':{ 'width': 0.9, 'height': 0.9 }}
