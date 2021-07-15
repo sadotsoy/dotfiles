@@ -64,8 +64,7 @@ set smartcase
 " == FOLDS
 set foldmethod=syntax
 " set foldnestmax=20
-set nofoldenable
-" set foldlevel=2
+" set nofoldenable
 " == OTHERS
 filetype plugin indent on    " detecth the filetype
 set encoding=utf-8
@@ -85,6 +84,9 @@ set lcs=tab:-->,trail:- " display chars for tabs and trailing spaces
 augroup filetypedetect
     autocmd BufNew,BufNewFile,BufRead *.js,*.jsx :setfiletype javascriptreact
 augroup END
+
+" === WORDS
+set iskeyword-=_
 
 " == PYTHON
 " Providers
