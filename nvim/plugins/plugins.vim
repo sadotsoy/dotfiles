@@ -51,6 +51,9 @@ Plug 'tpope/vim-commentary'             " comment with powers
 Plug 'tpope/vim-surround'               " surround
 Plug 'wellle/targets.vim'               " text obejects with operators ci(operator) ex: ci,
 
+" +== HTML
+Plug 'othree/html5.vim'
+
 " +== PUG
 Plug 'digitaltoad/vim-pug'
 
