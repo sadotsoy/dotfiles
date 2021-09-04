@@ -1,0 +1,8 @@
+/node_modules
+build/*
+dist/*
+public/static/*
+src/serviceWorker.js
+src/img/svg/*
+package.json
+
