@@ -2,12 +2,12 @@
 let g:user_emmet_mode='a'       "enable all function in all mode.
 
 " === COC COMPLETE
-let g:coc_global_extensions=['coc-css', 'coc-emmet', 'coc-tsserver', 'coc-snippets', 'coc-json', 'coc-react-refactor']
+let g:coc_global_extensions=['coc-css', 'coc-emmet', 'coc-tsserver', 'coc-snippets', 'coc-json', 'coc-react-refactor', 'coc-html']
 let g:coc_snippet_next = '<tab>'
 
 " == ALE && DEOPLITE LINTERS/COMPLETE
 " Fix files with prettier, and then ESLint.
-let g:ale_linters = {'javascript': ['eslint'], 'javascripreact': ['eslint'], 'typescript': ['eslint'], 'typescriptreact': ['eslint'], 'pug': ['eslint']}
+let g:ale_linters = {'javascript': ['eslint'], 'javascripreact': ['eslint'], 'typescript': ['eslint'], 'typescriptreact': ['eslint'], 'pug': ['eslint'], 'html': ['eslint']}
 let g:ale_fixers = {'javascript': ['prettier', 'eslint'], 'typescript': ['prettier', 'eslint'], 'typescriptreact': ['prettier', 'eslint'], 'css': ['prettier'], 'scss': ['prettier'], 'vim': ['prettier'], 'html': ['prettier'], 'json': ['prettier'], 'pug': ['prettier']}
 let g:ale_fix_on_save = 0
 let g:ale_javascript_eslint_use_local = 1
