@@ -16,6 +16,11 @@ function! LinterStatus() abort
     \)
 endfunction
 
+" Fold
+function! MinimalFold()
+  return printf('%s [%d] %s', v:folddashes, v:foldend - v:foldstart + 1, getline(v:foldstart))
+endfunction
+
 " return if exist git branch
 function! StatuslineGit() abort
   if exists("g:git_branch")
