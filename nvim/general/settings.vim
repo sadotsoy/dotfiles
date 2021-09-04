@@ -64,7 +64,8 @@ set smartcase
 " == FOLDS
 set foldmethod=syntax
 " set foldnestmax=20
-" set nofoldenable
+set nofoldenable
+set fillchars=fold:\ | set foldtext=MinimalFold()
 " == OTHERS
 filetype plugin indent on    " detecth the filetype
 set encoding=utf-8
@@ -75,15 +76,15 @@ set showmatch                 " show matching braces
 " == PLUGINS
 set completefunc=emoji#complete
 
-" == LISTS
+" == LIST || CHARS
 set list
-set lcs=tab:-->,trail:- " display chars for tabs and trailing spaces
+" set lcs=tab:->·,trail:x,eol:·  " display chars for tabs and trailing spaces
 
 " Filetypes
 " REACT
-augroup filetypedetect
-    autocmd BufNew,BufNewFile,BufRead *.js,*.jsx :setfiletype javascriptreact
-augroup END
+" augroup javascriptreact
+"     autocmd BufNew,BufNewFile,BufRead *.js,*.jsx :setfiletype javascriptreact
+" augroup END
 
 " === WORDS
 set iskeyword-=_
