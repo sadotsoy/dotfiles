@@ -54,10 +54,11 @@ nmap ® :source Session.vim<CR>
 " == SEE ONLY THIS FILE ON THE BUFFER, BEATIFUL FOR DOCUMENTATION
 map <leader>o :only<cr>
 "
-" == FILEMANAGER
+" == FILE MANAGER
 " VIFM
 map <leader><Space>r :EditVifm .<CR>
 map <leader><Space>e :Vifm<CR>
+" nnoremap <C-e> :NERDTreeToggle<CR>
 "
 " == PRETTIER
 map <leader>pr :ALEFix<cr>
@@ -82,7 +83,7 @@ map <leader>pdf :command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q
 map <leader>ltx :!pdflatex %<CR>
 "
 " == SEARCHING Fuzzy
-map <leader>bf :Buffers<cr>
+nnoremap <C-o> :Buffers<cr>
 map <leader>fa :Ag<cr>
 map <leader>fc :Colors<cr>
 map <leader>fl :Lines<cr>
