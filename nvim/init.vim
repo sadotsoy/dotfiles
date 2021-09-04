@@ -1,4 +1,4 @@
-" NeoVIM config file by @sadotsoy OCT 14 2020 :)
+" INIT.VIM by Sadot 'sadotsoy' ----- sadotcortes@gmail.com
 "
 " == GENERAL STUFF ======
 source $HOME/.config/nvim/general/settings.vim
@@ -12,3 +12,7 @@ source $HOME/.config/nvim/plugins/pluginsconfig.vim
 source $HOME/.config/nvim/general/colorschemes.vim
 source $HOME/.config/nvim/general/mappings.vim
 source $HOME/.config/nvim/general/functions.vim
+
+" Dependencies
+" - ctags
+" - eslint
