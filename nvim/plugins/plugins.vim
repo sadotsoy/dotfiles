@@ -32,6 +32,7 @@ Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
 " === FILE MANAGER
+Plug 'preservim/nerdtree'
 Plug 'vifm/vifm.vim'                    " VIFM
 
 " === UNIVERSAL TAGS/ AUTOIMPORT JS
@@ -81,6 +82,8 @@ Plug 'mlaursen/vim-react-snippets'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'stsewd/fzf-checkout.vim'
+" Plug 'liuchengxu/vim-clap'
+
 
 " === COLORSCHEME
 " Plug 'flazz/vim-colorschemes' "fore all
