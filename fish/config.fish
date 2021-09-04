@@ -71,6 +71,7 @@ alias frida="cd ~/workspace/frida"
 alias server="./utils/ngrock http 3000"
 alias ed="nvim"
 alias vim="nvim"
+alias dark="cd ~/workspace/personal/darkforce-vim-colors"
 # ALIAS
 # IPHONE
 alias iphone="sudo killall -STOP -c usbd"
