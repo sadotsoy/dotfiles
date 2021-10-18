@@ -1,7 +1,4 @@
 " Vifm config file
-"
-"
-"
 
 " show hidden/dotfiles by default
 windo normal zo
