@@ -1,7 +1,7 @@
 " INIT.VIM by Sadot 'sadotsoy' ----- sadotcortes@gmail.com
 "
 " == GENERAL STUFF ======
-source $HOME/.config/nvim/general/settings.vim
+source $HOME/.config/nvim/general/index.vim
 source $HOME/.config/nvim/general/macros.vim
 
 " == PLUGINS STUFF ======

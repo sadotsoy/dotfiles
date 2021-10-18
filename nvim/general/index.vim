@@ -15,6 +15,13 @@ set confirm
 set cursorline                             " active cursorline
 set diffopt+=vertical                      " vertical split
 set directory=~/.swap/                    " Where to store swap files
+set guicursor=n-r:block
+      \-blinkon450-blinkoff450
+      \-blinkwait0
+      \,i:ver10
+      \-blinkon100-blinkoff100
+      \-blinkwait0
+      \,v-ve:block                        " Cursor gui, set cursor shape and blink options to some modes
 set hidden                                 " Required to keep multiple open buffers
 set hlsearch                               " Show the prev search pattern
 set incsearch                              " set to the first match pattern
@@ -70,7 +77,7 @@ set fillchars=fold:\ | set foldtext=MinimalFold()
 filetype plugin indent on    " detecth the filetype
 set encoding=utf-8
 set magic                     " set magic on, for regex
-set mat=2                     " how many tenths of a second to blink
+set mat=200                     " how many tenths of a second to blink
 set showmatch                 " show matching braces
 
 " == PLUGINS
@@ -86,8 +93,14 @@ set list
 "     autocmd BufNew,BufNewFile,BufRead *.js,*.jsx :setfiletype javascriptreact
 " augroup END
 
+" === HIGHLIGHT
+" only for nvim
+au TextYankPost * silent! lua vim.highlight.on_yank()
+let g:highlightedyank_highlight_duration = 500
+
 " === WORDS
 set iskeyword-=_
+set iskeyword-=-
 
 " == PYTHON
 " Providers

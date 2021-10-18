@@ -38,6 +38,7 @@ end
 
 function fish_mode_prompt; end
 
+# https://github.com/jethrokuan/z
 #Z
 alias zh="cd (z -l | hh | sed 's/^[0-9,.]* *//')"
 # FzF
@@ -106,6 +107,7 @@ alias gcof="git checkout --"
 alias gig="gitignore osx vim windows linux"
 alias gin="git init"
 alias glog="git log --oneline --graph"
+alias glist="git log --format=\"- %h %s\" --oneline"
 alias gp="git push origin"
 alias gs="git status"
 alias master="git checkout master"
@@ -175,6 +177,8 @@ alias search="brew search"
 alias update="brew update"
 alias upgrade="brew upgrade"
 alias brw="nvim ~/dotfiles/brew/brew.sh"
+# POSTGRES
+alias startpostgres="postgres -D /usr/local/var/postgres"
 # N
 alias n="sudo n"
 # PYTON/PIP
@@ -187,3 +191,5 @@ alias int="ifconfig"
 set -g fish_user_paths "/usr/local/opt/imagemagick@6/bin" $fish_user_paths
 # source (curl -sSL git.io/forgit.fish | psub)
 
+# node@14
+fish_add_path /usr/local/opt/node@14/bin
