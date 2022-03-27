@@ -69,10 +69,11 @@ set smartcase
 " cabbrev :h vert h
 
 " == FOLDS
-set foldmethod=syntax
-" set foldnestmax=20
-set nofoldenable
+set foldmethod=indent
+set foldnestmax=20
+set foldenable
 set fillchars=fold:\ | set foldtext=MinimalFold()
+set foldlevel=1
 " == OTHERS
 filetype plugin indent on    " detecth the filetype
 set encoding=utf-8
