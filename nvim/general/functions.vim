@@ -88,6 +88,14 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+" Check group under the cursor
+function! CheckSynstack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
 " +=== GOYO FUNCTIONS
 function! s:goyo_enter()
   set noshowmode
