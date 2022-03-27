@@ -7,4 +7,4 @@ source brew/brew.sh
 source fish/fish.sh
 
 # Move config files and install vim plug
-source neovim/neovim.sh
+source nvim/nvim.sh
