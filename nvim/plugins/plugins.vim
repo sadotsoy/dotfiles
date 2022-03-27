@@ -15,9 +15,7 @@ call plug#begin()
 " Plug 'terryma/vim-multiple-cursors'   " multiple cursors with <C-n>
 Plug 'junegunn/goyo.vim'                " Distraction-free writing in Vim.
 Plug 'junegunn/limelight.vim'           " Higlight the cursor position with goyo looks awesome
-Plug 'junegunn/vim-easy-align'          " easy align use ga
 Plug 'majutsushi/tagbar'                " toogle tag bar
-Plug 'rizzatti/dash.vim'                " open dash app
 
 " === GIT
 " Plug 'rhysd/git-messenger.vim'        " popup to show commits
@@ -32,7 +30,7 @@ Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
 " === FILE MANAGER
-Plug 'preservim/nerdtree'
+" Plug 'preservim/nerdtree'
 Plug 'vifm/vifm.vim'                    " VIFM
 
 " === UNIVERSAL TAGS/ AUTOIMPORT JS
@@ -44,7 +42,6 @@ Plug 'ludovicchabant/vim-gutentags'
 " +== GENERAL
 Plug 'bronson/vim-trailing-whitespace'  " just call :FixWhitespace
 Plug 'editorconfig/editorconfig-vim'    " editorconfig
-Plug 'junegunn/vim-emoji'               " vim emoji
 Plug 'luochen1990/rainbow'              " rainbow close surrounds
 Plug 'mattn/emmet-vim'                  " the good plugin
 Plug 'raimondi/delimitmate'             " auto-completion for quotes, etc surrounds.
@@ -61,7 +58,6 @@ Plug 'digitaltoad/vim-pug'
 " +== JAVASCRIPT
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'yuezk/vim-js'
-Plug 'leafgarland/typescript-vim'       " typescript syntax
 
 " +== CSS/STYLES
 " Plug 'ap/vim-css-color' "Displays a preview of colors with CSS
@@ -119,14 +115,12 @@ Plug 'nightsense/cosmic_latte'
 Plug 'nikolvs/vim-sunbather'
 Plug 'pgdouyon/vim-yin-yang'
 Plug 'rakr/vim-one'
-Plug 'sadotsoy/darkforce-vim-colors'
+" Plug 'sadotsoy/darkforce-vim'
+Plug '~/workspace/personal/darkforce-vim'
 Plug 'sainnhe/edge'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'szorfein/fromthehell.vim'
 Plug 'wadackel/vim-dogrun'
-" Plug '~/workspace/personal/darkforce-vim-colors'
-" Plug 'sadotsoy/darkforce-vim-colors', { 'branch': 'develop' }
 "
-
 " == END Plug
 call plug#end()

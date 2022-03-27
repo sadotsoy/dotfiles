@@ -4,16 +4,11 @@
 " == MAPPINGS ======
 "
 "
-" Start interactive Easy Align in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-" Start interactive Easy Align for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
-" == CLOSE && WRITE
-nnoremap <leader>q :q!<CR>
-
-" == WRITE
+" == WRITE || CLOSE
 map <C-w>w :w<CR>
+map <C-w>q :wq!<CR>
+map <C-w>a :wqa!<CR>
+nnoremap <leader>q :q!<CR>
 "
 " == RELOAD SOURCE
 map <C-s>s :source $HOME/.config/nvim/init.vim<CR>
@@ -22,26 +17,10 @@ map <C-s>s :source $HOME/.config/nvim/init.vim<CR>
 map <leader>, :vsplit $HOME/.config/nvim/init.vim<CR>
 
 map <leader><Space>s :Vifm /Users/sadotsoy/dotfiles/nvim/<CR>
-"
+
 " == Sort
 map <leader>so :sort<CR>
-"
-" === Folds
-" open all folds
-" INSIDE
-nnoremap zr zR
-" nnoremap zo zO
-" MANUAL
-" nnoremap zit zfit
-" nnoremap zi{ zfi{
-" nnoremap zi[ zfi[
-" nnoremap zi( zfi(
-" AROUND
-" nnoremap zat zfat
-" nnoremap za{ zfa{
-" nnoremap za[ zfa[
-" nnoremap za( zfa(
-"
+
 " === Sessions
 " ALT + R to load the session
 " ALT + S to save the session
@@ -76,12 +55,7 @@ map <leader>hi :so $VIMRUNTIME/syntax/hitest.vim<CR>
 " map <leader>ue :CocList snippets<cr>
 map <leader>ue :CocCommand snippets.editSnippets<cr>
 "
-" == PDF
-map <leader>pdf :command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> -
-"
-" == PDFLATEX
-map <leader>ltx :!pdflatex %<CR>
-"
+
 " == SEARCHING Fuzzy
 nnoremap <C-o> :Buffers<cr>
 map <leader>fa :Ag<cr>
@@ -109,31 +83,21 @@ map <leader>tn :tabnext<cr>
 map <leader>to :tabonly<cr>
 map <leader>tp :tabprevious<cr>
 map <leader>tq :tabclose<cr>
-"
+
+" == VIM HELP
+nmap <leader>he :vert h<Space>
+nmap <leader>hw :<C-U>vert h<Space><C-R>=expand("<cword>")<CR>
+
+
 " == ALE MAPPING
 nmap <silent> [g <Plug>(ale_previous_wrap)
 nmap <silent> ]g <Plug>(ale_next_wrap)
-"
+
 " == COC MAPPING
 " Use `[g` and `]g` to navigate diagnostics
 " Use `{g` and `}g` to navigate linter diagnostics
 nmap <silent> {g <Plug>(coc-diagnostic-prev)
 nmap <silent> }g <Plug>(coc-diagnostic-next)
-
-" Snippets
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-" Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
-" Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-j>'
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<c-k>'
-" Use <C-j> for both expand and jump (make expand higher priority.)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 " refactor
 xmap <leader>a  <Plug>(coc-codeaction-selected)
@@ -159,12 +123,15 @@ nnoremap <Right> :vertical resize -2<CR>
 " == emoji
 nmap <leader>em :%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<CR>
 
+" ++ gitmoji
+nnoremap <Leader>mo i<C-X><C-U><BS><BS><BS><BS><BS><BS><BS><BS>
+
 " == GIT MAPPING
 " CHECK :HELP GSTATUS FOR MORE KEYS
 map <leader>bc :BCommits<cr>
 map <leader>co :Commits<cr>
 map <leader>ga :!git add %<cr>:Gcommit<cr>
-map <leader>gb :Gblame<cr>
+map <leader>gb :Git blame<cr>
 map <leader>gc :GCheckout<cr>
 map <leader>gd :Gdiffsplit!<cr>
 map <leader>ge :GitMessenger<cr>
@@ -174,15 +141,14 @@ map <leader>gp :Gpush<cr>
 map <leader>gs :G<cr>
 map <leader>gv :GV<CR>
 map <leader>gw :Gwrite<cr>
-nmap <leader>gl :diffget //3<CR>
-nmap <leader>gh :diffget //2<CR>
-" ++ gitmoji
-nnoremap <Leader>mo i<C-X><C-U><BS><BS><BS><BS><BS><BS><BS><BS>
-
+map <leader>gl :Git log<CR>
+map <leader>glg :Git log --oneline --graph<CR>
+nmap <leader>g1 :diffget //3<CR>
+nmap <leader>g2 :diffget //2<CR>
 
 " == GOYO
 map <leader><ENTER> :Goyo<cr>
-"
+
 " == SPELLING
 map <leader>s :set spell<cr>
 " === see list of alternatives
@@ -203,6 +169,10 @@ map <C-j> :wincmd j<CR>
 map <C-k> :wincmd k<CR>
 map <C-l> :wincmd l<CR>
 
+" +== Switch the window
+" map <C-H> :windo wincmd H<CR>
+" map <C-K> :windo wincmd K<CR>
+
 " == SPLITS
 nnoremap <silent> vv <C-w>v
 nnoremap <silent> vs <C-w>s
@@ -210,6 +180,7 @@ nnoremap <silent> vs <C-w>s
 " == Colors
 map <leader>hco :ColorToggle<CR>
 map <leader>sco :ColorSwapFgBg<CR>
+noremap <C-t> :call CheckSynstack()<CR>
 
 " == Lists
 " += see the syn(TAX) list
