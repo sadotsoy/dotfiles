@@ -9,6 +9,11 @@
 echo "Installing fish, fisher and setted to default shell"
 brew install fish
 
+# sudo bash -c 'echo "/usr/local/bin/fish" > /etc/shells'
+echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
+chsh -s /usr/local/bin/fish
+
+echo "Installing fisher"
 /bin/bash -c "$(curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher)"
 
 # Install fish plugins and themes
