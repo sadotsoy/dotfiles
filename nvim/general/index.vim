@@ -50,6 +50,7 @@ set splitright                             " move focus to the new split
 set autoindent                             " Automatically set indent of new line
 set backspace=indent,eol,start             " Make backspace behave in a same manner
 set expandtab                              " Convert tabs to spaces
+set smarttab                               " inserts blanks according to shiftround, shiftwidth,etc
 set shiftround                             " Round indenty to a multiple of 'shiftwidth'
 set shiftwidth=2                           " Number of spaces to use for indent or unidendt
 set smartindent                            " Tab respects 'tabsot', 'shifwidth'. and 'softtabstop'
@@ -63,22 +64,18 @@ set spelllang=en_us,es_mx
 set ignorecase                  " Sensitive case for local search
 set smartcase
 
-" == Abbreviations
-" === HELP
-" open help in vertical split
-" cabbrev :h vert h
-
 " == FOLDS
 set foldmethod=indent
 set foldnestmax=20
 set foldenable
 set fillchars=fold:\ | set foldtext=MinimalFold()
 set foldlevel=1
+
 " == OTHERS
 filetype plugin indent on    " detecth the filetype
 set encoding=utf-8
 set magic                     " set magic on, for regex
-set mat=200                     " how many tenths of a second to blink
+set mat=200                   " how many tenths of a second to blink
 set showmatch                 " show matching braces
 
 " == PLUGINS
@@ -88,12 +85,6 @@ set completefunc=emoji#complete
 set list
 " set lcs=tab:->·,trail:x,eol:·  " display chars for tabs and trailing spaces
 
-" Filetypes
-" REACT
-" augroup javascriptreact
-"     autocmd BufNew,BufNewFile,BufRead *.js,*.jsx :setfiletype javascriptreact
-" augroup END
-
 " === HIGHLIGHT
 " only for nvim
 au TextYankPost * silent! lua vim.highlight.on_yank()
@@ -102,18 +93,3 @@ let g:highlightedyank_highlight_duration = 500
 " === WORDS
 set iskeyword-=_
 set iskeyword-=-
-
-" == PYTHON
-" Providers
-" let g:python3_host_prog  = '~/.envs/neovim/bin/python'
-" let g:loaded_python_provider = 0
-
-" augroup vimrc-statusline
-"     autocmd WinEnter * let g:status_line_active='simon'
-"     autocmd WinLeave * let g:status_line_active='nel'
-" augroup END
-" augroup vimrc-statusline
-"     autocmd!
-"     autocmd WinEnter * :setlocal test=active
-"     autocmd WinLeave * :setlocal test=inactive
-" augroup END
