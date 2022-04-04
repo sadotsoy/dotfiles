@@ -181,6 +181,7 @@ nnoremap <silent> vs <C-w>s
 map <leader>hco :ColorToggle<CR>
 map <leader>sco :ColorSwapFgBg<CR>
 noremap <C-t> :call CheckSynstack()<CR>
+nnoremap <silent> <C-i> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-i>
 
 " == Lists
 " += see the syn(TAX) list
