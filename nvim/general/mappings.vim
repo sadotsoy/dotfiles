@@ -14,7 +14,7 @@ nnoremap <leader>q :q!<CR>
 map <C-s>s :source $HOME/.config/nvim/init.vim<CR>
 "
 " == EDIT CONFIG FILE
-map <leader>, :vsplit $HOME/.config/nvim/init.vim<CR>
+map <leader>, :e $HOME/.config/nvim/init.vim<CR>
 
 map <leader><Space>s :Vifm /Users/sadotsoy/dotfiles/nvim/<CR>
 
@@ -194,3 +194,6 @@ map <leader>jq :%!jq<CR>
 " == CLIPBOARD
 nnoremap +p "+p
 nnoremap +y "+y
+
+" Notes
+map <leader>nv :e $HOME/.config/nvim/docs/notes.md<CR>

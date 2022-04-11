@@ -193,3 +193,7 @@ set -g fish_user_paths "/usr/local/opt/imagemagick@6/bin" $fish_user_paths
 
 # node@14
 fish_add_path /usr/local/opt/node@14/bin
+
+# server
+# this need python3 as alias with python
+alias serve="python -m http.server --cgi"

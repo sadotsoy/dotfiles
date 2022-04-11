@@ -3,11 +3,10 @@
 " == GENERAL SETTINGS ======
 let mapleader = ','                        " set the <leader>
 au BufWritePre * let &bex = '@'            " Meaningful backup name, ex: filename@
-" autocmd BufEnter * silent! lcd %:p:h
-" set autochdir                              " change working directory by file
 set autoread                               " detech when a file is changed
 set backup                                 " Turn on backup option
 set backupcopy=yes                         " Overwrite the original backup file
+set title
 set backupdir=~/.backup/                  " Where to store backups
 set clipboard^=unnamed,unnamedplus         " Yank and Paste with the system clipboard
 set cmdheight=2                            " More space for displaying messages
@@ -74,6 +73,7 @@ set foldlevel=1
 " == OTHERS
 filetype plugin indent on    " detecth the filetype
 set encoding=utf-8
+scriptencoding utf-8
 set magic                     " set magic on, for regex
 set mat=200                   " how many tenths of a second to blink
 set showmatch                 " show matching braces
