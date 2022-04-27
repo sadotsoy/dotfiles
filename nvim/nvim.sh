@@ -33,3 +33,5 @@ ln -s "${HOME}/dotfiles/nvim/plugins/" "${HOME}/.config/nvim/"
 echo "Linking snippets folder"
 ln -s "${HOME}/dotfiles/nvim/snippets/" "${HOME}/.config/nvim/"
 
+echo "Linking notes folder"
+ln -s "${HOME}/dotfiles/nvim/notes/" "${HOME}/.config/nvim/"
