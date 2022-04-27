@@ -130,7 +130,7 @@ nnoremap <Leader>mo i<C-X><C-U><BS><BS><BS><BS><BS><BS><BS><BS>
 " CHECK :HELP GSTATUS FOR MORE KEYS
 map <leader>bc :BCommits<cr>
 map <leader>co :Commits<cr>
-map <leader>ga :!git add %<cr>:Gcommit<cr>
+map <leader>ga :!git add %<cr>:Git commit<cr>
 map <leader>gb :Git blame<cr>
 map <leader>gc :GCheckout<cr>
 map <leader>gd :Gdiffsplit!<cr>
@@ -180,6 +180,7 @@ nnoremap <silent> vs <C-w>s
 " == Colors
 map <leader>hco :ColorToggle<CR>
 map <leader>sco :ColorSwapFgBg<CR>
+" group syntax
 noremap <C-t> :call CheckSynstack()<CR>
 nnoremap <silent> <C-i> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-i>
 
@@ -197,3 +198,6 @@ nnoremap +y "+y
 
 " Notes
 map <leader>nv :e $HOME/.config/nvim/docs/notes.md<CR>
+
+" Date
+map <leader>D :put =strftime('%a %b %d %Y')<CR>
