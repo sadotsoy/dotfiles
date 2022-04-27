@@ -16,6 +16,7 @@ call plug#begin()
 Plug 'junegunn/goyo.vim'                " Distraction-free writing in Vim.
 Plug 'junegunn/limelight.vim'           " Higlight the cursor position with goyo looks awesome
 Plug 'majutsushi/tagbar'                " toogle tag bar
+" Plug 'neovim/nvim-lspconfig'            " lsp
 
 " === GIT
 " Plug 'rhysd/git-messenger.vim'        " popup to show commits
@@ -69,6 +70,11 @@ Plug 'chrisbra/Colorizer' " Higlight colors
 " Plug 'tpope/vim-markdown'
 Plug 'godlygeek/tabular' " script for text filtering and alignment
 Plug 'plasticboy/vim-markdown' " Markdown vim mode
+
+" +== LISTS XIT
+Plug 'sadotsoy/vim-xit'
+" Plug 'ryanolsonx/vim-xit'
+" Plug '~/workspace/personal/vim-xit' " list plugin
 
 " == SNIPPETS
 " Plug 'SirVer/ultisnips'
