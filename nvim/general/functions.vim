@@ -72,7 +72,7 @@ function! s:statusline_generator()
   " modes wrapper
   let mode = normal.insert.replace.visual.vblock
   " final result
-  return mode.gray.filePath.sepRight.pink.sep.tild.LinterStatus().tild.sep.yellow.yellow.bufferNumber.orange.columnLines.sep.pink2.percent
+  return mode.gray.filePath.sepRight.pink.sep.tild.tild.sep.yellow.yellow.bufferNumber.orange.columnLines.sep.pink2.percent
 endfunction
 let &statusline = s:statusline_generator() " set the status line
 
